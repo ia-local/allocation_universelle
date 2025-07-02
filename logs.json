@@ -867,5 +867,12 @@
     "timestamp": "2025-07-02T14:15:43.797Z",
     "type": "wallet_balance_fetch",
     "balance": 1000
+  },
+  {
+    "id": "a86eb011-312e-47c5-8b8d-7326d8efb121",
+    "timestamp": "2025-07-02T14:34:58.593Z",
+    "type": "home_interaction",
+    "prompt": "test",
+    "response": "Bonjour ! Je suis un assistant IA expert en développement et en conseil technique. Je suis là pour vous aider avec vos questions et vos problèmes techniques. Qu'est-ce que vous voulez discuter ou résoudre aujourd'hui ?"
   }
 ]

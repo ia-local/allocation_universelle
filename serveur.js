@@ -52,7 +52,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // Pour parser les requêtes
 // --- SERVIR LES FICHIERS STATIQUES EN PREMIER ---
 // C'est CRUCIAL. Tous les fichiers dans 'public' (HTML, CSS, JS, images, etc.) seront servis depuis ce dossier.
 // Cette ligne DOIT être placée avant toutes les routes API et le fallback.
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'docs')));
 
 // Configuration de Multer pour l'upload de fichiers (CV)
 const upload = multer({ dest: 'uploads/' }); // Les fichiers seront stockés temporairement ici
@@ -469,7 +469,7 @@ app.get('*', (req, res) => {
     // Si la requête accepte du HTML (c'est une navigation directe ou un rechargement de page)
     if (req.accepts('html')) {
         console.warn(`⚠️ Requête pour une route non gérée (HTML): ${req.originalUrl}. Envoi de public/index.html.`);
-        res.sendFile(path.join(__dirname, 'public', 'index.html'));
+        res.sendFile(path.join(__dirname, 'docs', 'index.html'));
     } else {
         // Si la requête n'accepte pas de HTML (c'est un appel API ou une ressource non-HTML manquante)
         // et qu'aucune des routes API définies précédemment n'a matché, on renvoie un 404 JSON.
