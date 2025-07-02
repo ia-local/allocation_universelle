@@ -1,5 +1,5 @@
 # swagger/main.yaml
-openapi: 3.0.0
+openapi: 3.0.1
 info:
   title: API UTMi (Universal Timestamp Monetization Index)
   version: 1.0.0

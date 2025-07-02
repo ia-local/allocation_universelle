@@ -1,125 +1,63 @@
-// public/js/dashboard_ui.js - Logique DOM et events pour le tableau de bord
+// public/js/dashboard_ui.js
+// Ce module gère la logique spécifique à la page du tableau de bord.
+
 import { API_BASE_URL, showStatusMessage } from './app.js';
 
-let totalUtmiEl, totalInteractionCountEl, averageUtmiPerInteractionEl, totalUtmiPerCostRatioEl,
-    utmiByTypeEl, utmiByModelEl, utmiByCognitiveAxisEl,
-    thematicUtmiMarketingEl, thematicUtmiAffiliationEl, thematicUtmiFiscalEconomicEl,
-    mostValuableTopicsEl, mostCommonActivitiesEl, exchangeRatesEl, refreshDashboardBtn;
+let dashboardContentElement;
 
 /**
- * Initialise les éléments et événements du tableau de bord.
+ * @function initializeDashboardUI
+ * @description Initialise les éléments DOM et les écouteurs pour la page Dashboard.
+ * Appelé par app.js quand la page 'dashboard' est affichée.
  */
-function initDashboardUI() {
-    totalUtmiEl = document.getElementById('totalUtmiEl');
-    totalInteractionCountEl = document.getElementById('totalInteractionCountEl');
-    averageUtmiPerInteractionEl = document.getElementById('averageUtmiPerInteractionEl');
-    totalUtmiPerCostRatioEl = document.getElementById('totalUtmiPerCostRatioEl');
-    utmiByTypeEl = document.getElementById('utmiByTypeEl');
-    utmiByModelEl = document.getElementById('utmiByModelEl');
-    utmiByCognitiveAxisEl = document.getElementById('utmiByCognitiveAxisEl');
-    thematicUtmiMarketingEl = document.getElementById('thematicUtmiMarketingEl');
-    thematicUtmiAffiliationEl = document.getElementById('thematicUtmiAffiliationEl');
-    thematicUtmiFiscalEconomicEl = document.getElementById('thematicUtmiFiscalEconomicEl');
-    mostValuableTopicsEl = document.getElementById('mostValuableTopicsEl');
-    mostCommonActivitiesEl = document.getElementById('mostCommonActivitiesEl');
-    exchangeRatesEl = document.getElementById('exchangeRatesEl');
-    refreshDashboardBtn = document.getElementById('refreshDashboardBtn');
+export function initializeDashboardUI() {
+    console.log('[dashboard_ui] Initialisation de l\'UI du tableau de bord.');
+    dashboardContentElement = document.getElementById('dashboard-content');
 
-    if (refreshDashboardBtn) {
-        refreshDashboardBtn.onclick = fetchDashboardInsights;
+    if (!dashboardContentElement) {
+        console.error('[dashboard_ui] L\'élément #dashboard-content est manquant. Vérifiez index.html.');
     }
-    console.log('[dashboard_ui.js] Dashboard UI initialized.');
+
+    // Tu pourrais avoir ici des initialisations de graphiques, etc.
+    if (dashboardContentElement) { // Vérification ajoutée
+        dashboardContentElement.innerHTML = '<p>Chargement des données du tableau de bord...</p>';
+    }
 }
 
 /**
- * Récupère les insights du tableau de bord depuis l'API.
+ * @function fetchDashboardInsights
+ * @description Récupère les données analytiques pour le tableau de bord.
  */
-async function fetchDashboardInsights() {
+export async function fetchDashboardInsights() {
+    console.log('[dashboard_ui] Chargement des données du tableau de bord...');
     showStatusMessage('Chargement des insights du tableau de bord...', 'info');
-    if (refreshDashboardBtn) refreshDashboardBtn.disabled = true;
-
     try {
-        const response = await fetch(`${API_BASE_URL}/api/dashboard-insights`);
+        const response = await fetch(`${API_BASE_URL}/api/dashboard/insights`);
+        if (!response.ok) {
+            // Tente de lire l'erreur du corps de la réponse si disponible, même pour un 404
+            const errorText = await response.text();
+            throw new Error(`Erreur HTTP: ${response.status} - ${errorText || response.statusText}`);
+        }
         const data = await response.json();
+        console.log('[dashboard_ui] Insights du tableau de bord reçus:', data);
 
-        if (response.ok) {
-            updateDashboardUI(data);
-            showStatusMessage('Tableau de bord actualisé.', 'success');
-        } else {
-            showStatusMessage(`Erreur lors du chargement du tableau de bord: ${data.message}`, 'error');
+        // Mettre à jour l'UI avec les données
+        if (dashboardContentElement) {
+            dashboardContentElement.innerHTML = `
+                <h3>Statistiques Générales</h3>
+                <p><strong>UTMi Générés Total:</strong> ${data.totalUtmiGenerated || 'N/A'}</p>
+                <p><strong>Conversations Actives:</strong> ${data.activeConversations || 'N/A'}</p>
+                <p><strong>CVs Générés:</strong> ${data.cvGeneratedCount || 'N/A'}</p>
+                <h4>Performance IA</h4>
+                <p><strong>Taux de Réussite des Réponses:</strong> ${data.aiResponseSuccessRate ? `${(data.aiResponseSuccessRate * 100).toFixed(2)}%` : 'N/A'}</p>
+                <p><strong>Temps de Réponse Moyen IA:</strong> ${data.averageAiResponseTime ? `${data.averageAiResponseTime.toFixed(2)} ms` : 'N/A'}</p>
+                `;
+            showStatusMessage('Tableau de bord mis à jour.', 'success');
         }
+
     } catch (error) {
-        console.error('Erreur réseau ou serveur lors de la récupération des insights du tableau de bord:', error);
-        showStatusMessage(`Erreur réseau: ${error.message}`, 'error');
-    } finally {
-        if (refreshDashboardBtn) refreshDashboardBtn.disabled = false;
+        console.error('[dashboard_ui] Erreur lors du chargement des insights du tableau de bord:', error);
+        showStatusMessage(`Échec du chargement du tableau de bord: ${error.message}`, 'error');
+        if (dashboardContentElement) dashboardContentElement.innerHTML = '<p class="error-message">Impossible de charger les données du tableau de bord.</p>';
     }
 }
-
-/**
- * Met à jour l'interface utilisateur du tableau de bord avec les données.
- * @param {object} insights - Les données d'insights du tableau de bord.
- */
-function updateDashboardUI(insights) {
-    if (totalUtmiEl) totalUtmiEl.textContent = `${insights.totalUtmi?.toFixed(2) || '0.00'} UTMi`;
-    if (totalInteractionCountEl) totalInteractionCountEl.textContent = insights.totalInteractionCount || 0;
-    if (averageUtmiPerInteractionEl) averageUtmiPerInteractionEl.textContent = `${insights.averageUtmiPerInteraction?.toFixed(2) || '0.00'} UTMi`;
-    if (totalUtmiPerCostRatioEl) totalUtmiPerCostRatioEl.textContent = `${insights.totalUtmiPerCostRatio?.toFixed(2) || '0.00'}`;
-
-    updateMetricList(utmiByTypeEl, insights.utmiByType, 'UTMi');
-    updateMetricList(utmiByModelEl, insights.utmiByModel, 'UTMi');
-    updateMetricList(utmiByCognitiveAxisEl, insights.utmiByCognitiveAxis, 'UTMi');
-
-    if (thematicUtmiMarketingEl) thematicUtmiMarketingEl.textContent = `Marketing: ${insights.utmiByThematicFocus?.marketing?.toFixed(2) || '0.00'} UTMi`;
-    if (thematicUtmiAffiliationEl) thematicUtmiAffiliationEl.textContent = `Affiliation: ${insights.utmiByThematicFocus?.affiliation?.toFixed(2) || '0.00'} UTMi`;
-    if (thematicUtmiFiscalEconomicEl) thematicUtmiFiscalEconomicEl.textContent = `Fiscal-Économique: ${insights.utmiByThematicFocus?.fiscal_economique?.toFixed(2) || '0.00'} UTMi`;
-
-    updateTextList(mostValuableTopicsEl, insights.mostValuableTopics, 'topic', 'count', ' occurrences');
-    updateTextList(mostCommonActivitiesEl, insights.mostCommonActivities, 'activity', 'count', ' interactions');
-
-    if (exchangeRatesEl) {
-        exchangeRatesEl.textContent = `1 EUR = ${insights.exchangeRates?.eurToUtmi?.toFixed(2) || 'N/A'} UTMi | 1 UTMi = ${insights.exchangeRates?.utmiToEur?.toFixed(4) || 'N/A'} EUR`;
-    }
-}
-
-/**
- * Fonction utilitaire pour mettre à jour les listes de métriques.
- * @param {HTMLElement} listEl - L'élément <ul> ou <ol> à mettre à jour.
- * @param {object} data - L'objet de données (e.g., { 'type1': value1, 'type2': value2 }).
- * @param {string} unit - L'unité à afficher (e.g., 'UTMi').
- */
-function updateMetricList(listEl, data, unit) {
-    if (!listEl) return;
-    listEl.innerHTML = '';
-    for (const key in data) {
-        if (Object.hasOwnProperty.call(data, key)) {
-            const li = document.createElement('li');
-            li.textContent = `${key}: ${data[key].toFixed(2)} ${unit}`;
-            listEl.appendChild(li);
-        }
-    }
-}
-
-/**
- * Fonction utilitaire pour mettre à jour les listes de texte triées (ex: topics, activities).
- * @param {HTMLElement} listEl - L'élément <ul> ou <ol> à mettre à jour.
- * @param {Array<object>} data - Tableau d'objets avec des propriétés à afficher.
- * @param {string} keyProp - Nom de la propriété pour la clé (ex: 'topic', 'activity').
- * @param {string} valueProp - Nom de la propriété pour la valeur (ex: 'count').
- * @param {string} suffix - Suffixe pour la valeur (ex: ' occurrences').
- */
-function updateTextList(listEl, data, keyProp, valueProp, suffix = '') {
-    if (!listEl) return;
-    listEl.innerHTML = '';
-    data.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `${item[keyProp]}: ${item[valueProp]}${suffix}`;
-        listEl.appendChild(li);
-    });
-}
-
-
-export {
-    initDashboardUI,
-    fetchDashboardInsights // Exporté pour être appelé via app.js
-};

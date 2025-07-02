@@ -3,235 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CVNU | CV Numérique Universel & Monétisation de Compétences IA</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
+    <title>CVNU - Plateforme UTMi</title>
+    <link rel="stylesheet" href="css/style.css">
+    </head>
 <body>
-    <div id="global-status-message" class="status-message"></div>
-    <nav id="mainNavbar" class="smart-navbar-top-fixed">
-        <div class="navbar-brand">
-            <h1 class="app-title-navbar"><i class="fas fa-id-card-alt"></i> CVNU</h1>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo">CVNU</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="nav-link" data-section="home">Accueil</a></li>
+                    <li><a href="#dashboard" class="nav-link" data-section="dashboard">Tableau de Bord</a></li>
+                    <li><a href="#chat" class="nav-link" data-section="chat">Chat IA</a></li>
+                    <li><a href="#cv-generator" class="nav-link" data-section="cv-generator">Générateur CV</a></li>
+                    <li><a href="#wallet" class="nav-link" data-section="wallet">Portefeuille UTMi</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <div class="navbar-main-links">
-            <a href="#home" class="nav-link active" data-section="home"><i class="fas fa-home"></i> Accueil</a>
-            <a href="#dashboard" class="nav-link" data-section="dashboard"><i class="fas fa-chart-line"></i> Tableau de Bord</a>
-            <a href="#chat" class="nav-link" data-section="chat"><i class="fas fa-comments"></i> Chat IA</a>
-            <a href="#cv-generator" class="nav-link" data-section="cv-generator"><i class="fas fa-file-alt"></i> Générateur CV</a>
-            <a href="#wallet" class="nav-link" data-section="wallet"><i class="fas fa-wallet"></i> Portefeuille</a>
-        </div>
-    </nav>
+    <main class="main-content">
+        <div class="container">
+            <div id="globalStatusMessage" class="status-message"></div>
 
-    <main class="app-container">
-        <section id="home" class="content-section active">
-            <h2>Accueil</h2>
-            <div class="card">
-                <h3 class="card-title">Interactions IA à la Demande</h3>
-                <div class="form-group">
-                    <label for="promptInput">Votre requête pour l'IA :</label>
-                    <textarea id="promptInput" rows="5" placeholder="Ex: Rédigez un court paragraphe sur l'importance du Revenu Universel de Compétences (RUC)."></textarea>
+            <section id="home" class="content-section active">
+                <h2>Accueil & Générateur IA Simple</h2>
+                <div class="input-group">
+                    <textarea id="home-prompt-input" placeholder="Décrivez ce que vous souhaitez que l'IA génère ou réponde (ex: 'un texte de blog sur l'IA', 'une idée de startup')..."></textarea>
+                    <button id="send-home-prompt-btn" class="btn btn-primary">Envoyer au Générateur IA</button>
                 </div>
-                <div class="button-group">
-                    <button id="generateResponseBtn" class="btn btn-primary">Générer une Réponse</button>
-                    <button id="clearPromptBtn" class="btn btn-secondary">Effacer</button>
+                <div id="home-ai-response-display" class="response-display">
+                    <p>Votre réponse de l'IA apparaîtra ici.</p>
                 </div>
-                <div class="ia-response-output card mt-3">
-                    <h4 class="card-title">Réponse de l'IA :</h4>
-                    <pre id="iaResponseOutput"></pre>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="dashboard" class="content-section">
-            <h2>Tableau de Bord UTMi</h2>
-            <div class="dashboard-grid">
-                <div class="metric-card">
-                    <h3 class="card-title">Total UTMi Générés</h3>
-                    <p class="metric-value" id="totalUtmiEl">0.00 UTMi</p>
+            <section id="dashboard" class="content-section">
+                <h2>Tableau de Bord</h2>
+                <div id="dashboard-content" class="dashboard-metrics">
+                    <p>Chargement des statistiques du tableau de bord...</p>
                 </div>
-                <div class="metric-card">
-                    <h3 class="card-title">Interactions Totales</h3>
-                    <p class="metric-value" id="totalInteractionCountEl">0</p>
-                </div>
-                <div class="metric-card">
-                    <h3 class="card-title">Moyenne UTMi/Interaction</h3>
-                    <p class="metric-value" id="averageUtmiPerInteractionEl">0.00 UTMi</p>
-                </div>
-                <div class="metric-card">
-                    <h3 class="card-title">Ratio UTMi/Coût ($)</h3>
-                    <p class="metric-value" id="totalUtmiPerCostRatioEl">0.00</p>
-                </div>
-            </div>
+            </section>
 
-            <div class="dashboard-details-grid mt-3">
-                <div class="card">
-                    <h4 class="card-title">UTMi par Type d'Interaction</h4>
-                    <ul id="utmiByTypeEl" class="metric-list"></ul>
-                </div>
-                <div class="card">
-                    <h4 class="card-title">UTMi par Modèle IA</h4>
-                    <ul id="utmiByModelEl" class="metric-list"></ul>
-                </div>
-                <div class="card">
-                    <h4 class="card-title">UTMi par Axe Cognitif</h4>
-                    <ul id="utmiByCognitiveAxisEl" class="metric-list"></ul>
-                </div>
-                <div class="card">
-                    <h4 class="card-title">UTMi par Focus Thématique</h4>
-                    <ul id="utmiByThematicFocusEl" class="metric-list">
-                        <li id="thematicUtmiMarketingEl">Marketing: 0.00 UTMi</li>
-                        <li id="thematicUtmiAffiliationEl">Affiliation: 0.00 UTMi</li>
-                        <li id="thematicUtmiFiscalEconomicEl">Fiscal-Économique: 0.00 UTMi</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h4 class="card-title">Sujets les plus Valorés</h4>
-                    <ul id="mostValuableTopicsEl" class="metric-list"></ul>
-                </div>
-                <div class="card">
-                    <h4 class="card-title">Activités les plus Courantes</h4>
-                    <ul id="mostCommonActivitiesEl" class="metric-list"></ul>
-                </div>
-            </div>
-
-            <div class="card mt-3">
-                <h4 class="card-title">Taux de Change</h4>
-                <p id="exchangeRatesEl">1 EUR = X UTMi | 1 UTMi = Y EUR</p>
-            </div>
-
-            <div class="button-group mt-3">
-                <button id="refreshDashboardBtn" class="btn btn-secondary">Actualiser le Tableau de Bord</button>
-            </div>
-        </section>
-
-        <section id="chat" class="content-section">
-            <h2>Chatbot IA</h2>
-            <div class="chat-container card">
-                <div id="chatMessages" class="chat-messages">
-                    </div>
-                <div class="chat-input-area">
-                    <textarea id="chatInput" placeholder="Tapez votre message ici..."></textarea>
-                    <button id="sendChatMessageBtn" class="btn btn-primary">Envoyer</button>
-                    <button id="newChatBtn" class="btn btn-secondary">Nouveau Chat</button>
-                </div>
-                <div class="chat-conversation-list card mt-3">
-                    <h4 class="card-title">Historique des Conversations</h4>
-                    <ul id="conversationsList">
+            <section id="chat" class="content-section">
+                <h2>Chat avec l'IA</h2>
+                <div class="chat-container">
+                    <div class="conversation-sidebar">
+                        <h3>Conversations</h3>
+                        <button id="start-new-conversation-btn" class="btn btn-secondary new-conversation-btn">Nouvelle Conversation</button>
+                        <ul id="conversation-list" class="conversation-list">
+                            <p>Chargement des conversations...</p>
                         </ul>
-                    <div class="pagination-controls">
-                        <button id="prevChatPageBtn" class="btn btn-sm" disabled><i class="fas fa-chevron-left"></i></button>
-                        <span id="chatPageInfo">Page 1/1</span>
-                        <button id="nextChatPageBtn" class="btn btn-sm" disabled><i class="fas fa-chevron-right"></i></button>
+                        <div id="chat-pagination-container" class="pagination-controls">
+                            </div>
+                    </div>
+                    <div class="chat-main">
+                        <div id="chat-messages-display" class="chat-messages-display">
+                            <p>Envoyez un message pour commencer ou sélectionnez une conversation.</p>
+                        </div>
+                        <div class="chat-input-area">
+                            <textarea id="chat-input" placeholder="Tapez votre message ici..."></textarea>
+                            <button id="send-chat-message-btn" class="btn btn-primary send-message-btn">Envoyer</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="cv-generator" class="content-section">
-            <h2>Générateur de CV Numérique Universel (CVNU)</h2>
-            <div class="card">
-                <h3 class="card-title">Votre CV Actuel</h3>
-                <div id="cvDisplayArea" class="cv-display-area">
-                    <p>Aucun CV généré ou chargé.</p>
-                    </div>
-                <div class="button-group mt-3">
-                    <button id="generateCvBtn" class="btn btn-primary">Générer un Nouveau CV</button>
-                    <button id="exportCvBtn" class="btn btn-secondary">Exporter le CV</button>
-                    <button id="uploadCvBtn" class="btn btn-tertiary">Charger CV (JSON)</button>
-                    <input type="file" id="cvFileInput" accept=".json" style="display: none;">
-                    <span id="cvFileNameDisplay" class="file-name-display">Aucun fichier</span>
+            <section id="cv-generator" class="content-section">
+                <h2>Générateur de CV IA</h2>
+                <div class="cv-controls">
+                    <textarea id="cv-prompt-input" placeholder="Décrivez votre profil, expériences et le type de poste visé pour générer un CV..."></textarea>
+                    <button id="generate-cv-btn" class="btn btn-primary">Générer CV</button>
                 </div>
-            </div>
+                <div class="cv-actions">
+                    <input type="file" id="cv-file-input" accept=".json, .pdf, .docx">
+                    <button id="upload-cv-btn" class="btn btn-secondary">Uploader CV</button>
+                    <button id="export-cv-btn" class="btn btn-success" disabled>Exporter CV (JSON)</button>
+                </div>
+                <div id="cv-display-area" class="cv-display">
+                    <p>Votre CV généré ou uploadé apparaîtra ici.</p>
+                </div>
+            </section>
 
-            <div class="card mt-3">
-                <h3 class="card-title">Informations sur votre CVNU</h3>
-                <div class="metric-grid-small">
-                    <div class="metric-card">
-                        <h4 class="card-title">Valeur Estimée du CVNU</h4>
-                        <p class="metric-value" id="cvValueEl">0 CVNU</p>
+            <section id="wallet" class="content-section">
+                <h2>Portefeuille UTMi</h2>
+                <div class="wallet-balance-info">
+                    <p id="wallet-balance">Chargement du solde...</p>
+                </div>
+                <div class="wallet-actions">
+                    <div class="action-group">
+                        <h3>Revendiquer des UTMi</h3>
+                        <button id="utmi-claim-btn" class="btn btn-primary">Revendiquer 50 UTMi</button>
                     </div>
-                    <div class="metric-card">
-                        <h4 class="card-title">Niveau de Compétence</h4>
-                        <p class="metric-value" id="cvLevelEl">Inconnu</p>
+                    <div class="action-group">
+                        <h3>Transférer des UTMi</h3>
+                        <input type="text" id="transfer-recipient" placeholder="ID du destinataire">
+                        <input type="number" id="transfer-amount" placeholder="Montant">
+                        <button id="utmi-transfer-btn" class="btn btn-secondary">Transférer</button>
                     </div>
-                    <div class="metric-card">
-                        <h4 class="card-title">Revenu Universel Mensuel (RUM)</h4>
-                        <p class="metric-value" id="rumEl">0.00 EUR/mois</p>
+                    <div class="action-group">
+                        <h3>Convertir des UTMi</h3>
+                        <input type="number" id="convert-amount" placeholder="Montant UTMi">
+                        <input type="text" id="convert-target-currency" placeholder="Devise cible (ex: USD, EUR)">
+                        <button id="utmi-convert-btn" class="btn btn-info">Convertir</button>
                     </div>
                 </div>
-                <button id="refreshCvMetricsBtn" class="btn btn-secondary mt-3">Actualiser Métriques CVNU</button>
-            </div>
-        </section>
+            </section>
 
-        <section id="wallet" class="content-section">
-            <h2>Portefeuille UTMi & Trésorerie</h2>
-            <div class="card">
-                <h3 class="card-title">Votre Portefeuille</h3>
-                <div class="metric-grid-small">
-                    <div class="metric-card">
-                        <h4 class="card-title">Solde UTMi</h4>
-                        <p class="metric-value" id="utmiBalanceEl">0.00 UTMi</p>
-                    </div>
-                    <div class="metric-card">
-                        <h4 class="card-title">Solde EUR</h4>
-                        <p class="metric-value" id="eurBalanceEl">0.00 EUR</p>
-                    </div>
-                </div>
-                <div class="button-group mt-3">
-                    <button id="refreshWalletBtn" class="btn btn-primary">Actualiser Portefeuille</button>
-                    <button id="claimUtmiBtn" class="btn btn-secondary">Réclamer UTMi</button>
-                    <button id="transferUtmiBtn" class="btn btn-tertiary">Transférer UTMi</button>
-                    <button id="convertUtmiBtn" class="btn btn-tertiary">Convertir UTMi/EUR</button>
-                </div>
             </div>
-
-            <div class="card mt-3">
-                <h3 class="card-title">Trésorerie Commune</h3>
-                <div class="metric-grid-small">
-                    <div class="metric-card">
-                        <h4 class="card-title">Solde Trésorerie (UTMi)</h4>
-                        <p class="metric-value" id="treasuryUtmiBalanceEl">0.00 UTMi</p>
-                    </div>
-                    <div class="metric-card">
-                        <h4 class="card-title">Solde Trésorerie (EUR)</h4>
-                        <p class="metric-value" id="treasuryEurBalanceEl">0.00 EUR</p>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2024 CVNU. Tous droits réservés.</p>
-        <div class="social-links">
-            <a href="#" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="social-icon" title="Twitter"><i class="fab fa-twitter-square"></i></a>
-            <a href="#" class="social-icon" title="GitHub"><i class="fab fa-github-square"></i></a>
-            <a href="#" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 CVNU - Tous droits réservés.</p>
         </div>
     </footer>
-
-    <div id="genericAppModal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="genericModalTitle">Titre du Modal</h3>
-                <button class="close-modal-btn" id="genericCloseModalBtn"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-body" id="genericModalBody">
-                <p>Contenu du modal.</p>
-            </div>
-            <div class="modal-footer" id="genericModalFooter">
-                <button id="genericModalConfirmBtn" class="btn btn-primary" style="display:none;">Confirmer</button>
-                <button id="genericModalCancelBtn" class="btn btn-secondary" style="display:none;">Annuler</button>
-                <button id="genericModalOkBtn" class="btn btn-primary" style="display:none;">OK</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="globalStatusMessage" class="status-message" role="status" aria-live="polite"></div>
 
     <script type="module" src="js/app.js"></script>
 </body>

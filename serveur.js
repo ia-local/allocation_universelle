@@ -48,7 +48,7 @@ const swaggerOptions = {
     definition: {
         openapi: '3.0.0', // Version de la spécification OpenAPI
         info: {
-            title: 'API UTMi (Universal Talent Monetization Index)',
+            title: 'API UTMi (Universal Timestamp Monetization Index)',
             version: '1.0.0',
             description: 'Documentation de l\'API pour la gestion des UTMi, portefeuilles et webhooks.',
         },
@@ -80,7 +80,7 @@ const swaggerOptions = {
         tags: [
             {
                 name: 'UTMI',
-                description: 'Opérations liées aux UTMi (Universal Talent Monetization Index)',
+                description: 'Opérations liées aux UTMi (Universal Timestamp Monetization Index)',
             },
             {
                 name: 'Wallet',

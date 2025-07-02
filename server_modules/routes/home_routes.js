@@ -1,71 +1,49 @@
 // server_modules/routes/home_routes.js
 const express = require('express');
 const router = express.Router();
-const groqService = require('../services/groq_service'); // Assurez-vous d'importer le service Groq
-const { logApiCall } = require('../utils/api_logger');
+const { logApiCall } = require('../utils/api_logger'); // Assure-toi que ce chemin est correct
+const aiService = require('../services/ai_integration_service'); // Chemin vers ton service d'intégration IA
 
-// Route pour générer du texte via l'IA
-router.post('/generate', async (req, res) => {
-    logApiCall('home_routes.js', 'POST /api/generate', 'info', 'Requête reçue pour la génération de texte.');
-    const { prompt } = req.body; // Récupère le prompt envoyé par le frontend
+/**
+ * @route POST /api/generate-ai-response
+ * @description Gère les requêtes de génération de réponse IA depuis l'interface utilisateur.
+ * @access Public (ou authentifié si tu ajoutes un middleware d'auth)
+ */
+router.post('/api/generate-ai-response', async (req, res) => {
+    const { userPrompt } = req.body; // Récupère le prompt de l'utilisateur envoyé dans le corps de la requête
 
-    if (!prompt || typeof prompt !== 'string' || prompt.trim() === '') {
-        logApiCall('home_routes.js', 'POST /api/generate', 'warn', 'Prompt manquant, vide ou invalide dans la requête.', 400);
-        return res.status(400).json({ status: 'error', message: 'Le prompt est requis et doit être une chaîne de caractères non vide.' });
+    // Log l'appel API
+    logApiCall('home_routes.js', 'POST /api/generate-ai-response', 'info', { userPrompt });
+
+    // 1. Vérification du prompt
+    if (!userPrompt) {
+        logApiCall('home_routes.js', 'POST /api/generate-ai-response', 'warn', { message: 'Prompt utilisateur manquant' }, 400);
+        return res.status(400).json({ message: 'Le prompt utilisateur est requis.' });
     }
 
     try {
-        // Préparer les messages au format attendu par Groq
-        // Chaque message doit être un objet { role: "user" ou "assistant", content: "texte" }
-        const messagesForGroq = [
-            {
-                role: "user",
-                content: prompt, // Le contenu est le prompt de l'utilisateur
-            },
-        ];
-        // Note: Si vous aviez un historique de conversation, vous l'ajouteriez ici aussi.
+        // 2. Appel au service d'intégration IA
+        // Assure-toi que ton service `ai_integration_service` a une méthode `generateResponse`
+        // qui prend le prompt et renvoie une chaîne de caractères ou un objet avec la réponse.
+        const aiResponse = await aiService.generateResponse(userPrompt);
 
-        // Appeler le service Groq avec le tableau de messages
-        // Ceci correspond à la ligne 69 dans votre stack trace
-        const generatedText = await groqService.getGroqChatCompletion(messagesForGroq);
+        // 3. Envoi de la réponse au client
+        // Assure-toi que la réponse est bien au format JSON attendu par le client.
+        logApiCall('home_routes.js', 'POST /api/generate-ai-response', 'success', { aiResponse }, 200);
+        return res.status(200).json({
+            message: 'Réponse IA générée avec succès',
+            aiResponse: aiResponse // Envoie la réponse de l'IA
+        });
 
-        logApiCall('home_routes.js', 'POST /api/generate', 'success', 'Texte généré avec succès.', 200);
-        res.status(200).json({ status: 'success', data: { generatedText } });
     } catch (error) {
-        logApiCall('home_routes.js', 'POST /api/generate', 'error', `Erreur lors de la génération de la réponse IA: ${error.message}`, 500);
-        res.status(500).json({ status: 'error', message: `Erreur lors de la génération de la réponse IA: ${error.message}` });
-    }
-});
+        console.error('Erreur lors de la génération de la réponse IA:', error);
+        logApiCall('home_routes.js', 'POST /api/generate-ai-response', 'error', { message: error.message, stack: error.stack }, 500);
 
-// Route pour générer un CV (exemple)
-router.post('/generate-cv', async (req, res) => {
-    logApiCall('home_routes.js', 'POST /api/generate-cv', 'info', 'Requête reçue pour la génération de CV.');
-    const { userData } = req.body; // Données de l'utilisateur pour le CV
-
-    if (!userData || Object.keys(userData).length === 0) {
-        logApiCall('home_routes.js', 'POST /api/generate-cv', 'warn', 'Données utilisateur manquantes ou vides pour le CV.', 400);
-        return res.status(400).json({ status: 'error', message: 'Les données utilisateur sont requises pour générer un CV.' });
-    }
-
-    try {
-        const cvPrompt = `Génère un CV professionnel basé sur les données suivantes : ${JSON.stringify(userData)}. Inclure les sections suivantes : Expérience, Éducation, Compétences.`;
-
-        // Préparer les messages au format attendu par Groq
-        const messagesForGroq = [
-            {
-                role: "user",
-                content: cvPrompt,
-            },
-        ];
-
-        // Appeler le service Groq avec le tableau de messages
-        const generatedCvContent = await groqService.getGroqChatCompletion(messagesForGroq, 'llama3-8b-8192'); // ou un modèle plus grand si nécessaire
-
-        logApiCall('home_routes.js', 'POST /api/generate-cv', 'success', 'CV généré avec succès.', 200);
-        res.status(200).json({ status: 'success', data: { cvContent: generatedCvContent } });
-    } catch (error) {
-        logApiCall('home_routes.js', 'POST /api/generate-cv', 'error', `Erreur lors de la génération du CV: ${error.message}`, 500);
-        res.status(500).json({ status: 'error', message: `Erreur lors de la génération du CV: ${error.message}` });
+        // En cas d'erreur interne, renvoie une réponse JSON d'erreur
+        return res.status(500).json({
+            message: 'Erreur interne du serveur lors de la génération de la réponse IA.',
+            error: error.message // Pour le débogage, tu peux inclure le message d'erreur réel
+        });
     }
 });
 

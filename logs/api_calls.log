@@ -338,3 +338,11 @@
 {"timestamp":"2025-07-02T09:35:45.200Z","endpoint":"wallet_routes.js","method":"GET /balance","status":"warn","data":"{\"message\":\"Missing userId parameter\"}"}
 {"timestamp":"2025-07-02T09:39:09.689Z","endpoint":"wallet_routes.js","method":"GET /balance","status":"info","data":"{}"}
 {"timestamp":"2025-07-02T09:39:09.690Z","endpoint":"wallet_routes.js","method":"GET /balance","status":"warn","data":"{\"message\":\"Missing userId parameter\"}"}
+{"timestamp":"2025-07-02T10:11:51.823Z","endpoint":"webhook_routes.js","method":"POST /github","status":"info","data":"{\"payload\":\"Received GitHub webhook\"}"}
+{"timestamp":"2025-07-02T10:11:51.823Z","endpoint":"webhook_routes.js","method":"POST /github","status":"success","data":"{\"message\":\"GitHub webhook received\"}"}
+{"timestamp":"2025-07-02T10:12:08.122Z","endpoint":"webhook_routes.js","method":"POST /github","status":"info","data":"{\"payload\":\"Received GitHub webhook\"}"}
+{"timestamp":"2025-07-02T10:12:08.122Z","endpoint":"webhook_routes.js","method":"POST /github","status":"success","data":"{\"message\":\"GitHub webhook received\"}"}
+{"timestamp":"2025-07-02T10:12:15.697Z","endpoint":"webhook_routes.js","method":"POST /github","status":"info","data":"{\"payload\":\"Received GitHub webhook\"}"}
+{"timestamp":"2025-07-02T10:12:15.697Z","endpoint":"webhook_routes.js","method":"POST /github","status":"success","data":"{\"message\":\"GitHub webhook received\"}"}
+{"timestamp":"2025-07-02T10:13:28.627Z","endpoint":"webhook_routes.js","method":"POST /github","status":"info","data":"{\"payload\":\"Received GitHub webhook\"}"}
+{"timestamp":"2025-07-02T10:13:28.628Z","endpoint":"webhook_routes.js","method":"POST /github","status":"success","data":"{\"message\":\"GitHub webhook received\"}"}

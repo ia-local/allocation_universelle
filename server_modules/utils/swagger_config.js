@@ -1,10 +1,12 @@
 // server_modules/utils/swagger_config.js
+const swaggerJSDoc = require('swagger-jsdoc');
+
 const swaggerConfig = {
     definition: {
         openapi: '3.0.0',
         info: {
-        title: 'API UTMi (Universal Talent Monetization Index)', // <-- Change ceci
-            version: '1.0.0',
+            title: 'API UTMi (Universal Timestamp Monetization Index)', // <-- Le titre corrigé ici !
+            version: '1.0.1',
             description: 'Documentation de l\'API pour l\'application CV Numérique Universel et la monétisation des compétences via les UTMi, le RUM et la Trésorerie.',
         },
         servers: [
@@ -13,7 +15,15 @@ const swaggerConfig = {
                 description: 'Serveur de développement local',
             },
         ],
+        // Schémas génériques définis ici. Les schémas spécifiques aux routes peuvent rester dans leurs fichiers YAML dédiés.
         components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: 'http',
+                    scheme: 'bearer',
+                    bearerFormat: 'JWT',
+                },
+            },
             schemas: {
                 Error: {
                     type: 'object',
@@ -105,8 +115,42 @@ const swaggerConfig = {
                 },
             },
         },
+        // Assure-toi que cette section est également correcte si tu l'as dans main.yaml
+        // ou si tu préfères la centraliser ici.
+        tags: [
+            { name: 'User', description: 'Opérations liées aux utilisateurs.' },
+            { name: 'UTMI', description: 'Opérations liées aux UTMi (Universal Timestamp Monetization Index).' },
+            { name: 'Wallet', description: 'Opérations de gestion du portefeuille UTMi.' },
+            { name: 'Webhooks', description: 'Gestion des webhooks entrants (GitHub, Stripe, etc.).' },
+            { name: 'Conversation', description: 'Gestion des conversations et interactions IA.' },
+            { name: 'CV', description: 'Gestion du CV Numérique Universel.' },
+            { name: 'Dashboard', description: 'Visualisation des données du tableau de bord.' },
+            { name: 'Home', description: 'Routes de la page d\'accueil.' }
+        ],
     },
-    apis: ['./server_modules/routes/*.js'], // Chemin vers les fichiers de routes pour la documentation
+    // La clé de la solution : `apis` doit inclure TOUS tes fichiers de documentation !
+    apis: [
+        './swagger/main.yaml',      // Inclus explicitement le fichier main.yaml
+        './swagger/user.yaml',      // Fichiers YAML spécifiques aux modules
+        './swagger/utmi.yaml',
+        './swagger/wallet.yaml',
+        './swagger/webhooks.yaml',
+        './server_modules/routes/*.js', // Scan toutes les annotations JSDoc dans tes routes
+        // Si certains de tes fichiers de routes ne sont pas dans le dossier racine de 'routes'
+        // ou si tu veux être plus spécifique, tu peux les lister individuellement :
+        // './server_modules/routes/auth_routes.js',
+        // './server_modules/routes/chat_routes.js',
+        // './server_modules/routes/conversation_routes.js',
+        // './server_modules/routes/cv_routes.js',
+        // './server_modules/routes/dashboard_routes.js',
+        // './server_modules/routes/home_routes.js',
+        // './server_modules/routes/user_routes.js',
+        // './server_modules/routes/utmi_routes.js',
+        // './server_modules/routes/wallet_routes.js',
+        // './server_modules/routes/webhook_routes.js',
+    ],
 };
 
-module.exports = swaggerConfig;
+const swaggerSpec = swaggerJSDoc(swaggerConfig);
+
+module.exports = swaggerSpec;

@@ -1,168 +1,179 @@
-// public/js/wallet_ui.js - Logique DOM et events pour la page portefeuille
-import { API_BASE_URL, showStatusMessage, showModal } from './app.js';
+// public/js/wallet_ui.js
+// Ce module gère la logique spécifique à la page du portefeuille UTMi.
 
-let utmiBalanceEl, eurBalanceEl, refreshWalletBtn, claimUtmiBtn, transferUtmiBtn, convertUtmiBtn;
-let treasuryUtmiBalanceEl, treasuryEurBalanceEl;
+import { API_BASE_URL, showStatusMessage } from './app.js';
 
-/**
- * Initialise les éléments et événements de l'interface du portefeuille.
- */
-function initWalletUI() {
-    utmiBalanceEl = document.getElementById('utmiBalanceEl');
-    eurBalanceEl = document.getElementById('eurBalanceEl');
-    refreshWalletBtn = document.getElementById('refreshWalletBtn');
-    claimUtmiBtn = document.getElementById('claimUtmiBtn');
-    transferUtmiBtn = document.getElementById('transferUtmiBtn');
-    convertUtmiBtn = document.getElementById('convertUtmiBtn');
-    treasuryUtmiBalanceEl = document.getElementById('treasuryUtmiBalanceEl');
-    treasuryEurBalanceEl = document.getElementById('treasuryEurBalanceEl');
-
-    if (refreshWalletBtn) refreshWalletBtn.onclick = fetchWalletData;
-    if (claimUtmiBtn) claimUtmiBtn.onclick = claimUtmi;
-    if (transferUtmiBtn) transferUtmiBtn.onclick = transferUtmi;
-    if (convertUtmiBtn) convertUtmiBtn.onclick = convertUtmi;
-
-    console.log('[wallet_ui.js] Wallet UI initialized.');
-}
+let walletBalanceElement;
+let utmiClaimBtn;
+let transferRecipientInput;
+let transferAmountInput;
+let utmiTransferBtn;
+let convertAmountInput;
+let convertTargetCurrencyInput;
+let utmiConvertBtn;
 
 /**
- * Récupère les données du portefeuille depuis l'API.
+ * @function initializeWalletUI
+ * @description Initialise les éléments DOM et les écouteurs pour la page du portefeuille.
+ * Appelé par app.js quand la page 'wallet' est affichée.
  */
-async function fetchWalletData() {
-    showStatusMessage('Chargement du portefeuille...', 'info');
-    if (refreshWalletBtn) refreshWalletBtn.disabled = true;
+export function initializeWalletUI() { // <-- Ajout de 'export' ici
+    console.log('[wallet_ui] Initialisation de l\'UI du portefeuille.');
+    walletBalanceElement = document.getElementById('wallet-balance');
+    utmiClaimBtn = document.getElementById('utmi-claim-btn');
+    transferRecipientInput = document.getElementById('transfer-recipient');
+    transferAmountInput = document.getElementById('transfer-amount');
+    utmiTransferBtn = document.getElementById('utmi-transfer-btn');
+    convertAmountInput = document.getElementById('convert-amount');
+    convertTargetCurrencyInput = document.getElementById('convert-target-currency');
+    utmiConvertBtn = document.getElementById('utmi-convert-btn');
 
-    try {
-        const response = await fetch(`${API_BASE_URL}/api/wallet/balance`);
-        const data = await response.json();
+    if (walletBalanceElement && utmiClaimBtn && utmiTransferBtn && utmiConvertBtn) {
+        // Supprime les écouteurs existants pour éviter les doublons
+        utmiClaimBtn.removeEventListener('click', claimUtmi);
+        utmiTransferBtn.removeEventListener('click', transferUtmi);
+        utmiConvertBtn.removeEventListener('click', convertUtmi);
 
-        if (response.ok) {
-            updateWalletUI(data);
-            showStatusMessage('Portefeuille actualisé.', 'success');
-        } else {
-            showStatusMessage(`Erreur lors du chargement du portefeuille: ${data.message}`, 'error');
-        }
-    } catch (error) {
-        console.error('Erreur réseau ou serveur lors de la récupération des données du portefeuille:', error);
-        showStatusMessage(`Erreur réseau: ${error.message}`, 'error');
-    } finally {
-        if (refreshWalletBtn) refreshWalletBtn.disabled = false;
+        // Ajoute les nouveaux écouteurs
+        utmiClaimBtn.addEventListener('click', claimUtmi);
+        utmiTransferBtn.addEventListener('click', transferUtmi);
+        utmiConvertBtn.addEventListener('click', convertUtmi);
+        console.log('[wallet_ui] Écouteurs d\'événements du portefeuille ajoutés.');
+    } else {
+        console.error('[wallet_ui] Un ou plusieurs éléments DOM nécessaires pour le portefeuille sont manquants. Vérifiez index.html.');
     }
 }
 
 /**
- * Met à jour l'interface utilisateur du portefeuille avec les données.
- * @param {object} data - Les données du portefeuille.
+ * @function fetchWalletBalance
+ * @description Récupère le solde du portefeuille depuis le backend.
  */
-function updateWalletUI(data) {
-    if (utmiBalanceEl) utmiBalanceEl.textContent = `${data.utmiBalance?.toFixed(2) || '0.00'} UTMi`;
-    if (eurBalanceEl) eurBalanceEl.textContent = `${data.eurBalance?.toFixed(2) || '0.00'} EUR`;
-    if (treasuryUtmiBalanceEl) treasuryUtmiBalanceEl.textContent = `${data.treasuryUtmiBalance?.toFixed(2) || '0.00'} UTMi`;
-    if (treasuryEurBalanceEl) treasuryEurBalanceEl.textContent = `${data.treasuryEurBalance?.toFixed(2) || '0.00'} EUR`;
+export async function fetchWalletBalance() { // <-- Ajout de 'export' ici
+    console.log('[wallet_ui] Chargement du solde du portefeuille...');
+    showStatusMessage('Chargement du solde du portefeuille...', 'info');
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/wallet`);
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`HTTP error! status: ${response.status} - ${errorText || response.statusText}`);
+        }
+        const data = await response.json();
+        console.log('[wallet_ui] Solde du portefeuille reçu:', data);
+        if (walletBalanceElement) {
+            walletBalanceElement.textContent = `Solde actuel : ${data.balance} UTMi`;
+        }
+        showStatusMessage('Solde du portefeuille mis à jour.', 'success');
+    } catch (error) {
+        console.error('[wallet_ui] Erreur lors du chargement du solde du portefeuille:', error);
+        showStatusMessage(`Erreur lors du chargement du solde: ${error.message}`, 'error');
+    }
 }
 
 /**
- * Réclame des UTMi (simulé).
+ * @function claimUtmi
+ * @description Revendique des UTMi.
  */
 async function claimUtmi() {
-    const amount = await showModal('prompt', 'Réclamer des UTMi', 'Combien d\'UTMi souhaitez-vous réclamer (limité à 10 par jour pour test) ?', 'number');
-    if (!amount || isNaN(amount) || amount <= 0) {
-        showStatusMessage('Montant invalide.', 'error');
-        return;
-    }
-
-    showStatusMessage('Réclamation des UTMi...', 'info');
+    showStatusMessage('Revendication d\'UTMi en cours...', 'info');
     try {
-        const response = await fetch(`${API_BASE_URL}/api/wallet/claim-utmi`, {
+        const response = await fetch(`${API_BASE_URL}/api/wallet/claim`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ amount: parseFloat(amount) })
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
-        const data = await response.json();
-        if (response.ok) {
-            showStatusMessage(`Réclamé ${data.amount} UTMi. Nouveau solde: ${data.newBalance} UTMi`, 'success');
-            fetchWalletData(); // Actualise l'UI
-        } else {
-            showStatusMessage(`Erreur de réclamation: ${data.message}`, 'error');
+
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => response.text());
+            throw new Error(`HTTP error! status: ${response.status} - ${typeof errorData === 'object' && errorData.message ? errorData.message : errorData}`);
         }
+
+        const data = await response.json();
+        console.log('[wallet_ui] UTMi revendiqués:', data);
+        showStatusMessage(data.message, 'success');
+        fetchWalletBalance(); // Rafraîchir le solde après l'opération
     } catch (error) {
-        console.error('Erreur lors de la réclamation des UTMi:', error);
-        showStatusMessage(`Erreur réseau: ${error.message}`, 'error');
+        console.error('[wallet_ui] Erreur lors de la revendication des UTMi:', error);
+        showStatusMessage(`Échec de la revendication d'UTMi: ${error.message}`, 'error');
     }
 }
 
 /**
- * Transfère des UTMi (simulé).
+ * @function transferUtmi
+ * @description Transfère des UTMi à un autre utilisateur.
  */
 async function transferUtmi() {
-    const recipient = await showModal('prompt', 'Transférer UTMi', 'À qui souhaitez-vous transférer des UTMi (ID utilisateur simulé) ?');
-    if (!recipient) return;
+    const recipientId = transferRecipientInput.value.trim();
+    const amount = parseFloat(transferAmountInput.value);
 
-    const amount = await showModal('prompt', 'Montant du Transfert', `Combien d'UTMi transférer à ${recipient} ?`, 'number');
-    if (!amount || isNaN(amount) || amount <= 0) {
-        showStatusMessage('Montant invalide.', 'error');
+    if (!recipientId || isNaN(amount) || amount <= 0) {
+        showStatusMessage('Veuillez entrer un ID de destinataire valide et un montant positif.', 'warning');
         return;
     }
 
-    showStatusMessage(`Transfert de ${amount} UTMi à ${recipient}...`, 'info');
+    showStatusMessage('Transfert d\'UTMi en cours...', 'info');
     try {
         const response = await fetch(`${API_BASE_URL}/api/wallet/transfer`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ recipientId: recipient, amount: parseFloat(amount) })
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ recipientId, amount })
         });
-        const data = await response.json();
-        if (response.ok) {
-            showStatusMessage(`Transfert réussi. Nouveau solde: ${data.newBalance} UTMi`, 'success');
-            fetchWalletData();
-        } else {
-            showStatusMessage(`Erreur de transfert: ${data.message}`, 'error');
+
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => response.text());
+            throw new Error(`HTTP error! status: ${response.status} - ${typeof errorData === 'object' && errorData.message ? errorData.message : errorData}`);
         }
+
+        const data = await response.json();
+        console.log('[wallet_ui] UTMi transférés:', data);
+        showStatusMessage(data.message, 'success');
+        fetchWalletBalance(); // Rafraîchir le solde après l'opération
+        transferRecipientInput.value = '';
+        transferAmountInput.value = '';
     } catch (error) {
-        console.error('Erreur lors du transfert des UTMi:', error);
-        showStatusMessage(`Erreur réseau: ${error.message}`, 'error');
+        console.error('[wallet_ui] Erreur lors du transfert des UTMi:', error);
+        showStatusMessage(`Échec du transfert d'UTMi: ${error.message}`, 'error');
     }
 }
 
 /**
- * Convertit des UTMi en EUR ou vice-versa (simulé).
+ * @function convertUtmi
+ * @description Convertit des UTMi en une autre devise.
  */
 async function convertUtmi() {
-    const type = await showModal('confirm', 'Conversion UTMi/EUR', 'Voulez-vous convertir des UTMi en EUR (Oui) ou des EUR en UTMi (Non) ?');
-    const conversionType = type ? 'utmi_to_eur' : 'eur_to_utmi';
-    const unit = conversionType === 'utmi_to_eur' ? 'UTMi' : 'EUR';
+    const amount = parseFloat(convertAmountInput.value);
+    const targetCurrency = convertTargetCurrencyInput.value.trim();
 
-    const amount = await showModal('prompt', `Convertir ${unit}`, `Combien de ${unit} souhaitez-vous convertir ?`, 'number');
-    if (!amount || isNaN(amount) || amount <= 0) {
-        showStatusMessage('Montant invalide.', 'error');
+    if (isNaN(amount) || amount <= 0 || !targetCurrency) {
+        showStatusMessage('Veuillez entrer un montant positif et une devise cible.', 'warning');
         return;
     }
 
-    showStatusMessage(`Conversion de ${amount} ${unit}...`, 'info');
+    showStatusMessage('Conversion d\'UTMi en cours...', 'info');
     try {
         const response = await fetch(`${API_BASE_URL}/api/wallet/convert`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ amount: parseFloat(amount), type: conversionType })
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ amount, targetCurrency })
         });
-        const data = await response.json();
-        if (response.ok) {
-            showStatusMessage(`Conversion réussie. Nouveau solde UTMi: ${data.newUtmiBalance} UTMi, Nouveau solde EUR: ${data.newEurBalance} EUR`, 'success');
-            fetchWalletData();
-        } else {
-            showStatusMessage(`Erreur de conversion: ${data.message}`, 'error');
+
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => response.text());
+            throw new Error(`HTTP error! status: ${response.status} - ${typeof errorData === 'object' && errorData.message ? errorData.message : errorData}`);
         }
+
+        const data = await response.json();
+        console.log('[wallet_ui] UTMi convertis:', data);
+        showStatusMessage(data.message, 'success');
+        fetchWalletBalance(); // Rafraîchir le solde après l'opération
+        convertAmountInput.value = '';
+        convertTargetCurrencyInput.value = '';
     } catch (error) {
-        console.error('Erreur lors de la conversion:', error);
-        showStatusMessage(`Erreur réseau: ${error.message}`, 'error');
+        console.error('[wallet_ui] Erreur lors de la conversion des UTMi:', error);
+        showStatusMessage(`Échec de la conversion d'UTMi: ${error.message}`, 'error');
     }
 }
-
-
-export {
-    initWalletUI,
-    fetchWalletData,
-    claimUtmi,
-    transferUtmi,
-    convertUtmi
-};

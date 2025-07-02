@@ -1,73 +1,70 @@
-// public/js/home_ui.js - Logique DOM et events pour la page d'accueil
-import { API_BASE_URL, showStatusMessage } from './app.js'; // Importe les utilitaires de app.js
+// public/js/home_ui.js
+// Ce module gère la logique spécifique à la page d'accueil (générateur IA simple).
 
-let promptInput, iaResponseOutput, generateResponseBtn, clearPromptBtn;
+import { API_BASE_URL, showStatusMessage } from './app.js'; // Assure-toi que showStatusMessage est bien exporté de app.js
+
+let homePromptInput;
+let sendHomePromptBtn;
+let homeAiResponseDisplay;
 
 /**
- * Initialise les éléments et événements de la page d'accueil.
+ * @function initializeHomeUI
+ * @description Initialise les éléments DOM et les écouteurs pour la page d'accueil.
+ * Appelé par app.js quand la page 'home' est affichée.
  */
-function initHomeUI() {
-    promptInput = document.getElementById('promptInput');
-    iaResponseOutput = document.getElementById('iaResponseOutput');
-    generateResponseBtn = document.getElementById('generateResponseBtn');
-    clearPromptBtn = document.getElementById('clearPromptBtn');
+export function initializeHomeUI() { // <-- Ajout de 'export' ici
+    console.log('[home_ui] Initialisation de l\'UI de la page d\'accueil.');
+    homePromptInput = document.getElementById('home-prompt-input');
+    sendHomePromptBtn = document.getElementById('send-home-prompt-btn');
+    homeAiResponseDisplay = document.getElementById('home-ai-response-display');
 
-    if (generateResponseBtn) {
-        generateResponseBtn.onclick = fetchGeneratedResponse;
+    if (homePromptInput && sendHomePromptBtn && homeAiResponseDisplay) {
+        // Supprime les écouteurs existants pour éviter les doublons
+        sendHomePromptBtn.removeEventListener('click', sendHomePrompt);
+        // Ajoute le nouvel écouteur
+        sendHomePromptBtn.addEventListener('click', sendHomePrompt);
+        console.log('[home_ui] Écouteurs d\'événements de la page d\'accueil ajoutés.');
+    } else {
+        console.error('[home_ui] Un ou plusieurs éléments DOM nécessaires pour la page d\'accueil sont manquants. Vérifiez index.html.');
     }
-    if (clearPromptBtn) {
-        clearPromptBtn.onclick = () => {
-            if (promptInput) promptInput.value = '';
-            if (iaResponseOutput) iaResponseOutput.textContent = '';
-        };
-    }
-    console.log('[home_ui.js] Home UI initialized.');
 }
 
 /**
- * Récupère une réponse générée par l'IA via l'API.
+ * @function sendHomePrompt
+ * @description Envoie le prompt de l'utilisateur au backend pour une réponse IA.
  */
-async function fetchGeneratedResponse() {
-    if (!promptInput || !iaResponseOutput) {
-        console.error("Éléments DOM pour l'accueil non trouvés.");
-        return;
-    }
-
-    const prompt = promptInput.value.trim();
+export async function sendHomePrompt() { // <-- Ajout de 'export' ici
+    const prompt = homePromptInput.value.trim();
     if (!prompt) {
-        showStatusMessage("Veuillez entrer une requête pour l'IA.", 'error');
+        showStatusMessage('Veuillez entrer un prompt pour que l\'IA puisse répondre.', 'info');
         return;
     }
 
-    showStatusMessage("Génération de la réponse...", 'info');
-    generateResponseBtn.disabled = true;
+    homeAiResponseDisplay.innerHTML = '<p>Génération de la réponse...</p>';
+    showStatusMessage('Envoi au générateur IA...', 'info');
 
     try {
-        const response = await fetch(`${API_BASE_URL}/api/generate`, {
+        const response = await fetch(`${API_BASE_URL}/api/generate-ai-response`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ prompt: prompt })
         });
 
-        const data = await response.json();
-
-        if (response.ok) {
-            iaResponseOutput.textContent = data.response;
-            showStatusMessage("Réponse générée avec succès.", 'success');
-        } else {
-            iaResponseOutput.textContent = `Erreur: ${data.message || 'Impossible de générer une réponse.'}`;
-            showStatusMessage(`Erreur: ${data.message || 'Génération échouée.'}`, 'error');
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => response.text());
+            throw new Error(`HTTP error! status: ${response.status} - ${typeof errorData === 'object' && errorData.message ? errorData.message : errorData}`);
         }
+
+        const data = await response.json();
+        console.log('[home_ui] Réponse de l\'IA reçue:', data);
+        homeAiResponseDisplay.innerHTML = `<p><strong>Réponse IA:</strong> ${data.response}</p>`;
+        showStatusMessage('Réponse IA générée avec succès.', 'success');
+        homePromptInput.value = ''; // Efface le champ de saisie
     } catch (error) {
-        console.error('Erreur lors de la récupération de la réponse IA:', error);
-        iaResponseOutput.textContent = `Erreur réseau ou serveur: ${error.message}`;
-        showStatusMessage(`Erreur réseau: ${error.message}`, 'error');
-    } finally {
-        generateResponseBtn.disabled = false;
+        console.error('[home_ui] Erreur lors de l\'envoi du prompt:', error);
+        homeAiResponseDisplay.innerHTML = `<p class="error-message">Erreur: ${error.message}</p>`;
+        showStatusMessage(`Échec de la génération de la réponse IA: ${error.message}`, 'error');
     }
 }
-
-export {
-    initHomeUI,
-    fetchGeneratedResponse // Exporté pour être appelé via app.js
-};

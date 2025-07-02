@@ -1,131 +1,135 @@
-// public/pagination.js - Mise à jour pour être un module ES
+// public/js/pagination.js
+// Ce module gère la pagination de la liste des conversations du chat.
 
-// Les éléments DOM sont passés lors de l'initialisation (généralement depuis cv.js)
+let currentChatPage = 1;
+let totalChatPages = 1;
+let allConversations = []; // Stocke toutes les conversations récupérées
+let chatPaginationContainer;
 let conversationListElement;
-let prevPageBtn;
-let nextPageBtn;
-let currentPageInfoSpan;
-
-// Variables d'état
-let allConversations = { conversations: [], totalCount: 0 };
-let currentPage = 1; // Le prototype ne gère pas de vraie pagination, reste à 1
-let itemsPerPage = 5; // Nombre d'éléments affichés (arbitraire pour le prototype)
-
-// Callbacks depuis la logique principale de l'application (cv.js)
-let selectConversationCallback = null;
-let deleteConversationCallback = null;
-
-let activeConversationId = null; // Suivre la conversation active
+let loadConversationCallback; // Callback pour charger une conversation spécifique
 
 /**
- * Initialise les contrôles de pagination avec les rappels et les éléments DOM nécessaires.
- * @param {HTMLElement} listEl - L'élément ul pour la liste des conversations.
- * @param {HTMLElement} prevBtn - Le bouton "page précédente".
- * @param {HTMLElement} nextBtn - Le bouton "page suivante".
- * @param {HTMLElement} pageInfoSpan - Le span affichant les informations de la page actuelle.
- * @param {function} selectConversationCb - Rappel pour sélectionner une conversation.
- * @param {function} deleteConversationCb - Rappel pour supprimer une conversation.
+ * @function initPaginationControls
+ * @description Initialise les contrôles de pagination pour le chat.
+ * @param {number} totalPages - Nombre total de pages.
+ * @param {number} currentPage - Page actuelle.
+ * @param {function} onPageChangeCallback - Fonction à appeler lors du changement de page.
  */
-export function initPaginationControls(listEl, prevBtn, nextBtn, pageInfoSpan, selectConversationCb, deleteConversationCb) {
-    conversationListElement = listEl;
-    prevPageBtn = prevBtn;
-    nextPageBtn = nextBtn;
-    currentPageInfoSpan = pageInfoSpan;
-    selectConversationCallback = selectConversationCb;
-    deleteConversationCallback = deleteConversationCb;
+export function initPaginationControls(totalPages, currentPage, onPageChangeCallback) {
+    totalChatPages = totalPages;
+    currentChatPage = currentPage;
+    chatPaginationContainer = document.getElementById('chat-pagination-container');
 
-    // Pour le prototype, les boutons sont désactivés car il n'y a pas de vraie pagination
-    if (prevPageBtn) prevPageBtn.disabled = true;
-    if (nextPageBtn) nextPageBtn.disabled = true;
+    if (!chatPaginationContainer) {
+        console.error('[pagination] Élément #chat-pagination-container manquant.');
+        return;
+    }
 
-    console.log('[pagination.js] Pagination controls initialized.');
+    chatPaginationContainer.innerHTML = ''; // Vide les anciens contrôles
+
+    if (totalPages > 1) {
+        const prevBtn = document.createElement('button');
+        prevBtn.textContent = 'Précédent';
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.addEventListener('click', () => onPageChangeCallback(currentPage - 1));
+        chatPaginationContainer.appendChild(prevBtn);
+
+        const pageInfo = document.createElement('span');
+        pageInfo.textContent = ` Page ${currentPage} sur ${totalPages} `;
+        chatPaginationContainer.appendChild(pageInfo);
+
+        const nextBtn = document.createElement('button');
+        nextBtn.textContent = 'Suivant';
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.addEventListener('click', () => onPageChangeCallback(currentPage + 1));
+        chatPaginationContainer.appendChild(nextBtn);
+    }
 }
 
 /**
- * Met à jour la liste des conversations et les informations de pagination.
- * @param {object} data - Un objet contenant `conversations` (Array) et `totalCount` (Number).
- * @param {number} [page=1] - Le numéro de page actuel à afficher.
+ * @function setConversations
+ * @description Met à jour la liste complète des conversations et le nombre total de pages.
+ * @param {Array} conversations - La liste des conversations pour la page actuelle.
+ * @param {number} totalPages - Le nombre total de pages de conversations.
  */
-export function setConversations(data, page = 1) {
-    allConversations = data;
-    currentPage = page;
-    renderChatConversationList();
-    console.log('[pagination.js] Conversations set and list re-rendered.');
+export function setConversations(conversations, totalPages) {
+    allConversations = conversations; // Ceci devrait être les conversations de la page actuelle, pas toutes
+    totalChatPages = totalPages;
 }
 
 /**
- * Rend la liste des conversations dans le DOM.
+ * @function renderChatConversationList
+ * @description Rend la liste des conversations dans l'UI du chat.
+ * @param {Array} conversations - Liste des conversations à afficher.
+ * @param {function} loadConvCallback - Callback pour charger une conversation spécifique.
  */
-export function renderChatConversationList() {
+export function renderChatConversationList(conversations, loadConvCallback) {
+    conversationListElement = document.getElementById('conversation-list');
+    loadConversationCallback = loadConvCallback;
+
     if (!conversationListElement) {
-        console.error('conversationListElement not initialized in pagination.js');
+        console.error('[pagination] Élément #conversation-list manquant.');
         return;
     }
 
-    conversationListElement.innerHTML = ''; // Nettoyer la liste existante
-
-    // Simuler la pagination si des données existent, sinon juste les premières conversations
-    // Pour ce prototype, on affiche juste les `itemsPerPage` premiers, sans vraie logique de page
-    const conversationsToDisplay = allConversations.conversations.slice(0, itemsPerPage);
-
-    if (conversationsToDisplay.length === 0) {
-        const noConvLi = document.createElement('li');
-        noConvLi.className = 'no-conversations';
-        noConvLi.textContent = 'Aucune conversation trouvée.';
-        conversationListElement.appendChild(noConvLi);
-        if (currentPageInfoSpan) currentPageInfoSpan.textContent = `Page 0/0`;
-        return;
+    conversationListElement.innerHTML = '';
+    if (conversations && conversations.length > 0) {
+        conversations.forEach(conv => {
+            const li = document.createElement('li');
+            li.textContent = conv.title || `Conversation du ${new Date(conv.createdAt).toLocaleDateString()}`;
+            li.dataset.conversationId = conv._id;
+            li.classList.add('conversation-item');
+            li.addEventListener('click', () => {
+                // Supprime la classe 'active' de tous les éléments
+                document.querySelectorAll('.conversation-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                // Ajoute la classe 'active' à l'élément cliqué
+                li.classList.add('active');
+                loadConversationCallback(conv._id);
+            });
+            conversationListElement.appendChild(li);
+        });
+    } else {
+        conversationListElement.innerHTML = '<p>Aucune conversation à afficher pour cette page.</p>';
     }
+}
 
-    conversationsToDisplay.forEach(conv => {
-        const li = document.createElement('li');
-        li.className = `conversation-item ${conv.id === activeConversationId ? 'active' : ''}`;
-        li.dataset.id = conv.id;
+/**
+ * @function setActiveConversationId
+ * @description Met en surbrillance la conversation active dans la liste.
+ * @param {string|null} conversationId - L'ID de la conversation active ou null.
+ */
+export function setActiveConversationId(conversationId) {
+    if (!conversationListElement) return;
 
-        // Titre significatif simple
-        const displayTitle = conv.title || (conv.messages && conv.messages[0] ? conv.messages[0].content.substring(0, 30) + '...' : `Conv ${conv.id.substring(0, 4)}`);
-        li.innerHTML = `
-            <span>${displayTitle}</span>
-            <button class="delete-conversation-btn" data-id="${conv.id}" title="Supprimer la conversation"><i class="fas fa-trash-alt"></i></button>
-        `;
-        conversationListElement.appendChild(li);
-    });
-
-    // Les contrôles de pagination sont toujours désactivés pour ce prototype simple
-    if (currentPageInfoSpan) currentPageInfoSpan.textContent = `Page ${currentPage}/${Math.ceil(allConversations.totalCount / itemsPerPage) || 1}`;
-    if (prevPageBtn) prevPageBtn.disabled = true; // Désactivé pour le prototype
-    if (nextPageBtn) nextPageBtn.disabled = true; // Désactivé pour le prototype
-
-    // Attacher les écouteurs d'événements pour la sélection et la suppression
-    conversationListElement.querySelectorAll('.conversation-item').forEach(item => {
-        item.addEventListener('click', (event) => {
-            if (!event.target.closest('.delete-conversation-btn')) { // Ne pas déclencher si c'est le bouton supprimer
-                if (selectConversationCallback) selectConversationCallback(item.dataset.id);
-            }
-        });
-    });
-
-    conversationListElement.querySelectorAll('.delete-conversation-btn').forEach(btn => {
-        btn.addEventListener('click', (event) => {
-            event.stopPropagation(); // Empêcher l'événement de click de l'élément parent
-            if (deleteConversationCallback) deleteConversationCallback(btn.dataset.id);
-        });
+    document.querySelectorAll('.conversation-item').forEach(item => {
+        if (item.dataset.conversationId === conversationId) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
     });
 }
 
 /**
- * Définit la conversation active et met à jour l'affichage.
- * @param {string} id - L'ID de la conversation à activer.
+ * @function getCurrentChatPage
+ * @description Renvoie la page de chat actuelle.
+ * @returns {number} La page actuelle.
  */
-export function setActiveConversationId(id) {
-    activeConversationId = id;
-    if (conversationListElement) {
-        conversationListElement.querySelectorAll('.conversation-item').forEach(item => {
-            if (item.dataset.id === activeConversationId) {
-                item.classList.add('active');
-            } else {
-                item.classList.remove('active');
-            }
-        });
+export function getCurrentChatPage() {
+    return currentChatPage;
+}
+
+/**
+ * @function setChatPage
+ * @description Définit la page de chat actuelle.
+ * @param {number} page - Le numéro de la page.
+ */
+export function setChatPage(page) {
+    if (page >= 1 && page <= totalChatPages) {
+        currentChatPage = page;
+    } else {
+        console.warn(`[pagination] Tentative de définir une page invalide: ${page}. Reste sur la page actuelle: ${currentChatPage}`);
     }
 }
