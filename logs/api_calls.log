@@ -1,0 +1,334 @@
+{"timestamp":"2025-07-02T07:52:29.706Z","endpoint":"GLOBAL_ERROR","method":"N/A","status":"unhandledRejection","data":"{\"reason\":\"dbService.initializeDatabaseFile is not a function\",\"promise\":{}}"}
+{"timestamp":"2025-07-02T07:53:00.597Z","endpoint":"GLOBAL_ERROR","method":"N/A","status":"unhandledRejection","data":"{\"reason\":\"dbService.initializeDatabaseFile is not a function\",\"promise\":{}}"}
+{"timestamp":"2025-07-02T07:54:31.072Z","endpoint":"DB Service - Write","method":"N/A","status":"success","data":"\"Data written to data/conversations.json.\""}
+{"timestamp":"2025-07-02T07:54:31.072Z","endpoint":"DB Service - Init","method":"N/A","status":"success","data":"\"File data/conversations.json initialized with default data.\""}
+{"timestamp":"2025-07-02T07:54:31.073Z","endpoint":"DB Service - Write","method":"N/A","status":"success","data":"\"Data written to data/dashboard_data.json.\""}
+{"timestamp":"2025-07-02T07:54:31.073Z","endpoint":"DB Service - Init","method":"N/A","status":"success","data":"\"File data/dashboard_data.json initialized with default data.\""}
+{"timestamp":"2025-07-02T07:54:31.074Z","endpoint":"DB Service - Write","method":"N/A","status":"success","data":"\"Data written to data/last_cv_data.json.\""}
+{"timestamp":"2025-07-02T07:54:31.074Z","endpoint":"DB Service - Init","method":"N/A","status":"success","data":"\"File data/last_cv_data.json initialized with default data.\""}
+{"timestamp":"2025-07-02T07:54:31.074Z","endpoint":"DB Service - Read","method":"N/A","status":"info","data":"\"File data/wallet_data.json not found, returning null.\""}
+{"timestamp":"2025-07-02T07:54:31.074Z","endpoint":"DB Service - Write","method":"N/A","status":"success","data":"\"Data written to data/wallet_data.json.\""}
+{"timestamp":"2025-07-02T07:54:31.074Z","endpoint":"DB Service - Read","method":"N/A","status":"info","data":"\"File data/treasury_data.json not found, returning null.\""}
+{"timestamp":"2025-07-02T07:54:31.074Z","endpoint":"DB Service - Write","method":"N/A","status":"success","data":"\"Data written to data/treasury_data.json.\""}
+{"timestamp":"2025-07-02T08:04:11.438Z","endpoint":"DB Service - Init","method":"N/A","status":"info","data":"\"File data/conversations.json already exists. No initialization needed.\""}
+{"timestamp":"2025-07-02T08:04:11.442Z","endpoint":"DB Service - Init","method":"N/A","status":"info","data":"\"File data/dashboard_data.json already exists. No initialization needed.\""}
+{"timestamp":"2025-07-02T08:04:11.444Z","endpoint":"DB Service - Init","method":"N/A","status":"info","data":"\"File data/last_cv_data.json already exists. No initialization needed.\""}
+{"timestamp":"2025-07-02T08:04:11.445Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/wallet_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:04:11.445Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/treasury_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:05:42.254Z","endpoint":"DB Service - Init","method":"N/A","status":"info","data":"\"File data/conversations.json already exists. No initialization needed.\""}
+{"timestamp":"2025-07-02T08:05:42.258Z","endpoint":"DB Service - Init","method":"N/A","status":"info","data":"\"File data/dashboard_data.json already exists. No initialization needed.\""}
+{"timestamp":"2025-07-02T08:05:42.260Z","endpoint":"DB Service - Init","method":"N/A","status":"info","data":"\"File data/last_cv_data.json already exists. No initialization needed.\""}
+{"timestamp":"2025-07-02T08:05:42.262Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/wallet_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:05:42.262Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/treasury_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:07:03.047Z","endpoint":"DB Service - Init","method":"N/A","status":"info","data":"\"File data/conversations.json already exists. No initialization needed.\""}
+{"timestamp":"2025-07-02T08:07:03.056Z","endpoint":"DB Service - Init","method":"N/A","status":"info","data":"\"File data/dashboard_data.json already exists. No initialization needed.\""}
+{"timestamp":"2025-07-02T08:07:03.058Z","endpoint":"DB Service - Init","method":"N/A","status":"info","data":"\"File data/last_cv_data.json already exists. No initialization needed.\""}
+{"timestamp":"2025-07-02T08:07:03.059Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/wallet_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:07:03.060Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/treasury_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:08:05.769Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/wallet_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:08:05.770Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/treasury_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:08:05.771Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/last_cv_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:08:05.771Z","endpoint":"/api/wallet/balance","method":"GET","status":"error","data":"{\"message\":\"Cannot read properties of undefined (reading 'TREASURY_CONTRIBUTION_RATE')\",\"stack\":\"TypeError: Cannot read properties of undefined (reading 'TREASURY_CONTRIBUTION_RATE')\\n    at Object.getWalletBalance (/Volumes/devOps/projets/allocation_universelle/server_modules/services/wallet_service.js:62:83)\\n    at async /Volumes/devOps/projets/allocation_universelle/server_modules/routes/wallet_routes.js:47:25\"}"}
+{"timestamp":"2025-07-02T08:08:05.772Z","endpoint":"/api/wallet/balance","method":"GET","status":"error_handled","data":"{\"message\":\"Cannot read properties of undefined (reading 'TREASURY_CONTRIBUTION_RATE')\",\"stack\":\"TypeError: Cannot read properties of undefined (reading 'TREASURY_CONTRIBUTION_RATE')\\n    at Object.getWalletBalance (/Volumes/devOps/projets/allocation_universelle/server_modules/services/wallet_service.js:62:83)\\n    at async /Volumes/devOps/projets/allocation_universelle/server_modules/routes/wallet_routes.js:47:25\",\"statusCode\":500}"}
+{"timestamp":"2025-07-02T08:11:20.175Z","endpoint":"DB Service - Init","method":"N/A","status":"info","data":"\"File data/conversations.json already exists. No initialization needed.\""}
+{"timestamp":"2025-07-02T08:11:20.180Z","endpoint":"DB Service - Init","method":"N/A","status":"info","data":"\"File data/dashboard_data.json already exists. No initialization needed.\""}
+{"timestamp":"2025-07-02T08:11:20.182Z","endpoint":"DB Service - Init","method":"N/A","status":"info","data":"\"File data/last_cv_data.json already exists. No initialization needed.\""}
+{"timestamp":"2025-07-02T08:11:20.184Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/wallet_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:11:20.184Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/treasury_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:11:45.804Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/wallet_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:11:45.805Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/treasury_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:11:45.805Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/last_cv_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:11:45.805Z","endpoint":"/api/wallet/balance","method":"GET","status":"error","data":"{\"message\":\"Cannot read properties of undefined (reading 'TREASURY_CONTRIBUTION_RATE')\",\"stack\":\"TypeError: Cannot read properties of undefined (reading 'TREASURY_CONTRIBUTION_RATE')\\n    at Object.getWalletBalance (/Volumes/devOps/projets/allocation_universelle/server_modules/services/wallet_service.js:62:83)\\n    at async /Volumes/devOps/projets/allocation_universelle/server_modules/routes/wallet_routes.js:46:25\"}"}
+{"timestamp":"2025-07-02T08:11:45.806Z","endpoint":"/api/wallet/balance","method":"GET","status":"error_handled","data":"{\"message\":\"Cannot read properties of undefined (reading 'TREASURY_CONTRIBUTION_RATE')\",\"stack\":\"TypeError: Cannot read properties of undefined (reading 'TREASURY_CONTRIBUTION_RATE')\\n    at Object.getWalletBalance (/Volumes/devOps/projets/allocation_universelle/server_modules/services/wallet_service.js:62:83)\\n    at async /Volumes/devOps/projets/allocation_universelle/server_modules/routes/wallet_routes.js:46:25\",\"statusCode\":500}"}
+{"timestamp":"2025-07-02T08:11:54.348Z","endpoint":"Groq API Call","method":"POST","status":"error","data":"{\"model\":\"gemma2-9b-it\",\"messages\":\"t\",\"error\":\"400 {\\\"error\\\":{\\\"message\\\":\\\"'messages' : value must be an array\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\"}"}
+{"timestamp":"2025-07-02T08:11:54.348Z","endpoint":"/api/generate","method":"POST","status":"error","data":"{\"message\":\"Échec de la communication avec le modèle Groq: 400 {\\\"error\\\":{\\\"message\\\":\\\"'messages' : value must be an array\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\",\"stack\":\"Error: Échec de la communication avec le modèle Groq: 400 {\\\"error\\\":{\\\"message\\\":\\\"'messages' : value must be an array\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\\n    at Object.getGroqChatCompletion (/Volumes/devOps/projets/allocation_universelle/server_modules/services/groq_service.js:30:15)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\\n    at async /Volumes/devOps/projets/allocation_universelle/server_modules/routes/home_routes.js:69:26\"}"}
+{"timestamp":"2025-07-02T08:11:54.349Z","endpoint":"/api/generate","method":"POST","status":"error_handled","data":"{\"message\":\"Échec de la communication avec le modèle Groq: 400 {\\\"error\\\":{\\\"message\\\":\\\"'messages' : value must be an array\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\",\"stack\":\"Error: Échec de la communication avec le modèle Groq: 400 {\\\"error\\\":{\\\"message\\\":\\\"'messages' : value must be an array\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\\n    at Object.getGroqChatCompletion (/Volumes/devOps/projets/allocation_universelle/server_modules/services/groq_service.js:30:15)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\\n    at async /Volumes/devOps/projets/allocation_universelle/server_modules/routes/home_routes.js:69:26\",\"statusCode\":500}"}
+{"timestamp":"2025-07-02T08:31:01.614Z","endpoint":"serveur.js","method":"SERVER_STARTUP","status":"info","data":"\"Serveur démarré sur le port 3000\""}
+{"timestamp":"2025-07-02T08:31:04.279Z","endpoint":"serveur.js","method":"GET /","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:04.316Z","endpoint":"serveur.js","method":"GET /style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:04.317Z","endpoint":"serveur.js","method":"GET /js/app.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:04.376Z","endpoint":"serveur.js","method":"GET /js/modal.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:04.376Z","endpoint":"serveur.js","method":"GET /js/chat_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:04.380Z","endpoint":"serveur.js","method":"GET /js/home_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:04.381Z","endpoint":"serveur.js","method":"GET /js/cv_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:04.385Z","endpoint":"serveur.js","method":"GET /js/wallet_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:04.388Z","endpoint":"serveur.js","method":"GET /js/pagination.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:04.389Z","endpoint":"serveur.js","method":"GET /js/dashboard_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:06.188Z","endpoint":"serveur.js","method":"GET /api/dashboard-insights","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:06.190Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:31:07.878Z","endpoint":"serveur.js","method":"GET /api/conversations","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:07.879Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"info","data":"\"Received request for all conversations.\""}
+{"timestamp":"2025-07-02T08:31:07.879Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"info","data":"\"Récupération de toutes les conversations.\""}
+{"timestamp":"2025-07-02T08:31:07.880Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"success","data":"\"Nombre de conversations trouvées : 0.\""}
+{"timestamp":"2025-07-02T08:31:07.880Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"success","data":"\"Conversations retrieved successfully.\""}
+{"timestamp":"2025-07-02T08:31:11.756Z","endpoint":"serveur.js","method":"POST /api/conversations/null/message","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:13.142Z","endpoint":"serveur.js","method":"GET /api/cv/data","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:13.143Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:31:17.745Z","endpoint":"serveur.js","method":"GET /api/wallet/balance","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:17.746Z","endpoint":"wallet_routes.js","method":"GET /api/wallet/balance","status":"info","data":"\"Received request for wallet balance.\""}
+{"timestamp":"2025-07-02T08:31:17.748Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/wallet_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:31:17.748Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/treasury_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:31:17.749Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/last_cv_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:31:17.749Z","endpoint":"wallet_routes.js","method":"GET /api/wallet/balance","status":"error","data":"{\"message\":\"Cannot read properties of undefined (reading 'TREASURY_CONTRIBUTION_RATE')\",\"stack\":\"TypeError: Cannot read properties of undefined (reading 'TREASURY_CONTRIBUTION_RATE')\\n    at Object.getWalletBalance (/Volumes/devOps/projets/allocation_universelle/server_modules/services/wallet_service.js:62:83)\\n    at async /Volumes/devOps/projets/allocation_universelle/server_modules/routes/wallet_routes.js:59:25\"}"}
+{"timestamp":"2025-07-02T08:31:18.823Z","endpoint":"serveur.js","method":"GET /api/cv/data","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:18.824Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:31:19.325Z","endpoint":"serveur.js","method":"GET /api/conversations","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:19.326Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"info","data":"\"Received request for all conversations.\""}
+{"timestamp":"2025-07-02T08:31:19.326Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"info","data":"\"Récupération de toutes les conversations.\""}
+{"timestamp":"2025-07-02T08:31:19.326Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"success","data":"\"Conversations retrieved successfully.\""}
+{"timestamp":"2025-07-02T08:31:19.326Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"success","data":"\"Nombre de conversations trouvées : 0.\""}
+{"timestamp":"2025-07-02T08:31:20.317Z","endpoint":"serveur.js","method":"GET /api/dashboard-insights","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:20.318Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:31:52.581Z","endpoint":"serveur.js","method":"POST /api/generate","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:31:52.774Z","endpoint":"Groq API Call","method":"POST","status":"error","data":"{\"model\":\"gemma2-9b-it\",\"messages\":\"t\",\"error\":\"400 {\\\"error\\\":{\\\"message\\\":\\\"'messages' : value must be an array\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\"}"}
+{"timestamp":"2025-07-02T08:31:52.775Z","endpoint":"/api/generate","method":"POST","status":"error","data":"{\"message\":\"Échec de la communication avec le modèle Groq: 400 {\\\"error\\\":{\\\"message\\\":\\\"'messages' : value must be an array\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\",\"stack\":\"Error: Échec de la communication avec le modèle Groq: 400 {\\\"error\\\":{\\\"message\\\":\\\"'messages' : value must be an array\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\\n    at Object.getGroqChatCompletion (/Volumes/devOps/projets/allocation_universelle/server_modules/services/groq_service.js:30:15)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\\n    at async /Volumes/devOps/projets/allocation_universelle/server_modules/routes/home_routes.js:69:26\"}"}
+{"timestamp":"2025-07-02T08:31:52.775Z","endpoint":"serveur.js","method":"GLOBAL_ERROR","status":"error","data":"{\"message\":\"Échec de la communication avec le modèle Groq: 400 {\\\"error\\\":{\\\"message\\\":\\\"'messages' : value must be an array\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\",\"stack\":\"Error: Échec de la communication avec le modèle Groq: 400 {\\\"error\\\":{\\\"message\\\":\\\"'messages' : value must be an array\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\\n    at Object.getGroqChatCompletion (/Volumes/devOps/projets/allocation_universelle/server_modules/services/groq_service.js:30:15)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\\n    at async /Volumes/devOps/projets/allocation_universelle/server_modules/routes/home_routes.js:69:26\",\"status\":500}"}
+{"timestamp":"2025-07-02T08:33:17.277Z","endpoint":"serveur.js","method":"SERVER_STARTUP","status":"info","data":"\"Serveur démarré sur le port 3000\""}
+{"timestamp":"2025-07-02T08:33:20.780Z","endpoint":"serveur.js","method":"GET /","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:20.842Z","endpoint":"serveur.js","method":"GET /style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:20.844Z","endpoint":"serveur.js","method":"GET /js/app.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:20.909Z","endpoint":"serveur.js","method":"GET /js/pagination.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:20.910Z","endpoint":"serveur.js","method":"GET /js/dashboard_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:20.915Z","endpoint":"serveur.js","method":"GET /js/wallet_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:20.915Z","endpoint":"serveur.js","method":"GET /js/chat_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:20.916Z","endpoint":"serveur.js","method":"GET /js/cv_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:20.919Z","endpoint":"serveur.js","method":"GET /js/modal.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:20.920Z","endpoint":"serveur.js","method":"GET /js/home_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:24.679Z","endpoint":"serveur.js","method":"POST /api/generate","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:24.840Z","endpoint":"Groq API Call","method":"POST","status":"error","data":"{\"model\":\"gemma2-9b-it\",\"messages\":\"t\",\"error\":\"400 {\\\"error\\\":{\\\"message\\\":\\\"'messages' : value must be an array\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\"}"}
+{"timestamp":"2025-07-02T08:33:24.840Z","endpoint":"/api/generate","method":"POST","status":"error","data":"{\"message\":\"Échec de la communication avec le modèle Groq: 400 {\\\"error\\\":{\\\"message\\\":\\\"'messages' : value must be an array\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\",\"stack\":\"Error: Échec de la communication avec le modèle Groq: 400 {\\\"error\\\":{\\\"message\\\":\\\"'messages' : value must be an array\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\\n    at Object.getGroqChatCompletion (/Volumes/devOps/projets/allocation_universelle/server_modules/services/groq_service.js:30:15)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\\n    at async /Volumes/devOps/projets/allocation_universelle/server_modules/routes/home_routes.js:69:26\"}"}
+{"timestamp":"2025-07-02T08:33:24.841Z","endpoint":"serveur.js","method":"GLOBAL_ERROR","status":"error","data":"{\"message\":\"Échec de la communication avec le modèle Groq: 400 {\\\"error\\\":{\\\"message\\\":\\\"'messages' : value must be an array\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\",\"stack\":\"Error: Échec de la communication avec le modèle Groq: 400 {\\\"error\\\":{\\\"message\\\":\\\"'messages' : value must be an array\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\\n    at Object.getGroqChatCompletion (/Volumes/devOps/projets/allocation_universelle/server_modules/services/groq_service.js:30:15)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\\n    at async /Volumes/devOps/projets/allocation_universelle/server_modules/routes/home_routes.js:69:26\",\"status\":500}"}
+{"timestamp":"2025-07-02T08:33:31.577Z","endpoint":"serveur.js","method":"GET /api/dashboard-insights","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:31.579Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:33:34.942Z","endpoint":"serveur.js","method":"GET /api/conversations","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:34.943Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"info","data":"\"Received request for all conversations.\""}
+{"timestamp":"2025-07-02T08:33:34.944Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"info","data":"\"Récupération de toutes les conversations.\""}
+{"timestamp":"2025-07-02T08:33:34.944Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"success","data":"\"Conversations retrieved successfully.\""}
+{"timestamp":"2025-07-02T08:33:34.944Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"success","data":"\"Nombre de conversations trouvées : 0.\""}
+{"timestamp":"2025-07-02T08:33:37.567Z","endpoint":"serveur.js","method":"POST /api/conversations/null/message","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:42.547Z","endpoint":"serveur.js","method":"POST /api/conversations/null/message","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:43.461Z","endpoint":"serveur.js","method":"GET /api/cv/data","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:43.462Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:33:51.059Z","endpoint":"serveur.js","method":"GET /api/cv/data","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:33:51.062Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:36:25.628Z","endpoint":"serveur.js","method":"SERVER_STARTUP","status":"info","data":"\"Serveur démarré sur le port 3000\""}
+{"timestamp":"2025-07-02T08:36:26.717Z","endpoint":"serveur.js","method":"GET /","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:36:26.759Z","endpoint":"serveur.js","method":"GET /style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:36:26.760Z","endpoint":"serveur.js","method":"GET /js/app.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:36:26.865Z","endpoint":"serveur.js","method":"GET /js/pagination.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:36:26.865Z","endpoint":"serveur.js","method":"GET /js/chat_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:36:26.866Z","endpoint":"serveur.js","method":"GET /js/cv_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:36:26.871Z","endpoint":"serveur.js","method":"GET /js/modal.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:36:26.872Z","endpoint":"serveur.js","method":"GET /js/wallet_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:36:26.874Z","endpoint":"serveur.js","method":"GET /js/home_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:36:26.878Z","endpoint":"serveur.js","method":"GET /js/dashboard_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:36:29.901Z","endpoint":"serveur.js","method":"POST /api/generate","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:36:29.926Z","endpoint":"groq_service.js","method":"getGroqChatCompletion","status":"error","data":"\"'messages' : value must be an array and not empty.\""}
+{"timestamp":"2025-07-02T08:36:29.926Z","endpoint":"/api/generate","method":"POST","status":"error","data":"{\"message\":\"Les messages fournis à l'API Groq doivent être un tableau non vide.\",\"stack\":\"Error: Les messages fournis à l'API Groq doivent être un tableau non vide.\\n    at Object.getGroqChatCompletion (/Volumes/devOps/projets/allocation_universelle/server_modules/services/groq_service.js:31:15)\\n    at /Volumes/devOps/projets/allocation_universelle/server_modules/routes/home_routes.js:69:44\\n    at Layer.handle [as handle_request] (/Volumes/devOps/node_modules/express/lib/router/layer.js:95:5)\\n    at next (/Volumes/devOps/node_modules/express/lib/router/route.js:149:13)\\n    at Route.dispatch (/Volumes/devOps/node_modules/express/lib/router/route.js:119:3)\\n    at Layer.handle [as handle_request] (/Volumes/devOps/node_modules/express/lib/router/layer.js:95:5)\\n    at /Volumes/devOps/node_modules/express/lib/router/index.js:284:15\\n    at Function.process_params (/Volumes/devOps/node_modules/express/lib/router/index.js:346:12)\\n    at next (/Volumes/devOps/node_modules/express/lib/router/index.js:280:10)\\n    at Function.handle (/Volumes/devOps/node_modules/express/lib/router/index.js:175:3)\"}"}
+{"timestamp":"2025-07-02T08:36:29.928Z","endpoint":"serveur.js","method":"GLOBAL_ERROR","status":"error","data":"{\"message\":\"Les messages fournis à l'API Groq doivent être un tableau non vide.\",\"stack\":\"Error: Les messages fournis à l'API Groq doivent être un tableau non vide.\\n    at Object.getGroqChatCompletion (/Volumes/devOps/projets/allocation_universelle/server_modules/services/groq_service.js:31:15)\\n    at /Volumes/devOps/projets/allocation_universelle/server_modules/routes/home_routes.js:69:44\\n    at Layer.handle [as handle_request] (/Volumes/devOps/node_modules/express/lib/router/layer.js:95:5)\\n    at next (/Volumes/devOps/node_modules/express/lib/router/route.js:149:13)\\n    at Route.dispatch (/Volumes/devOps/node_modules/express/lib/router/route.js:119:3)\\n    at Layer.handle [as handle_request] (/Volumes/devOps/node_modules/express/lib/router/layer.js:95:5)\\n    at /Volumes/devOps/node_modules/express/lib/router/index.js:284:15\\n    at Function.process_params (/Volumes/devOps/node_modules/express/lib/router/index.js:346:12)\\n    at next (/Volumes/devOps/node_modules/express/lib/router/index.js:280:10)\\n    at Function.handle (/Volumes/devOps/node_modules/express/lib/router/index.js:175:3)\",\"status\":500}"}
+{"timestamp":"2025-07-02T08:36:35.754Z","endpoint":"serveur.js","method":"POST /api/generate","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:36:35.755Z","endpoint":"groq_service.js","method":"getGroqChatCompletion","status":"error","data":"\"'messages' : value must be an array and not empty.\""}
+{"timestamp":"2025-07-02T08:36:35.757Z","endpoint":"serveur.js","method":"GLOBAL_ERROR","status":"error","data":"{\"message\":\"Les messages fournis à l'API Groq doivent être un tableau non vide.\",\"stack\":\"Error: Les messages fournis à l'API Groq doivent être un tableau non vide.\\n    at Object.getGroqChatCompletion (/Volumes/devOps/projets/allocation_universelle/server_modules/services/groq_service.js:31:15)\\n    at /Volumes/devOps/projets/allocation_universelle/server_modules/routes/home_routes.js:69:44\\n    at Layer.handle [as handle_request] (/Volumes/devOps/node_modules/express/lib/router/layer.js:95:5)\\n    at next (/Volumes/devOps/node_modules/express/lib/router/route.js:149:13)\\n    at Route.dispatch (/Volumes/devOps/node_modules/express/lib/router/route.js:119:3)\\n    at Layer.handle [as handle_request] (/Volumes/devOps/node_modules/express/lib/router/layer.js:95:5)\\n    at /Volumes/devOps/node_modules/express/lib/router/index.js:284:15\\n    at Function.process_params (/Volumes/devOps/node_modules/express/lib/router/index.js:346:12)\\n    at next (/Volumes/devOps/node_modules/express/lib/router/index.js:280:10)\\n    at Function.handle (/Volumes/devOps/node_modules/express/lib/router/index.js:175:3)\",\"status\":500}"}
+{"timestamp":"2025-07-02T08:36:35.756Z","endpoint":"/api/generate","method":"POST","status":"error","data":"{\"message\":\"Les messages fournis à l'API Groq doivent être un tableau non vide.\",\"stack\":\"Error: Les messages fournis à l'API Groq doivent être un tableau non vide.\\n    at Object.getGroqChatCompletion (/Volumes/devOps/projets/allocation_universelle/server_modules/services/groq_service.js:31:15)\\n    at /Volumes/devOps/projets/allocation_universelle/server_modules/routes/home_routes.js:69:44\\n    at Layer.handle [as handle_request] (/Volumes/devOps/node_modules/express/lib/router/layer.js:95:5)\\n    at next (/Volumes/devOps/node_modules/express/lib/router/route.js:149:13)\\n    at Route.dispatch (/Volumes/devOps/node_modules/express/lib/router/route.js:119:3)\\n    at Layer.handle [as handle_request] (/Volumes/devOps/node_modules/express/lib/router/layer.js:95:5)\\n    at /Volumes/devOps/node_modules/express/lib/router/index.js:284:15\\n    at Function.process_params (/Volumes/devOps/node_modules/express/lib/router/index.js:346:12)\\n    at next (/Volumes/devOps/node_modules/express/lib/router/index.js:280:10)\\n    at Function.handle (/Volumes/devOps/node_modules/express/lib/router/index.js:175:3)\"}"}
+{"timestamp":"2025-07-02T08:37:31.716Z","endpoint":"serveur.js","method":"GET /api-docs/","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:31.719Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:37:31.761Z","endpoint":"serveur.js","method":"GET /api-docs/style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:31.761Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:37:31.774Z","endpoint":"serveur.js","method":"GET /api-docs/js/app.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:31.775Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:37:36.886Z","endpoint":"serveur.js","method":"GET /api-docs/","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:36.888Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:37:36.910Z","endpoint":"serveur.js","method":"GET /api-docs/style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:36.912Z","endpoint":"serveur.js","method":"GET /api-docs/js/app.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:36.913Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:37:36.913Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:37:40.613Z","endpoint":"serveur.js","method":"GET /","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:40.639Z","endpoint":"serveur.js","method":"GET /style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:40.640Z","endpoint":"serveur.js","method":"GET /js/app.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:40.660Z","endpoint":"serveur.js","method":"GET /js/modal.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:40.662Z","endpoint":"serveur.js","method":"GET /js/pagination.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:40.664Z","endpoint":"serveur.js","method":"GET /js/home_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:40.670Z","endpoint":"serveur.js","method":"GET /js/cv_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:40.669Z","endpoint":"serveur.js","method":"GET /js/chat_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:40.671Z","endpoint":"serveur.js","method":"GET /js/dashboard_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:40.672Z","endpoint":"serveur.js","method":"GET /js/wallet_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:40.677Z","endpoint":"serveur.js","method":"GET /api/cv/data","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:37:40.678Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:38:27.781Z","endpoint":"serveur.js","method":"GET /","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:27.810Z","endpoint":"serveur.js","method":"GET /style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:27.811Z","endpoint":"serveur.js","method":"GET /js/app.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:27.829Z","endpoint":"serveur.js","method":"GET /js/modal.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:27.830Z","endpoint":"serveur.js","method":"GET /js/dashboard_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:27.831Z","endpoint":"serveur.js","method":"GET /js/pagination.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:27.832Z","endpoint":"serveur.js","method":"GET /js/home_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:27.833Z","endpoint":"serveur.js","method":"GET /js/chat_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:27.834Z","endpoint":"serveur.js","method":"GET /js/cv_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:27.835Z","endpoint":"serveur.js","method":"GET /js/wallet_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:27.844Z","endpoint":"serveur.js","method":"GET /api/cv/data","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:27.845Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:38:31.766Z","endpoint":"serveur.js","method":"GET /","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:31.789Z","endpoint":"serveur.js","method":"GET /style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:31.790Z","endpoint":"serveur.js","method":"GET /js/app.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:31.803Z","endpoint":"serveur.js","method":"GET /js/modal.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:31.805Z","endpoint":"serveur.js","method":"GET /js/pagination.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:31.806Z","endpoint":"serveur.js","method":"GET /js/chat_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:31.809Z","endpoint":"serveur.js","method":"GET /js/cv_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:31.812Z","endpoint":"serveur.js","method":"GET /js/wallet_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:31.812Z","endpoint":"serveur.js","method":"GET /js/home_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:31.814Z","endpoint":"serveur.js","method":"GET /js/dashboard_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:35.505Z","endpoint":"serveur.js","method":"POST /api/generate","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:35.508Z","endpoint":"groq_service.js","method":"getGroqChatCompletion","status":"error","data":"\"'messages' : value must be an array and not empty.\""}
+{"timestamp":"2025-07-02T08:38:35.509Z","endpoint":"serveur.js","method":"GLOBAL_ERROR","status":"error","data":"{\"message\":\"Les messages fournis à l'API Groq doivent être un tableau non vide.\",\"stack\":\"Error: Les messages fournis à l'API Groq doivent être un tableau non vide.\\n    at Object.getGroqChatCompletion (/Volumes/devOps/projets/allocation_universelle/server_modules/services/groq_service.js:31:15)\\n    at /Volumes/devOps/projets/allocation_universelle/server_modules/routes/home_routes.js:69:44\\n    at Layer.handle [as handle_request] (/Volumes/devOps/node_modules/express/lib/router/layer.js:95:5)\\n    at next (/Volumes/devOps/node_modules/express/lib/router/route.js:149:13)\\n    at Route.dispatch (/Volumes/devOps/node_modules/express/lib/router/route.js:119:3)\\n    at Layer.handle [as handle_request] (/Volumes/devOps/node_modules/express/lib/router/layer.js:95:5)\\n    at /Volumes/devOps/node_modules/express/lib/router/index.js:284:15\\n    at Function.process_params (/Volumes/devOps/node_modules/express/lib/router/index.js:346:12)\\n    at next (/Volumes/devOps/node_modules/express/lib/router/index.js:280:10)\\n    at Function.handle (/Volumes/devOps/node_modules/express/lib/router/index.js:175:3)\",\"status\":500}"}
+{"timestamp":"2025-07-02T08:38:35.508Z","endpoint":"/api/generate","method":"POST","status":"error","data":"{\"message\":\"Les messages fournis à l'API Groq doivent être un tableau non vide.\",\"stack\":\"Error: Les messages fournis à l'API Groq doivent être un tableau non vide.\\n    at Object.getGroqChatCompletion (/Volumes/devOps/projets/allocation_universelle/server_modules/services/groq_service.js:31:15)\\n    at /Volumes/devOps/projets/allocation_universelle/server_modules/routes/home_routes.js:69:44\\n    at Layer.handle [as handle_request] (/Volumes/devOps/node_modules/express/lib/router/layer.js:95:5)\\n    at next (/Volumes/devOps/node_modules/express/lib/router/route.js:149:13)\\n    at Route.dispatch (/Volumes/devOps/node_modules/express/lib/router/route.js:119:3)\\n    at Layer.handle [as handle_request] (/Volumes/devOps/node_modules/express/lib/router/layer.js:95:5)\\n    at /Volumes/devOps/node_modules/express/lib/router/index.js:284:15\\n    at Function.process_params (/Volumes/devOps/node_modules/express/lib/router/index.js:346:12)\\n    at next (/Volumes/devOps/node_modules/express/lib/router/index.js:280:10)\\n    at Function.handle (/Volumes/devOps/node_modules/express/lib/router/index.js:175:3)\"}"}
+{"timestamp":"2025-07-02T08:38:50.105Z","endpoint":"serveur.js","method":"SERVER_STARTUP","status":"info","data":"\"Serveur démarré sur le port 3000\""}
+{"timestamp":"2025-07-02T08:38:52.429Z","endpoint":"serveur.js","method":"GET /","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:52.457Z","endpoint":"serveur.js","method":"GET /style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:52.460Z","endpoint":"serveur.js","method":"GET /js/app.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:52.473Z","endpoint":"serveur.js","method":"GET /js/modal.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:52.475Z","endpoint":"serveur.js","method":"GET /js/pagination.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:52.476Z","endpoint":"serveur.js","method":"GET /js/wallet_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:52.476Z","endpoint":"serveur.js","method":"GET /js/home_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:52.478Z","endpoint":"serveur.js","method":"GET /js/chat_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:52.481Z","endpoint":"serveur.js","method":"GET /js/cv_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:52.483Z","endpoint":"serveur.js","method":"GET /js/dashboard_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:55.819Z","endpoint":"serveur.js","method":"POST /api/generate","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:38:55.839Z","endpoint":"home_routes.js","method":"POST /api/generate","status":"info","data":"\"Requête reçue pour la génération de texte.\""}
+{"timestamp":"2025-07-02T08:38:55.840Z","endpoint":"groq_service.js","method":"getGroqChatCompletion","status":"info","data":"\"Appel à l'API Groq avec le modèle: llama3-8b-8192.\""}
+{"timestamp":"2025-07-02T08:38:56.273Z","endpoint":"groq_service.js","method":"getGroqChatCompletion","status":"success","data":"\"Réponse de l'IA Groq reçue.\""}
+{"timestamp":"2025-07-02T08:38:56.273Z","endpoint":"home_routes.js","method":"POST /api/generate","status":"success","data":"\"Texte généré avec succès.\""}
+{"timestamp":"2025-07-02T08:39:00.580Z","endpoint":"serveur.js","method":"GET /api/dashboard-insights","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:00.582Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:39:04.156Z","endpoint":"serveur.js","method":"GET /api/conversations","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:04.157Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"info","data":"\"Received request for all conversations.\""}
+{"timestamp":"2025-07-02T08:39:04.157Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"info","data":"\"Récupération de toutes les conversations.\""}
+{"timestamp":"2025-07-02T08:39:04.158Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"success","data":"\"Conversations retrieved successfully.\""}
+{"timestamp":"2025-07-02T08:39:04.158Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"success","data":"\"Nombre de conversations trouvées : 0.\""}
+{"timestamp":"2025-07-02T08:39:06.745Z","endpoint":"serveur.js","method":"GET /api/cv/data","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:06.746Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:39:31.194Z","endpoint":"serveur.js","method":"GET /api-docs/","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:31.196Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:39:31.226Z","endpoint":"serveur.js","method":"GET /api-docs/style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:31.229Z","endpoint":"serveur.js","method":"GET /api-docs/js/app.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:31.230Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:39:31.233Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:39:32.660Z","endpoint":"serveur.js","method":"GET /api-docs/","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:32.661Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:39:32.678Z","endpoint":"serveur.js","method":"GET /api-docs/style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:32.679Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:39:32.681Z","endpoint":"serveur.js","method":"GET /api-docs/js/app.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:32.682Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:39:33.196Z","endpoint":"serveur.js","method":"GET /api-docs/","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:33.197Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:39:33.210Z","endpoint":"serveur.js","method":"GET /api-docs/style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:33.211Z","endpoint":"serveur.js","method":"GET /api-docs/js/app.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:33.211Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:39:33.212Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:39:38.382Z","endpoint":"serveur.js","method":"GET /","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:38.412Z","endpoint":"serveur.js","method":"GET /style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:38.413Z","endpoint":"serveur.js","method":"GET /js/app.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:38.450Z","endpoint":"serveur.js","method":"GET /js/modal.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:38.451Z","endpoint":"serveur.js","method":"GET /js/chat_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:38.452Z","endpoint":"serveur.js","method":"GET /js/dashboard_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:38.452Z","endpoint":"serveur.js","method":"GET /js/cv_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:38.452Z","endpoint":"serveur.js","method":"GET /js/pagination.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:38.453Z","endpoint":"serveur.js","method":"GET /js/wallet_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:38.458Z","endpoint":"serveur.js","method":"GET /js/home_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:41.099Z","endpoint":"serveur.js","method":"POST /api/generate","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:41.102Z","endpoint":"home_routes.js","method":"POST /api/generate","status":"info","data":"\"Requête reçue pour la génération de texte.\""}
+{"timestamp":"2025-07-02T08:39:41.102Z","endpoint":"groq_service.js","method":"getGroqChatCompletion","status":"info","data":"\"Appel à l'API Groq avec le modèle: llama3-8b-8192.\""}
+{"timestamp":"2025-07-02T08:39:41.411Z","endpoint":"groq_service.js","method":"getGroqChatCompletion","status":"success","data":"\"Réponse de l'IA Groq reçue.\""}
+{"timestamp":"2025-07-02T08:39:41.411Z","endpoint":"home_routes.js","method":"POST /api/generate","status":"success","data":"\"Texte généré avec succès.\""}
+{"timestamp":"2025-07-02T08:39:43.198Z","endpoint":"serveur.js","method":"GET /api/dashboard-insights","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:43.199Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:39:47.105Z","endpoint":"serveur.js","method":"GET /api/dashboard-insights","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:47.106Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:39:47.714Z","endpoint":"serveur.js","method":"GET /api/conversations","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:47.715Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"info","data":"\"Received request for all conversations.\""}
+{"timestamp":"2025-07-02T08:39:47.715Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"info","data":"\"Récupération de toutes les conversations.\""}
+{"timestamp":"2025-07-02T08:39:47.716Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"success","data":"\"Nombre de conversations trouvées : 0.\""}
+{"timestamp":"2025-07-02T08:39:47.716Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"success","data":"\"Conversations retrieved successfully.\""}
+{"timestamp":"2025-07-02T08:39:49.590Z","endpoint":"serveur.js","method":"GET /api/cv/data","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:49.591Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:39:53.628Z","endpoint":"serveur.js","method":"GET /api/dashboard-insights","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:53.629Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:39:55.212Z","endpoint":"serveur.js","method":"GET /api/dashboard-insights","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:39:55.214Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:40:31.042Z","endpoint":"serveur.js","method":"GET /","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:40:31.080Z","endpoint":"serveur.js","method":"GET /style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:40:31.085Z","endpoint":"serveur.js","method":"GET /js/app.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:40:31.119Z","endpoint":"serveur.js","method":"GET /js/modal.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:40:31.125Z","endpoint":"serveur.js","method":"GET /js/pagination.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:40:31.126Z","endpoint":"serveur.js","method":"GET /js/home_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:40:31.127Z","endpoint":"serveur.js","method":"GET /js/dashboard_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:40:31.130Z","endpoint":"serveur.js","method":"GET /js/chat_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:40:31.131Z","endpoint":"serveur.js","method":"GET /js/cv_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:40:31.131Z","endpoint":"serveur.js","method":"GET /js/wallet_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:40:31.137Z","endpoint":"serveur.js","method":"GET /api/dashboard-insights","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:40:31.137Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:40:35.132Z","endpoint":"serveur.js","method":"GET /api/conversations","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:40:35.135Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"info","data":"\"Received request for all conversations.\""}
+{"timestamp":"2025-07-02T08:40:35.135Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"success","data":"\"Nombre de conversations trouvées : 0.\""}
+{"timestamp":"2025-07-02T08:40:35.135Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"success","data":"\"Conversations retrieved successfully.\""}
+{"timestamp":"2025-07-02T08:40:35.135Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"info","data":"\"Récupération de toutes les conversations.\""}
+{"timestamp":"2025-07-02T08:40:37.098Z","endpoint":"serveur.js","method":"POST /api/conversations/null/message","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:40:40.773Z","endpoint":"serveur.js","method":"GET /api/cv/data","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:40:40.773Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:40:45.282Z","endpoint":"serveur.js","method":"POST /api/generate","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:40:45.284Z","endpoint":"home_routes.js","method":"POST /api/generate","status":"info","data":"\"Requête reçue pour la génération de texte.\""}
+{"timestamp":"2025-07-02T08:40:45.284Z","endpoint":"groq_service.js","method":"getGroqChatCompletion","status":"info","data":"\"Appel à l'API Groq avec le modèle: llama3-8b-8192.\""}
+{"timestamp":"2025-07-02T08:40:45.581Z","endpoint":"groq_service.js","method":"getGroqChatCompletion","status":"success","data":"\"Réponse de l'IA Groq reçue.\""}
+{"timestamp":"2025-07-02T08:40:45.581Z","endpoint":"home_routes.js","method":"POST /api/generate","status":"success","data":"\"Texte généré avec succès.\""}
+{"timestamp":"2025-07-02T08:41:46.847Z","endpoint":"serveur.js","method":"GET /","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:41:46.863Z","endpoint":"serveur.js","method":"GET /style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:41:46.865Z","endpoint":"serveur.js","method":"GET /js/app.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:41:46.872Z","endpoint":"serveur.js","method":"GET /js/home_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:41:46.874Z","endpoint":"serveur.js","method":"GET /js/modal.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:41:46.875Z","endpoint":"serveur.js","method":"GET /js/wallet_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:41:46.875Z","endpoint":"serveur.js","method":"GET /js/pagination.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:41:46.877Z","endpoint":"serveur.js","method":"GET /js/chat_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:41:46.878Z","endpoint":"serveur.js","method":"GET /js/cv_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:41:46.880Z","endpoint":"serveur.js","method":"GET /js/dashboard_ui.js","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:41:48.884Z","endpoint":"serveur.js","method":"POST /api/generate","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:41:48.886Z","endpoint":"home_routes.js","method":"POST /api/generate","status":"info","data":"\"Requête reçue pour la génération de texte.\""}
+{"timestamp":"2025-07-02T08:41:48.886Z","endpoint":"groq_service.js","method":"getGroqChatCompletion","status":"info","data":"\"Appel à l'API Groq avec le modèle: llama3-8b-8192.\""}
+{"timestamp":"2025-07-02T08:41:49.107Z","endpoint":"groq_service.js","method":"getGroqChatCompletion","status":"success","data":"\"Réponse de l'IA Groq reçue.\""}
+{"timestamp":"2025-07-02T08:41:49.107Z","endpoint":"home_routes.js","method":"POST /api/generate","status":"success","data":"\"Texte généré avec succès.\""}
+{"timestamp":"2025-07-02T08:41:51.478Z","endpoint":"serveur.js","method":"GET /style.css","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:41:51.480Z","endpoint":"serveur.js","method":"GET /.well-known/appspecific/com.chrome.devtools.json","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:41:51.481Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:44:17.491Z","endpoint":"serveur.js","method":"GET /api/conversations","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:44:17.493Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"success","data":"\"Nombre de conversations trouvées : 0.\""}
+{"timestamp":"2025-07-02T08:44:17.493Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"info","data":"\"Received request for all conversations.\""}
+{"timestamp":"2025-07-02T08:44:17.493Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"info","data":"\"Récupération de toutes les conversations.\""}
+{"timestamp":"2025-07-02T08:44:17.493Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"success","data":"\"Conversations retrieved successfully.\""}
+{"timestamp":"2025-07-02T08:44:18.015Z","endpoint":"serveur.js","method":"GET /api/cv/data","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:44:18.019Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:44:23.054Z","endpoint":"serveur.js","method":"GET /api/dashboard-insights","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:44:23.077Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:44:24.627Z","endpoint":"serveur.js","method":"GET /api/conversations","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:44:24.631Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"info","data":"\"Received request for all conversations.\""}
+{"timestamp":"2025-07-02T08:44:24.632Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"info","data":"\"Récupération de toutes les conversations.\""}
+{"timestamp":"2025-07-02T08:44:24.632Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"success","data":"\"Nombre de conversations trouvées : 0.\""}
+{"timestamp":"2025-07-02T08:44:24.632Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"success","data":"\"Conversations retrieved successfully.\""}
+{"timestamp":"2025-07-02T08:44:25.656Z","endpoint":"serveur.js","method":"GET /api/wallet/balance","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:44:25.658Z","endpoint":"wallet_routes.js","method":"GET /api/wallet/balance","status":"info","data":"\"Received request for wallet balance.\""}
+{"timestamp":"2025-07-02T08:44:25.662Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/wallet_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:44:25.663Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/treasury_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:44:25.664Z","endpoint":"DB Service - Read","method":"N/A","status":"success","data":"\"File data/last_cv_data.json read successfully.\""}
+{"timestamp":"2025-07-02T08:44:25.666Z","endpoint":"wallet_routes.js","method":"GET /api/wallet/balance","status":"error","data":"{\"message\":\"Cannot read properties of undefined (reading 'TREASURY_CONTRIBUTION_RATE')\",\"stack\":\"TypeError: Cannot read properties of undefined (reading 'TREASURY_CONTRIBUTION_RATE')\\n    at Object.getWalletBalance (/Volumes/devOps/projets/allocation_universelle/server_modules/services/wallet_service.js:62:83)\\n    at async /Volumes/devOps/projets/allocation_universelle/server_modules/routes/wallet_routes.js:59:25\"}"}
+{"timestamp":"2025-07-02T08:44:28.283Z","endpoint":"serveur.js","method":"GET /api/cv/data","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:44:28.284Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:44:29.582Z","endpoint":"serveur.js","method":"GET /api/conversations","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:44:29.583Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"info","data":"\"Received request for all conversations.\""}
+{"timestamp":"2025-07-02T08:44:29.583Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"info","data":"\"Récupération de toutes les conversations.\""}
+{"timestamp":"2025-07-02T08:44:29.583Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"success","data":"\"Nombre de conversations trouvées : 0.\""}
+{"timestamp":"2025-07-02T08:44:29.583Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"success","data":"\"Conversations retrieved successfully.\""}
+{"timestamp":"2025-07-02T08:44:30.645Z","endpoint":"serveur.js","method":"GET /api/dashboard-insights","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:44:30.646Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T08:44:31.234Z","endpoint":"serveur.js","method":"GET /api/conversations","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:44:31.234Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"info","data":"\"Received request for all conversations.\""}
+{"timestamp":"2025-07-02T08:44:31.235Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"success","data":"\"Nombre de conversations trouvées : 0.\""}
+{"timestamp":"2025-07-02T08:44:31.234Z","endpoint":"conversation_service.js","method":"getAllConversations","status":"info","data":"\"Récupération de toutes les conversations.\""}
+{"timestamp":"2025-07-02T08:44:31.235Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"success","data":"\"Conversations retrieved successfully.\""}
+{"timestamp":"2025-07-02T08:44:31.994Z","endpoint":"serveur.js","method":"GET /api/dashboard-insights","status":"info","data":"\"Requête reçue.\""}
+{"timestamp":"2025-07-02T08:44:31.995Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
