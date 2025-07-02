@@ -5,6 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const swaggerOptions = require('./server_modules/utils/swagger_config.js');
 const multer = require('multer');
 const Groq = require('groq-sdk');
 const { v4: uuidv4 } = require('uuid');
@@ -456,139 +457,6 @@ app.get('/api/models', async (req, res) => {
 
 
 // --- Configuration Swagger (Documentation API) ---
-const swaggerOptions = {
-    swaggerDefinition: {
-        openapi: '3.0.0',
-        info: {
-            title: 'API UTMi',
-            version: '1.0.0',
-            description: 'Documentation de l\'API pour la plateforme CVNU et UTMi, incluant l\'intégration Groq AI, la gestion de CV, le portefeuille et les conversations.',
-            contact: {
-                name: 'Votre Nom',
-                email: 'votre.email@example.com',
-            },
-        },
-        servers: [
-            {
-                url: `http://localhost:${PORT}`,
-                description: 'Serveur de développement local',
-            },
-        ],
-        components: {
-            securitySchemes: {
-                ApiKeyAuth: {
-                    type: 'apiKey',
-                    in: 'header',
-                    name: 'X-API-Key', // Ou 'Authorization' avec Bearer
-                },
-            },
-        },
-        security: [{
-            ApiKeyAuth: []
-        }],
-        paths: {
-            // Exemple de documentation pour un endpoint
-            "/api/home/prompt": {
-                post: {
-                    summary: "Génère une réponse IA basée sur un prompt (section Accueil).",
-                    requestBody: {
-                        required: true,
-                        content: {
-                            "application/json": {
-                                schema: { type: "object", properties: { prompt: { type: "string" } } }
-                            }
-                        }
-                    },
-                    responses: {
-                        "200": { description: "Réponse IA générée avec succès." },
-                        "400": { description: "Prompt manquant." }
-                    }
-                }
-            },
-            "/api/wallet/balance": {
-                get: {
-                    summary: "Récupère le solde actuel du portefeuille UTMi de l'utilisateur.",
-                    responses: {
-                        "200": { description: "Solde du portefeuille récupéré avec succès.", content: { "application/json": { example: { balance: 1000, currency: "UTMi", lastUpdated: "2025-07-02T12:00:00.000Z" } } } },
-                        "500": { description: "Erreur serveur." }
-                    }
-                }
-            },
-            "/api/dashboard": {
-                get: {
-                    summary: "Récupère les statistiques et insights pour le tableau de bord.",
-                    responses: {
-                        "200": { description: "Données du tableau de bord récupérées avec succès." },
-                        "500": { description: "Erreur serveur." }
-                    }
-                }
-            },
-            // Ajoutez d'autres paths ici pour documenter toutes vos routes (CV, chat, wallet actions, logs, config, etc.)
-            // Exemple pour CV Generate:
-            "/api/cv/generate": {
-                post: {
-                    summary: "Génère un contenu de CV structuré en JSON à partir d'un prompt.",
-                    requestBody: {
-                        required: true,
-                        content: {
-                            "application/json": {
-                                schema: { type: "object", properties: { prompt: { type: "string" } } }
-                            }
-                        }
-                    },
-                    responses: {
-                        "200": { description: "CV généré avec succès.", content: { "application/json": { example: { cvData: { /* ... */ } } } } },
-                        "400": { description: "Prompt manquant." }
-                    }
-                }
-            },
-            // Exemple pour les conversations:
-            "/api/conversations": {
-                get: {
-                    summary: "Récupère la liste paginée des conversations de chat.",
-                    parameters: [
-                        { name: "page", in: "query", schema: { type: "integer", default: 1 } },
-                        { name: "limit", in: "query", schema: { type: "integer", default: 5 } }
-                    ],
-                    responses: {
-                        "200": { description: "Liste des conversations récupérée." }
-                    }
-                },
-                post: {
-                    summary: "Crée une nouvelle conversation de chat ou ajoute un message à une existante.",
-                    requestBody: {
-                        required: true,
-                        content: {
-                            "application/json": {
-                                schema: { type: "object", properties: { conversationId: { type: "string", nullable: true }, message: { type: "string" } } }
-                            }
-                        }
-                    },
-                    responses: {
-                        "200": { description: "Message envoyé et réponse IA reçue." }
-                    }
-                }
-            },
-            "/api/conversations/{id}": {
-                get: {
-                    summary: "Récupère une conversation spécifique par son ID.",
-                    parameters: [
-                        { name: "id", in: "path", required: true, schema: { type: "string" } }
-                    ],
-                    responses: {
-                        "200": { description: "Conversation trouvée." },
-                        "404": { description: "Conversation non trouvée." }
-                    }
-                }
-            }
-        }
-    },
-    apis: [
-        // Ici, vous pouvez lier des fichiers YAML externes pour une meilleure organisation,
-        // ou documenter directement dans les routes Express avec jsdoc-to-swagger ou similaire.
-        // path.join(__dirname, './swagger/swagger-components.yaml'), // Fichier pour les schémas réutilisables
-    ],
-};
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 

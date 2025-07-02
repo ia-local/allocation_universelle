@@ -1,0 +1,44 @@
+# swagger/home.yaml
+paths:
+  /api/home/prompt:
+    post:
+      summary: Génère une réponse IA basée sur un prompt (section Accueil).
+      description: Utilise l'API Groq pour générer une réponse textuelle à partir d'un prompt utilisateur fourni dans la section d'accueil.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prompt:
+                  type: string
+                  description: Le texte du prompt envoyé à l'IA.
+                  example: "Expliquez l'importance du capital humain dans l'économie moderne."
+            examples:
+              default:
+                value:
+                  prompt: "Qu'est-ce que l'allocation universelle et comment est-elle liée au CVNU ?"
+      responses:
+        '200':
+          description: Réponse IA générée avec succès.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HomePromptResponse'
+        '400':
+          description: Erreur de validation (prompt manquant).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "Le prompt est requis."
+        '500':
+          description: Erreur interne du serveur lors de la génération IA.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "Erreur interne du serveur: Failed to fetch from Groq API."

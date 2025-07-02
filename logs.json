@@ -754,5 +754,118 @@
     "timestamp": "2025-07-02T13:33:01.871Z",
     "type": "wallet_balance_fetch",
     "balance": 1000
+  },
+  {
+    "id": "1d59e1e4-43f8-4b65-b9dc-1cfade2f2d6b",
+    "timestamp": "2025-07-02T13:38:51.753Z",
+    "type": "home_interaction",
+    "prompt": "test",
+    "response": "Bonjour ! Je suis un assistant IA expert en développement et en conseil technique. Je suis là pour vous aider avec vos questions et vos problèmes techniques. Que puis-je faire pour vous aujourd'hui ?"
+  },
+  {
+    "id": "76d2746f-c133-4d37-b764-b200e3af2d83",
+    "timestamp": "2025-07-02T13:39:40.464Z",
+    "type": "wallet_balance_fetch",
+    "balance": 1000
+  },
+  {
+    "id": "04968a6d-12db-485b-9ef6-af0ec0887127",
+    "timestamp": "2025-07-02T13:39:49.651Z",
+    "type": "chat_interaction",
+    "conversationId": "f0e3646e-53ba-433d-9a88-78e8c980d85d",
+    "userMessage": "TEST3",
+    "aiResponse": "Je suis prêt à vous aider avec vos questions sur des sujets de programmation, d'architecture logicielle et de technologies web. Qu'est-ce que vous souhaitez savoir ou discuter ?"
+  },
+  {
+    "id": "81e1bef6-1dbb-4f91-9601-dfd3187b6de5",
+    "timestamp": "2025-07-02T14:00:20.628Z",
+    "type": "home_interaction",
+    "prompt": "test",
+    "response": "Bonjour ! Je suis ravi de vous voir ! Je suis un assistant IA expert en développement et en conseil technique. Je suis là pour vous aider et vous apporter des solutions à vos problèmes techniques. Qu'est-ce que vous souhaitez discuter ou demander ?"
+  },
+  {
+    "id": "3793d074-fb79-460f-9cf3-9226d3dcfe99",
+    "timestamp": "2025-07-02T14:00:26.228Z",
+    "type": "wallet_balance_fetch",
+    "balance": 1000
+  },
+  {
+    "id": "7821a8d5-21d0-4d37-93aa-5e18b373e68a",
+    "timestamp": "2025-07-02T14:00:32.856Z",
+    "type": "cv_generation",
+    "prompt": "etzf",
+    "cvData": {
+      "informationsPersonnelles": {
+        "nom": "Pierre Dupont",
+        "prenom": "Jean",
+        "adresse": "12 Rue de la Paix, 75002 Paris",
+        "codePostal": "75002",
+        "ville": "Paris",
+        "pays": "France",
+        "telephone": "+33 6 12 34 56 78",
+        "email": "jean.dupont@email.com"
+      },
+      "experienceProfessionnelle": [
+        {
+          "entreprise": "Société XYZ",
+          "poste": "Développeur Full Stack",
+          "dateDebut": "2018-01-01",
+          "dateFin": "2020-12-31",
+          "description": "Développement de applications web avec les technologies React, Node.js et MongoDB. Gestion de projet et supervision d'une équipe de développeurs."
+        },
+        {
+          "entreprise": "Entreprise ABC",
+          "poste": "Junior Développeur",
+          "dateDebut": "2016-09-01",
+          "dateFin": "2018-12-31",
+          "description": "Apprentissage des technologies web et développement d'applications côté client avec HTML, CSS et JavaScript."
+        }
+      ],
+      "education": [
+        {
+          "établissement": "École Polytechnique",
+          "diplôme": "Licence Informatique",
+          "dateFin": "2016-06-30"
+        }
+      ],
+      "competences": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Git",
+        "Scrum"
+      ]
+    }
+  },
+  {
+    "id": "05ea9869-1b82-4c44-a8b3-c2913bc7b0ec",
+    "timestamp": "2025-07-02T14:14:02.036Z",
+    "type": "chat_interaction",
+    "conversationId": "ea8a4b03-de4a-416d-9889-6d63c4636d7c",
+    "userMessage": "Bonjour, rédige-moi un texte de 4000 mots sur l'économie circulaire",
+    "aiResponse": "**L'économie circulaire : un nouveau paradigme pour une planète durable**\n\nL'économie circulaire, également appelée économie de la réduction des déchets ou économie de la durabilité, est un modèle économique qui vise à réduire la quantité de ressources naturelles utilisées et à minimiser les déchets en créant un cycle de production, consommation et recyclage efficace. Cette approche novatrice met l'accent sur la durabilité, la réduction des coûts et la création de valeur économique à long terme.\n\n**Les défis de l'économie linéaire**\n\nL'économie traditionnelle, souvent appelée économie linéaire, est basée sur un modèle de production et de consommation qui se caractérise par l'extraction de ressources naturelles, la transformation en biens et services, la consommation et finalement la production de déchets. Cet modèle a des conséquences graves sur l'environnement, tels que la pollution, la dégradation des sols, la perte de biodiversité et le réchauffement climatique.\n\nLes défis de l'économie linéaire sont nombreux :\n\n* Les ressources naturelles sont limitées et peuvent être épuisées rapidement.\n* Les déchets sont généralement jetés et ne sont pas recyclés, ce qui contribue à la pollution et à la dégradation de l'environnement.\n* Les coûts de production et de traitement des déchets sont élevés et peuvent avoir un impact négatif sur la santé et les finances des collectivités.\n* L'économie linéaire est souvent basée sur un modèle de consommation sans fin, ce qui contribue à la surconsommation et à la production de déchets.\n\n**Les principes de l'économie circulaire**\n\nL'économie circulaire se caractérise par sept principes clés :\n\n1. **Conserver les ressources** : il est essentiel de conserver les ressources naturelles pour les futures générations.\n2. **Réduire les déchets** : il est important de réduire la quantité de déchets produits et de les recycler.\n3. **Réutiliser les ressources** : les ressources doivent être réutilisées à plusieurs reprises pour minimiser l'impact environnemental.\n4. **Faire circuler les biens** : les biens doivent être conçus pour être réparés, réutilisés et recyclés.\n5. **Réparer et réutiliser** : les biens doivent être réparés et réutilisés plutôt que jetés.\n6. **Recyclage et valorisation** : les déchets doivent être recyclés et valorisés pour réduire la quantité de déchets finaux.\n7. **Développer des biens durables** : les biens doivent être conçus pour être durables et résistants pour réduire la fréquence de remplacement.\n\n**Les avantages de l'économie circulaire**\n\nL'économie circulaire présente de nombreux avantages, notamment :\n\n* Réduction des coûts : l'économie circulaire peut réduire les coûts de production et de traitement des déchets.\n* Conservation des ressources : l'économie circulaire permet de conserver les ressources naturelles pour les futures générations.\n* Réduction de la pollution : l'économie circulaire réduit la quantité de déchets et de pollution.\n* Création de valeur économique : l'économie circulaire peut créer de la valeur économique en réduisant les coûts et en créant de nouveaux emplois.\n* Amélioration de la durabilité : l'économie circulaire permet de réduire l'impact environnemental et de promouvoir la durabilité.\n\n**Les défis et les opportunités**\n\nL'économie circulaire présente des défis et des opportunités importantes :\n\n* Défis :\n\t+ Changement des comportements et des mentalités.\n\t+ Investissement dans de nouvelles technologies et infrastructures.\n\t+ Coopération entre les acteurs économiques et les acteurs publics.\n* Opportunités :\n\t+ Création de nouveaux emplois et de nouvelles opportunités économiques.\n\t+ Réduction des coûts et des risques pour les entreprises.\n\t+ Amélioration de la réputation et de la fiabilité des entreprises qui adoptent l'économie circulaire.\n\n**Les stratégies pour promouvoir l'économie circulaire**\n\nPour promouvoir l'économie circulaire, il est essentiel de mettre en place des stratégies clés, notamment :\n\n* Développement de politiques publiques favorables à l'économie circulaire.\n* Investissement dans de nouvelles technologies et infrastructures pour l'économie circulaire.\n* Promotion de la durabilité et de l'économie circulaire auprès des consommateurs et des entreprises.\n* Encouragement de la coopération entre les acteurs économiques et les acteurs publics.\n* Développement de nouveaux modèles économiques basés sur l'économie circulaire.\n\n**Conclusion**\n\nL'économie circulaire est un nouveau paradigme économique qui vise à réduire la quantité de ressources naturelles utilisées et à minimiser les déchets en créant un cycle de production, consommation et recyclage efficace. Cette approche novatrice présente de nombreux avantages, notamment la réduction des coûts, la conservation des ressources, la réduction de la pollution et la création de valeur économique. Cependant, l'économie circulaire présente également des défis et des opportunités importantes. Pour promouvoir l'économie circulaire, il est essentiel de mettre en place des stratégies clés et de développer des politiques publiques favorables à l'économie circulaire."
+  },
+  {
+    "id": "03dc800a-0cdd-46d6-aba2-3a091dbb51be",
+    "timestamp": "2025-07-02T14:14:45.508Z",
+    "type": "wallet_balance_fetch",
+    "balance": 1000
+  },
+  {
+    "id": "f615265d-17f1-45cd-bda4-c934a80971db",
+    "timestamp": "2025-07-02T14:15:27.903Z",
+    "type": "wallet_convert",
+    "amount": 200,
+    "targetCurrency": "points_fidelite",
+    "convertedAmount": 2
+  },
+  {
+    "id": "4a2d605e-7501-443d-9c1a-fb59969d1e24",
+    "timestamp": "2025-07-02T14:15:43.797Z",
+    "type": "wallet_balance_fetch",
+    "balance": 1000
   }
 ]

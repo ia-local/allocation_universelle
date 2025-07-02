@@ -1,0 +1,327 @@
+# swagger/swagger-components.yaml
+components:
+  schemas:
+    # Schéma de base pour les erreurs API
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Message d'erreur
+      required:
+        - error
+      example:
+        error: "Le prompt est requis."
+
+    # Schéma pour la réponse du prompt d'accueil
+    HomePromptResponse:
+      type: object
+      properties:
+        response:
+          type: string
+          description: La réponse générée par l'IA.
+      required:
+        - response
+      example:
+        response: "Bonjour ! Comment puis-je vous aider aujourd'hui ?"
+
+    # Schéma pour le solde du portefeuille
+    WalletBalance:
+      type: object
+      properties:
+        balance:
+          type: number
+          format: float
+          description: Le solde actuel en UTMi.
+        currency:
+          type: string
+          description: La devise (UTMi).
+        lastUpdated:
+          type: string
+          format: date-time
+          description: Horodatage de la dernière mise à jour.
+      required:
+        - balance
+        - currency
+      example:
+        balance: 1250.75
+        currency: "UTMi"
+        lastUpdated: "2025-07-02T15:30:00Z"
+
+    # Schéma pour une transaction de réclamation UTMi
+    WalletClaim:
+      type: object
+      properties:
+        message:
+          type: string
+        newBalance:
+          type: number
+          format: float
+      required:
+        - message
+        - newBalance
+      example:
+        message: "50 UTMi réclamés avec succès!"
+        newBalance: 1300.75
+
+    # Schéma pour une transaction de transfert UTMi
+    WalletTransfer:
+      type: object
+      properties:
+        recipient:
+          type: string
+          description: L'ID du destinataire du transfert.
+        amount:
+          type: number
+          format: float
+          description: Le montant transféré en UTMi.
+      required:
+        - recipient
+        - amount
+      example:
+        recipient: "user123"
+        amount: 100
+
+    WalletTransferResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        newBalance:
+          type: number
+          format: float
+      required:
+        - message
+        - newBalance
+      example:
+        message: "Transfert de 100 UTMi à user123 réussi (simulé)!"
+        newBalance: 1150.75
+
+    # Schéma pour une conversion UTMi
+    WalletConvert:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: float
+          description: Le montant en UTMi à convertir.
+        targetCurrency:
+          type: string
+          description: La devise cible (USD, EUR, JPY).
+      required:
+        - amount
+        - targetCurrency
+      example:
+        amount: 200
+        targetCurrency: "USD"
+
+    WalletConvertResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        convertedAmount:
+          type: number
+          format: float
+      required:
+        - message
+        - convertedAmount
+      example:
+        message: "200 UTMi convertis en 2.00 USD (simulé)!"
+        convertedAmount: 2.00
+
+    # Schéma pour les données de CV
+    CVData:
+      type: object
+      properties:
+        informationsPersonnelles:
+          type: object
+          properties:
+            nom: { type: string }
+            prenom: { type: string }
+            email: { type: string, format: email }
+            telephone: { type: string }
+        experienceProfessionnelle:
+          type: array
+          items:
+            type: object
+            properties:
+              titre: { type: string }
+              entreprise: { type: string }
+              dates: { type: string }
+              description: { type: string }
+        education:
+          type: array
+          items:
+            type: object
+            properties:
+              diplome: { type: string }
+              etablissement: { type: string }
+              dates: { type: string }
+        competences:
+          type: array
+          items: { type: string }
+      example:
+        informationsPersonnelles:
+          nom: "Doe"
+          prenom: "John"
+          email: "john.doe@example.com"
+          telephone: "+33600000000"
+        experienceProfessionnelle:
+          - titre: "Développeur Senior"
+            entreprise: "Tech Solutions"
+            dates: "2020 - Présent"
+            description: "Développement d'applications web full-stack."
+        education:
+          - diplome: "Master Informatique"
+            etablissement: "Université Paris Saclay"
+            dates: "2018 - 2020"
+        competences:
+          - "JavaScript"
+          - "Node.js"
+          - "React"
+          - "Docker"
+
+    # Schéma pour l'upload de CV
+    CVUploadResponse:
+      type: object
+      properties:
+        fileName: { type: string }
+        fileSize: { type: number }
+        message: { type: string }
+        contentPreview: { type: string }
+      required:
+        - fileName
+        - fileSize
+        - message
+
+    # Schéma pour une conversation individuelle (chat)
+    ChatMessage:
+      type: object
+      properties:
+        role:
+          type: string
+          enum: [user, assistant, system]
+        content:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+      required:
+        - role
+        - content
+        - timestamp
+
+    Conversation:
+      type: object
+      properties:
+        id: { type: string }
+        title: { type: string }
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+      required:
+        - id
+        - title
+        - messages
+        - createdAt
+
+    # Schéma pour la liste des conversations paginée
+    ConversationsList:
+      type: object
+      properties:
+        conversations:
+          type: array
+          items:
+            type: object
+            properties:
+              _id: { type: string }
+              title: { type: string }
+              updatedAt: { type: string, format: date-time }
+        currentPage: { type: integer }
+        totalPages: { type: integer }
+        totalConversations: { type: integer }
+      required:
+        - conversations
+        - currentPage
+        - totalPages
+        - totalConversations
+
+    # Schéma pour les données du tableau de bord
+    DashboardInsights:
+      type: object
+      properties:
+        totalInteractions: { type: integer }
+        chatInteractions: { type: integer }
+        cvGenerations: { type: integer }
+        uniqueConversations: { type: integer }
+        aiSummary: { type: string }
+      required:
+        - totalInteractions
+        - chatInteractions
+        - cvGenerations
+        - uniqueConversations
+        - aiSummary
+      example:
+        totalInteractions: 150
+        chatInteractions: 75
+        cvGenerations: 25
+        uniqueConversations: 10
+        aiSummary: "L'activité de la plateforme est dominée par les interactions de chat, montrant un engagement utilisateur significatif..."
+
+    # Schéma pour un log individuel
+    LogEntry:
+      type: object
+      properties:
+        id: { type: string }
+        timestamp: { type: string, format: date-time }
+        type: { type: string, description: "Type d'interaction (e.g., home_interaction, chat_interaction, cv_generation, wallet_claim)" }
+        prompt: { type: string, nullable: true }
+        response: { type: string, nullable: true }
+        conversationId: { type: string, nullable: true }
+        userMessage: { type: string, nullable: true }
+        aiResponse: { type: string, nullable: true }
+        fileName: { type: string, nullable: true }
+        uploadedCvData: { type: object, nullable: true }
+        balance: { type: number, nullable: true, format: float }
+        amount: { type: number, nullable: true, format: float }
+        recipient: { type: string, nullable: true }
+        targetCurrency: { type: string, nullable: true }
+        convertedAmount: { type: number, nullable: true, format: float }
+      required:
+        - id
+        - timestamp
+        - type
+      example:
+        id: "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+        timestamp: "2025-07-02T15:30:00.000Z"
+        type: "home_interaction"
+        prompt: "Qu'est-ce que l'allocation universelle?"
+        response: "L'allocation universelle est..."
+
+    # Schéma pour la configuration Groq
+    GroqConfig:
+      type: object
+      properties:
+        apiKey: { type: string, description: "Clé API (masquée)", example: "sk_***********" }
+        model: { type: string, description: "Modèle IA actuel", example: "llama3-8b-8192" }
+        temperature: { type: number, format: float, description: "Température de l'IA (créativité)", example: 0.7 }
+        maxTokens: { type: integer, description: "Nombre maximal de tokens générés", example: 2048 }
+      required:
+        - apiKey
+        - model
+        - temperature
+        - maxTokens
+
+    # Schéma pour un modèle IA disponible
+    AIModel:
+      type: object
+      properties:
+        id: { type: string, description: "ID technique du modèle", example: "llama3-8b-8192" }
+        name: { type: string, description: "Nom lisible du modèle", example: "Llama 3 8B (8K context)" }
+      required:
+        - id
+        - name

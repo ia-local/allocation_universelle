@@ -1,156 +1,129 @@
-// server_modules/utils/swagger_config.js
-const swaggerJSDoc = require('swagger-jsdoc');
+// server_modules/utils/swagger_options.js
+const path = require('path');
 
-const swaggerConfig = {
+const swaggerOptions = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'API UTMi (Universal Timestamp Monetization Index)', // <-- Le titre corrigé ici !
-            version: '1.0.1',
-            description: 'Documentation de l\'API pour l\'application CV Numérique Universel et la monétisation des compétences via les UTMi, le RUM et la Trésorerie.',
+            title: 'API CVNU - Plateforme UTMi', // Nom corrigé comme discuté
+            version: '1.0.1', // Version que vous avez spécifiée
+            description: 'Documentation de l\'API pour la plateforme CV Numérique Universel. Elle inclut la monétisation des compétences via les **UTMi (Universal Timestamp Monetization Index)**, qui sont des unités de mesure des scores d\'activité IA monétisable. L\'API couvre également le RUM (Revenue Unit Monetization) et la gestion de la Trésorerie.',
+            contact: {
+                name: 'Équipe CVNU',
+                email: 'contact@cvnu.com',
+            },
         },
         servers: [
             {
-                url: 'http://localhost:3000',
+                url: 'http://localhost:3000', // Assurez-vous que c'est le bon port
                 description: 'Serveur de développement local',
             },
+            // Ajoutez d'autres serveurs (production, staging) si nécessaire
         ],
-        // Schémas génériques définis ici. Les schémas spécifiques aux routes peuvent rester dans leurs fichiers YAML dédiés.
         components: {
+            // Les schémas de données réutilisables sont définis dans swagger-components.yaml
+            // et référencés ici via $ref.
             securitySchemes: {
-                bearerAuth: {
+                bearerAuth: { // Exemple d'authentification Bearer (JWT)
                     type: 'http',
                     scheme: 'bearer',
                     bearerFormat: 'JWT',
                 },
-            },
-            schemas: {
-                Error: {
-                    type: 'object',
-                    properties: {
-                        status: {
-                            type: 'string',
-                            example: 'error',
-                        },
-                        message: {
-                            type: 'string',
-                            example: 'Description de l\'erreur.',
-                        },
-                    },
-                },
-                ConversationMessage: {
-                    type: 'object',
-                    properties: {
-                        role: {
-                            type: 'string',
-                            enum: ['user', 'assistant'],
-                            description: 'Rôle de l\'expéditeur du message.',
-                        },
-                        content: {
-                            type: 'string',
-                            description: 'Contenu textuel du message.',
-                        },
-                        timestamp: {
-                            type: 'string',
-                            format: 'date-time',
-                            description: 'Horodatage de l\'envoi du message.',
-                        },
-                        utmiEarned: {
-                            type: 'number',
-                            format: 'float',
-                            description: 'UTMi gagnés pour cette interaction (le cas échéant).',
-                            nullable: true,
-                        },
-                        piPointsEarned: {
-                            type: 'number',
-                            format: 'float',
-                            description: 'Points d\'Influence (PI) gagnés pour cette interaction (le cas échéant).',
-                            nullable: true,
-                        },
-                    },
-                },
-                Conversation: {
-                    type: 'object',
-                    properties: {
-                        id: {
-                            type: 'string',
-                            description: 'Identifiant unique de la conversation.',
-                            example: 'conv_123abc',
-                        },
-                        title: {
-                            type: 'string',
-                            description: 'Titre de la conversation.',
-                            example: 'Génération de code pour l\'UI',
-                        },
-                        messages: {
-                            type: 'array',
-                            items: {
-                                $ref: '#/components/schemas/ConversationMessage',
-                            },
-                            description: 'Liste des messages de la conversation.',
-                        },
-                        createdAt: {
-                            type: 'string',
-                            format: 'date-time',
-                            description: 'Date de création de la conversation.',
-                        },
-                        updatedAt: {
-                            type: 'string',
-                            format: 'date-time',
-                            description: 'Dernière date de mise à jour de la conversation.',
-                        },
-                    },
+                ApiKeyAuth: { // Exemple d'authentification par clé API dans l'en-tête
+                    type: 'apiKey',
+                    in: 'header',
+                    name: 'X-API-Key',
                 },
             },
+            // Les 'responses' réutilisables peuvent être définies ici ou dans un YAML dédié.
             responses: {
                 InternalServerError: {
-                    description: 'Erreur serveur interne.',
+                    description: 'Erreur interne du serveur.',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Error', // Référence au schéma Error dans swagger-components.yaml
+                            },
+                        },
+                    },
+                },
+                NotFound: {
+                    description: 'Ressource non trouvée.',
                     content: {
                         'application/json': {
                             schema: {
                                 $ref: '#/components/schemas/Error',
                             },
+                            example: {
+                                status: 'error',
+                                message: 'La ressource demandée n\'a pas été trouvée.',
+                            },
+                        },
+                    },
+                },
+                Unauthorized: {
+                    description: 'Non autorisé - Authentification requise.',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Error',
+                            },
+                            example: {
+                                status: 'error',
+                                message: 'Accès non autorisé. Veuillez vous connecter.',
+                            },
+                        },
+                    },
+                },
+                BadRequest: {
+                    description: 'Requête invalide.',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                $ref: '#/components/schemas/Error',
+                            },
+                            example: {
+                                status: 'error',
+                                message: 'Paramètres de requête invalides.',
+                            },
                         },
                     },
                 },
             },
         },
-        // Assure-toi que cette section est également correcte si tu l'as dans main.yaml
-        // ou si tu préfères la centraliser ici.
+        // Tags pour organiser les opérations dans l'UI Swagger
         tags: [
-            { name: 'User', description: 'Opérations liées aux utilisateurs.' },
-            { name: 'UTMI', description: 'Opérations liées aux UTMi (Universal Timestamp Monetization Index).' },
-            { name: 'Wallet', description: 'Opérations de gestion du portefeuille UTMi.' },
-            { name: 'Webhooks', description: 'Gestion des webhooks entrants (GitHub, Stripe, etc.).' },
-            { name: 'Conversation', description: 'Gestion des conversations et interactions IA.' },
-            { name: 'CV', description: 'Gestion du CV Numérique Universel.' },
-            { name: 'Dashboard', description: 'Visualisation des données du tableau de bord.' },
-            { name: 'Home', description: 'Routes de la page d\'accueil.' }
+            { name: 'Home', description: 'Routes et fonctionnalités de la page d\'accueil (interactions IA directes).' },
+            { name: 'Dashboard', description: 'Visualisation des données agrégées et statistiques de la plateforme.' },
+            { name: 'Chat', description: 'Gestion des conversations de chat avec l\'IA.' },
+            { name: 'CV', description: 'Opérations liées à la génération, l\'upload et la gestion du CV Numérique Universel.' },
+            { name: 'Wallet', description: 'Gestion du portefeuille UTMi (solde, réclamation, transfert, conversion).' },
+            { name: 'UTMi', description: 'Opérations et calculs spécifiques aux Unités de Mesure du Score IA (UTMi).' },
+            { name: 'Logs', description: 'Accès aux journaux d\'activité de l\'API.' },
+            { name: 'User', description: 'Opérations d\'authentification et de gestion des utilisateurs.' },
+            { name: 'Webhooks', description: 'Gestion des notifications automatiques et intégrations externes.' },
+            { name: 'Config', description: 'Gestion de la configuration du serveur (ex: modèles IA).' }
         ],
     },
-    // La clé de la solution : `apis` doit inclure TOUS tes fichiers de documentation !
+    // La clé de la solution : `apis` doit inclure TOUS vos fichiers de documentation !
+    // Utilisez path.join pour des chemins robustes quel que soit l'OS.
     apis: [
-        './swagger/main.yaml',      // Inclus explicitement le fichier main.yaml
-        './swagger/user.yaml',      // Fichiers YAML spécifiques aux modules
-        './swagger/utmi.yaml',
-        './swagger/wallet.yaml',
-        './swagger/webhooks.yaml',
-        './server_modules/routes/*.js', // Scan toutes les annotations JSDoc dans tes routes
-        // Si certains de tes fichiers de routes ne sont pas dans le dossier racine de 'routes'
-        // ou si tu veux être plus spécifique, tu peux les lister individuellement :
-        // './server_modules/routes/auth_routes.js',
-        // './server_modules/routes/chat_routes.js',
-        // './server_modules/routes/conversation_routes.js',
-        // './server_modules/routes/cv_routes.js',
-        // './server_modules/routes/dashboard_routes.js',
-        // './server_modules/routes/home_routes.js',
-        // './server_modules/routes/user_routes.js',
-        // './server_modules/routes/utmi_routes.js',
-        // './server_modules/routes/wallet_routes.js',
-        // './server_modules/routes/webhook_routes.js',
+        // Fichiers de définitions de schémas (components)
+        path.join(__dirname, '..', '..', 'swagger', 'swagger-components.yaml'),
+
+        // Fichiers de définitions de chemins (paths) pour chaque module
+        path.join(__dirname, '..', '..', 'swagger', 'home.yaml'),
+        path.join(__dirname, '..', '..', 'swagger', 'dashboard.yaml'),
+        path.join(__dirname, '..', '..', 'swagger', 'conversations.yaml'), // Correspond à chat_routes/conversation_routes
+        path.join(__dirname, '..', '..', 'swagger', 'cv.yaml'),
+        path.join(__dirname, '..', '..', 'swagger', 'wallet.yaml'),
+        path.join(__dirname, '..', '..', 'swagger', 'utmi.yaml'),
+        path.join(__dirname, '..', '..', 'swagger', 'logs.yaml'),
+        path.join(__dirname, '..', '..', 'swagger', 'user.yaml'),
+        path.join(__dirname, '..', '..', 'swagger', 'webhooks.yaml'),
+        // Si vous aviez un main.yaml qui agrégeait des chemins, vous pourriez l'inclure.
+        // Mais si chaque service a son propre fichier YAML comme ici, un main.yaml pour les paths n'est pas nécessaire.
     ],
 };
 
-const swaggerSpec = swaggerJSDoc(swaggerConfig);
-
-module.exports = swaggerSpec;
+module.exports = swaggerOptions;

@@ -1,0 +1,114 @@
+# swagger/conversations.yaml
+paths:
+  /api/conversations:
+    get:
+      summary: Récupère la liste paginée des conversations de chat.
+      parameters:
+        - name: page
+          in: query
+          description: Numéro de la page des conversations à récupérer.
+          schema:
+            type: integer
+            default: 1
+            minimum: 1
+        - name: limit
+          in: query
+          description: Nombre de conversations par page.
+          schema:
+            type: integer
+            default: 5
+            minimum: 1
+      responses:
+        '200':
+          description: Liste des conversations récupérée avec succès.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationsList'
+        '500':
+          description: Erreur interne du serveur.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Crée une nouvelle conversation de chat ou ajoute un message à une conversation existante.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                conversationId:
+                  type: string
+                  nullable: true
+                  description: L'ID de la conversation existante à laquelle ajouter le message. Si omis, une nouvelle conversation est créée.
+                message:
+                  type: string
+                  description: Le contenu du message de l'utilisateur.
+              required:
+                - message
+            example:
+              message: "Bonjour, j'aimerais en savoir plus sur l'allocation universelle."
+      responses:
+        '200':
+          description: Message envoyé et réponse IA reçue.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  conversationId: { type: string }
+                  conversation:
+                    $ref: '#/components/schemas/Conversation'
+                  aiResponse: { type: string }
+        '400':
+          description: Message manquant.
+          content:
+            application:
+              json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+        '500':
+          description: Erreur interne du serveur lors du chat.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/conversations/{id}:
+    get:
+      summary: Récupère une conversation spécifique par son ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: L'ID unique de la conversation à récupérer.
+          schema:
+            type: string
+            example: "b1c2d3e4-f5a6-7890-1234-567890abcdef"
+      responses:
+        '200':
+          description: Conversation trouvée et retournée.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  conversation:
+                    $ref: '#/components/schemas/Conversation'
+        '404':
+          description: Conversation non trouvée.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "Conversation non trouvée."
+        '500':
+          description: Erreur interne du serveur.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

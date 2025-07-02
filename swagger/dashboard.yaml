@@ -1,0 +1,19 @@
+# swagger/dashboard.yaml
+paths:
+  /api/dashboard:
+    get:
+      summary: Récupère les statistiques et insights du tableau de bord.
+      description: Fournit des métriques clés et un résumé généré par l'IA sur l'activité de la plateforme.
+      responses:
+        '200':
+          description: Données du tableau de bord récupérées avec succès.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardInsights'
+        '500':
+          description: Erreur interne du serveur lors de la récupération des insights.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

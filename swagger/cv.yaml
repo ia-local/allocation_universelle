@@ -1,0 +1,105 @@
+# swagger/cv.yaml
+paths:
+  /api/cv:
+    get:
+      summary: Récupère des informations sur le CV actuel (si existant).
+      description: >
+        Retourne des informations sur le CV actuellement stocké ou un message si aucun CV n'est trouvé.
+        Note: Dans la version actuelle de srv.js, ceci est simulé et indique qu'aucun CV n'est trouvé par défaut.
+      responses:
+        '200':
+          description: Informations sur le CV récupérées.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: { type: string }
+                  cvData:
+                    type: object
+                    nullable: true
+              example:
+                message: "Pas de CV trouvé. Veuillez en générer un ou en uploader un."
+                cvData: {}
+        '500':
+          description: Erreur interne du serveur.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/cv/generate:
+    post:
+      summary: Génère un CV structuré en JSON via l'IA.
+      description: Utilise l'IA pour créer un CV complet au format JSON basé sur un prompt détaillé fourni par l'utilisateur.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prompt:
+                  type: string
+                  description: Le prompt détaillé pour la génération du CV ("Crée un CV pour un développeur web avec 5 ans d'expérience en React et Node.js...").
+              required:
+                - prompt
+            example:
+              prompt: "Génère un CV pour un ingénieur DevOps junior, avec des compétences en Docker, Kubernetes et CI/CD."
+      responses:
+        '200':
+          description: CV généré avec succès au format JSON.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cvData:
+                    $ref: '#/components/schemas/CVData'
+        '400':
+          description: Prompt manquant.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Erreur interne du serveur lors de la génération du CV par l'IA.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/cv/upload:
+    post:
+      summary: Upload un fichier CV (simulé).
+      description: Permet l'upload d'un fichier CV. Actuellement, le traitement est simulé et le fichier est supprimé après le traitement.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                cvFile:
+                  type: string
+                  format: binary
+                  description: Le fichier CV à uploader (par exemple, un PDF, DOCX, TXT).
+      responses:
+        '200':
+          description: Fichier CV uploadé et traité avec succès (simulé).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CVUploadResponse'
+        '400':
+          description: Aucun fichier n'a été uploadé.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Erreur interne du serveur lors de l'upload du CV.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'

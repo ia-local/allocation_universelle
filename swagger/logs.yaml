@@ -1,0 +1,21 @@
+# swagger/logs.yaml
+paths:
+  /api/logs:
+    get:
+      summary: Récupère tous les logs d'interaction de la plateforme.
+      description: Retourne une liste de toutes les interactions enregistrées sur la plateforme (AI, chat, CV, portefeuille).
+      responses:
+        '200':
+          description: Logs récupérés avec succès.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LogEntry'
+        '500':
+          description: Erreur interne du serveur lors de la récupération des logs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
