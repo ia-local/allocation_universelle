@@ -1,278 +1,272 @@
 // public/js/chat_ui.js
-// Ce module gère la logique spécifique à la page de chat.
-
-// Importation des modules nécessaires depuis app.js
-import {
-    API_BASE_URL,
-    showStatusMessage,
-    setCurrentConversation,
-    getCurrentChatPage,
-    setChatPage,
-    CHAT_CONVERSATIONS_PER_PAGE,
+import { 
+    API_BASE_URL, 
+    showStatusMessage, 
+    setCurrentConversation, 
+    getCurrentConversationId, 
     setConversations,
-    renderChatConversationList,
-    initPaginationControls // <--- Correction ici : Ajout de l'import manquant
+    setChatPage,
+    getCurrentChatPage,
+    CHAT_CONVERSATIONS_PER_PAGE,
+    initPaginationControls,
+    renderChatConversationList // Cette fonction est importée depuis app.js
 } from './app.js';
 
-let conversationListElement;
+// --- Éléments DOM du Chat (déclarés au niveau du module) ---
 let chatMessagesDisplay;
-let chatInput;
+let chatPromptInput;
 let sendChatMessageBtn;
+let conversationListElement; // Cet élément est également géré dans app.js pour le rendu global
 let startNewConversationBtn;
 let chatPaginationContainer;
-let currentChatContext = { conversationId: null };
+// Pas besoin de currentChatConversationId ici, il est géré dans app.js
 
-/**
- * @function setChatContext
- * @description Met à jour le contexte du chat (ID de conversation).
- * @param {object} context - Objet avec les propriétés de contexte (ex: { conversationId: '...' }).
- */
-export function setChatContext(context) {
-    if (context.conversationId !== undefined) {
-        currentChatContext.conversationId = context.conversationId;
-        console.log(`[chat_ui] Contexte de conversation mis à jour: ${currentChatContext.conversationId}`);
-    }
-}
-
-/**
- * @function initializeChatUI
- * @description Initialise les éléments DOM et les écouteurs pour la page de chat.
- * Appelé par app.js quand la page 'chat' est affichée.
- */
+// --- Fonctions d'Initialisation ---
 export function initializeChatUI() {
-    console.log('[chat_ui] Initialisation de l\'UI du chat.');
-    conversationListElement = document.getElementById('conversation-list');
+    console.log('[chat_ui] Initialisation de l\'UI du Chat.');
+
+    // Récupération des éléments DOM
     chatMessagesDisplay = document.getElementById('chat-messages-display');
-    chatInput = document.getElementById('chat-input');
+    chatPromptInput = document.getElementById('chat-prompt-input');
     sendChatMessageBtn = document.getElementById('send-chat-message-btn');
+    conversationListElement = document.getElementById('conversation-list'); // Assurez-vous que cet ID est dans index.html
     startNewConversationBtn = document.getElementById('start-new-conversation-btn');
     chatPaginationContainer = document.getElementById('chat-pagination-container');
 
-    if (conversationListElement && chatMessagesDisplay && chatInput && sendChatMessageBtn && startNewConversationBtn) {
-        // Supprime les écouteurs existants pour éviter les doublons
-        sendChatMessageBtn.removeEventListener('click', sendMessage);
-        startNewConversationBtn.removeEventListener('click', startNewConversation);
-        chatInput.removeEventListener('keypress', handleKeyPress);
+    // Logs pour vérifier si les éléments sont trouvés
+    console.log('[chat_ui] chatMessagesDisplay:', chatMessagesDisplay);
+    console.log('[chat_ui] chatPromptInput:', chatPromptInput);
+    console.log('[chat_ui] sendChatMessageBtn:', sendChatMessageBtn);
+    console.log('[chat_ui] conversationListElement (pour chat_ui):', conversationListElement);
+    console.log('[chat_ui] startNewConversationBtn:', startNewConversationBtn);
+    console.log('[chat_ui] chatPaginationContainer:', chatPaginationContainer);
 
-        // Ajoute les nouveaux écouteurs
-        sendChatMessageBtn.addEventListener('click', sendMessage);
-        startNewConversationBtn.addEventListener('click', startNewConversation);
-        chatInput.addEventListener('keypress', handleKeyPress);
-        console.log('[chat_ui] Écouteurs d\'événements du chat ajoutés.');
-    } else {
-        console.error('[chat_ui] Un ou plusieurs éléments DOM nécessaires pour le chat sont manquants. Vérifiez index.html.');
-    }
-
-    // Réinitialise l'affichage au chargement de la page chat
+    // Initialiser l'affichage
     if (chatMessagesDisplay) {
-        chatMessagesDisplay.innerHTML = '';
+        chatMessagesDisplay.innerHTML = '<p>Envoyez un message pour commencer ou sélectionnez une conversation.</p>';
     }
-    if (chatInput) {
-        chatInput.value = '';
+    if (chatPromptInput) {
+        chatPromptInput.value = '';
     }
-    currentChatContext.conversationId = null; // Réinitialise l'ID de conversation à l'initialisation de l'UI
-    setCurrentConversation(null); // Met à jour l'état global via app.js
+
+    // Attachement des écouteurs d'événements
+    if (sendChatMessageBtn) {
+        sendChatMessageBtn.removeEventListener('click', handleSendMessage);
+        sendChatMessageBtn.addEventListener('click', handleSendMessage);
+        console.log('[chat_ui] Écouteur d\'événements pour le bouton d\'envoi de message ajouté.');
+    } else {
+        console.warn('[chat_ui] Bouton d\'envoi de message non trouvé (send-chat-message-btn).');
+    }
+
+    if (chatPromptInput) {
+        chatPromptInput.removeEventListener('keypress', handlePromptKeyPress);
+        chatPromptInput.addEventListener('keypress', handlePromptKeyPress);
+        console.log('[chat_ui] Écouteur d\'événements de touche pour le prompt du chat ajouté.');
+    } else {
+        console.warn('[chat_ui] Champ de prompt du chat non trouvé (chat-prompt-input).');
+    }
+
+    if (startNewConversationBtn) {
+        startNewConversationBtn.removeEventListener('click', startNewConversation);
+        startNewConversationBtn.addEventListener('click', startNewConversation);
+        console.log('[chat_ui] Écouteur d\'événements pour le bouton "Nouvelle Conversation" ajouté.');
+    } else {
+        console.warn('[chat_ui] Bouton "Nouvelle Conversation" non trouvé (start-new-conversation-btn).');
+    }
 }
 
-/**
- * @function handleKeyPress
- * @description Permet d'envoyer un message avec la touche Entrée.
- * @param {KeyboardEvent} e - L'événement clavier.
- */
-function handleKeyPress(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage();
+// Gère l'envoi du prompt avec la touche "Entrée"
+function handlePromptKeyPress(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault(); // Empêche le saut de ligne
+        handleSendMessage();
     }
 }
 
-/**
- * @function fetchConversations
- * @description Charge la liste des conversations depuis le serveur.
- */
-export async function fetchConversations() {
-    console.log('[chat_ui] Chargement des conversations...');
+// --- Fonctions d'API ---
+
+export async function fetchConversations(page = 1) {
+    console.log(`[chat_ui] Récupération des conversations pour la page ${page}...`);
     showStatusMessage('Chargement des conversations...', 'info');
     try {
-        const page = getCurrentChatPage();
-        const limit = CHAT_CONVERSATIONS_PER_PAGE;
-        const response = await fetch(`${API_BASE_URL}/api/conversations?page=${page}&limit=${limit}`);
+        const response = await fetch(`${API_BASE_URL}/api/conversations?page=${page}&limit=${CHAT_CONVERSATIONS_PER_PAGE}`);
         if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`HTTP error! status: ${response.status} - ${errorText || response.statusText}`);
+            const errorData = await response.json().catch(() => response.text());
+            throw new Error(`HTTP error! status: ${response.status} - ${JSON.stringify(errorData)}`);
         }
         const data = await response.json();
         console.log('[chat_ui] Conversations reçues:', data);
 
-        if (data && data.conversations && Array.isArray(data.conversations)) {
-            setConversations(data.conversations, data.totalPages); // Met à jour l'état global des conversations dans pagination.js
-            renderChatConversationList(data.conversations, loadConversation); // Rend la liste des conversations
-            // Correction : initPaginationControls est maintenant importé
-            initPaginationControls(data.totalPages, getCurrentChatPage(), (newPage) => {
-                setChatPage(newPage);
-                fetchConversations();
-            });
-            showStatusMessage('Conversations chargées.', 'success');
-        } else {
-            if (conversationListElement) {
-                conversationListElement.innerHTML = '<p>Aucune conversation trouvée.</p>';
-            }
-            showStatusMessage('Aucune conversation trouvée.', 'info');
+        // Mettre à jour l'état global et rendre la liste
+        setConversations(data.conversations, data.totalPages);
+        setChatPage(data.currentPage);
+        
+        // Appel à la fonction de rendu qui est dans app.js et qui gère le DOM
+        renderChatConversationList(data.conversations, loadConversation); 
+
+        // Initialiser la pagination
+        initPaginationControls(data.totalPages, data.currentPage, fetchConversations);
+
+        showStatusMessage('Conversations chargées avec succès !', 'success');
+
+        // Si une conversation est déjà active (ex: après un rechargement), la recharger
+        if (getCurrentConversationId()) {
+            loadConversation(getCurrentConversationId());
+        } else if (data.conversations.length > 0) {
+            // Sinon, charger la première conversation si elle existe
+            loadConversation(data.conversations[0]._id);
         }
+
     } catch (error) {
-    console.error('[chat_ui] Erreur lors du chargement des conversations:', error);
-    // Vérifier si l'erreur est due à une absence de conversation (par exemple, 404)
-    if (error.message.includes('404')) {
-        showStatusMessage('Aucune conversation trouvée sur le serveur. Démarrez une nouvelle conversation !', 'info');
-        if (conversationListElement) {
-            conversationListElement.innerHTML = '<p>Aucune conversation. Démarrez-en une nouvelle !</p>';
+        console.error('[chat_ui] Erreur lors de la récupération des conversations:', error);
+        if (conversationListElement) { // Utilise conversationListElement défini dans chat_ui
+            conversationListElement.innerHTML = `<p>Erreur: ${error.message}</p>`;
         }
-    } else {
         showStatusMessage(`Erreur lors du chargement des conversations: ${error.message}`, 'error');
     }
 }
-}
 
-/**
- * @function loadConversation
- * @description Charge les messages d'une conversation spécifique.
- * @param {string} conversationId - L'ID de la conversation à charger.
- */
 export async function loadConversation(conversationId) {
     console.log(`[chat_ui] Chargement de la conversation: ${conversationId}`);
     showStatusMessage('Chargement de la conversation...', 'info');
-    if (chatMessagesDisplay) {
-        chatMessagesDisplay.innerHTML = '<p>Chargement des messages...</p>';
-    }
-    setCurrentConversation(conversationId); // Met à jour l'état global et propage l'ID
+    setCurrentConversation(conversationId); // Met à jour l'ID de la conversation active
 
     try {
         const response = await fetch(`${API_BASE_URL}/api/conversations/${conversationId}`);
         if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`HTTP error! status: ${response.status} - ${errorText || response.statusText}`);
+            const errorData = await response.json().catch(() => response.text());
+            throw new Error(`HTTP error! status: ${response.status} - ${JSON.stringify(errorData)}`);
         }
-        const conversation = await response.json();
-        console.log('[chat_ui] Conversation chargée:', conversation);
-
-        if (conversation && conversation.messages && Array.isArray(conversation.messages)) {
-            if (chatMessagesDisplay) {
-                chatMessagesDisplay.innerHTML = ''; // Vide l'affichage
-                conversation.messages.forEach(msg => {
-                    const msgElement = document.createElement('div');
-                    msgElement.classList.add('chat-message', msg.role);
-                    msgElement.innerHTML = `<strong>${msg.role === 'user' ? 'Vous' : 'IA'}:</strong> ${msg.content}`;
-                    chatMessagesDisplay.appendChild(msgElement);
-                });
-                chatMessagesDisplay.scrollTop = chatMessagesDisplay.scrollHeight; // Scroll vers le bas
-            }
-            showStatusMessage('Conversation chargée.', 'success');
-        } else {
-            if (chatMessagesDisplay) {
-                chatMessagesDisplay.innerHTML = '<p>Aucun message dans cette conversation.</p>';
-            }
-            showStatusMessage('Conversation vide.', 'info');
-        }
+        const data = await response.json();
+        console.log('[chat_ui] Conversation chargée:', data);
+        
+        // CORRECTION MAJEURE ICI : Il s'agit d'un APPEL de fonction, pas une déclaration/exportation.
+        renderChatMessages(data.conversation.messages || []); // Appel correct de la fonction
+        
+        showStatusMessage('Conversation chargée !', 'success');
     } catch (error) {
-        console.error('[chat_ui] Erreur lors du chargement de la conversation:', error);
+        console.error(`[chat_ui] Erreur lors du chargement de la conversation ${conversationId}:`, error);
+        if (chatMessagesDisplay) {
+            chatMessagesDisplay.innerHTML = `<p>Erreur lors du chargement: ${error.message}</p>`;
+        }
         showStatusMessage(`Erreur lors du chargement de la conversation: ${error.message}`, 'error');
     }
 }
 
-/**
- * @function sendMessage
- * @description Gère l'envoi d'un nouveau message dans la conversation actuelle.
- */
-export async function sendMessage() {
-    const messageContent = chatInput.value.trim();
-    if (messageContent === '') {
-        showStatusMessage('Veuillez taper un message.', 'info');
+export async function startNewConversation() {
+    console.log('[chat_ui] Démarrage d\'une nouvelle conversation.');
+    showStatusMessage('Démarrage d\'une nouvelle conversation...', 'info');
+    setCurrentConversation(null); // Réinitialise la conversation active
+
+    if (chatMessagesDisplay) {
+        chatMessagesDisplay.innerHTML = '<p>Nouvelle conversation. Envoyez votre premier message !</p>';
+    }
+    if (chatPromptInput) {
+        chatPromptInput.value = '';
+        chatPromptInput.focus();
+    }
+    // Nettoyer la surbrillance de la liste
+    if (conversationListElement) {
+        document.querySelectorAll('.conversation-item').forEach(item => item.classList.remove('active'));
+    }
+
+    // Pas besoin d'appeler l'API ici, le premier message en créera une.
+    showStatusMessage('Nouvelle conversation prête !', 'success');
+}
+
+
+export async function handleSendMessage() {
+    console.log('[chat_ui] handleSendMessage appelé.');
+    if (!chatPromptInput) {
+        console.error('[chat_ui] chatPromptInput est null/undefined. Impossible d\'envoyer le message.');
+        showStatusMessage('Erreur interne: Champ de message du chat non initialisé.', 'error');
         return;
     }
 
-    const currentConvId = currentChatContext.conversationId;
-    console.log(`[chat_ui] Envoi du message dans conversation ${currentConvId || 'nouvelle'}: ${messageContent}`);
+    const messageContent = chatPromptInput.value.trim();
+    if (!messageContent) {
+        showStatusMessage('Veuillez entrer un message.', 'warning');
+        return;
+    }
+
+    chatPromptInput.value = ''; // Efface le champ de saisie
     showStatusMessage('Envoi du message...', 'info');
 
-    // Afficher le message de l'utilisateur immédiatement
-    const userMsgElement = document.createElement('div');
-    userMsgElement.classList.add('chat-message', 'user');
-    userMsgElement.innerHTML = `<strong>Vous:</strong> ${messageContent}`;
-    if (chatMessagesDisplay) {
-        chatMessagesDisplay.appendChild(userMsgElement);
-        chatMessagesDisplay.scrollTop = chatMessagesDisplay.scrollHeight;
-    }
-    if (chatInput) {
-        chatInput.value = ''; // Efface l'input
-    }
+    // Affiche le message de l'utilisateur immédiatement
+    addMessageToDisplay('user', messageContent);
+
+    const conversationId = getCurrentConversationId();
+    console.log(`[chat_ui] Envoi du message pour la conversation ${conversationId || 'nouvelle'} :`, messageContent);
 
     try {
-        const endpoint = currentConvId ? `/api/conversations/${currentConvId}/messages` : `/api/conversations`;
-        const method = 'POST';
-        const body = currentConvId ? { content: messageContent } : { initialMessage: messageContent };
-
-        const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-            method: method,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(body)
+        const response = await fetch(`${API_BASE_URL}/api/conversations`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+                conversationId: conversationId, // Sera null si nouvelle conversation
+                message: messageContent
+            })
         });
 
         if (!response.ok) {
-            // Tente de lire l'erreur du corps de la réponse si disponible
             const errorData = await response.json().catch(() => response.text());
-            const errorMessage = typeof errorData === 'object' && errorData.message ? errorData.message : errorData;
-            throw new Error(`Erreur HTTP: ${response.status} - ${errorMessage}`);
+            throw new Error(`HTTP error! status: ${response.status} - ${JSON.stringify(errorData)}`);
         }
 
         const data = await response.json();
         console.log('[chat_ui] Réponse de l\'API chat:', data);
 
-        // Si c'est une nouvelle conversation, met à jour l'ID global
-        if (!currentConvId && data.conversationId) {
+        // Si c'est une nouvelle conversation, mettez à jour l'ID actif
+        if (!conversationId && data.conversationId) {
             setCurrentConversation(data.conversationId);
-            showStatusMessage('Nouvelle conversation démarrée.', 'success');
-            fetchConversations(); // Rafraîchit la liste des conversations
-        } else {
-            showStatusMessage('Message envoyé et réponse reçue.', 'success');
+            // Re-charger la liste des conversations pour inclure la nouvelle
+            fetchConversations(getCurrentChatPage());
+        } else if (conversationId && data.conversation) {
+            // Mettre à jour l'affichage des messages pour la conversation existante
+            renderChatMessages(data.conversation.messages); // Assurez-vous que data.conversation est bien l'objet entier de conversation
         }
 
-        // Ajouter la réponse de l'IA (si disponible)
-        if (data && data.aiResponse) {
-            const aiMsgElement = document.createElement('div');
-            aiMsgElement.classList.add('chat-message', 'assistant');
-            aiMsgElement.innerHTML = `<strong>IA:</strong> ${data.aiResponse}`;
-            if (chatMessagesDisplay) {
-                chatMessagesDisplay.appendChild(aiMsgElement);
-                chatMessagesDisplay.scrollTop = chatMessagesDisplay.scrollHeight;
-            }
+        // Ajouter la réponse de l'IA (si présente)
+        if (data.aiResponse) {
+            addMessageToDisplay('ai', data.aiResponse);
         }
+        showStatusMessage('Message envoyé et réponse reçue !', 'success');
 
     } catch (error) {
         console.error('[chat_ui] Erreur lors de l\'envoi du message:', error);
-        showStatusMessage(`Échec de l'envoi du message: ${error.message}`, 'error');
-        if (chatInput) {
-            chatInput.value = messageContent; // Ré-ajouter le message pour modification
-        }
+        addMessageToDisplay('error', `Erreur: ${error.message}`);
+        showStatusMessage(`Erreur lors de l'envoi du message: ${error.message}`, 'error');
     }
 }
 
-/**
- * @function startNewConversation
- * @description Démarre une nouvelle conversation en réinitialisant l'UI.
- */
-export async function startNewConversation() {
-    console.log('[chat_ui] Démarrage d\'une nouvelle conversation.');
-    showStatusMessage('Démarrage d\'une nouvelle conversation...', 'info');
-    if (chatMessagesDisplay) {
-        chatMessagesDisplay.innerHTML = '';
+// --- Fonctions de Rendu UI ---
+
+function addMessageToDisplay(sender, message) {
+    if (!chatMessagesDisplay) {
+        console.error('[chat_ui] chatMessagesDisplay est null/undefined. Impossible d\'ajouter le message.');
+        return;
     }
-    if (chatInput) {
-        chatInput.value = '';
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('chat-message', `${sender}-message`);
+    messageElement.textContent = message; // Utilisez textContent pour éviter les problèmes d'injection HTML
+    chatMessagesDisplay.appendChild(messageElement);
+    chatMessagesDisplay.scrollTop = chatMessagesDisplay.scrollHeight; // Scroll vers le bas
+}
+
+// La fonction renderChatMessages est correctement déclarée et exportée ici.
+export function renderChatMessages(messages) {
+    if (!chatMessagesDisplay) {
+        console.error('[chat_ui] chatMessagesDisplay est null/undefined. Impossible de rendre le chat.');
+        return;
     }
-    setCurrentConversation(null); // Indique qu'il n'y a plus de conversation active
-    showStatusMessage('Nouvelle conversation prête. Envoyez votre premier message.', 'info');
-    fetchConversations(); // Rafraîchit la liste des conversations (pour effacer la sélection active)
+    chatMessagesDisplay.innerHTML = ''; // Nettoyer l'affichage
+
+    if (!messages || messages.length === 0) {
+        chatMessagesDisplay.innerHTML = '<p>Commencez la conversation !</p>';
+        return;
+    }
+
+    messages.forEach(msg => {
+        addMessageToDisplay(msg.role === 'user' ? 'user' : 'ai', msg.content);
+    });
 }

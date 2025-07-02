@@ -1,90 +1,154 @@
 // public/js/cv_ui.js
-// Ce module gère la logique spécifique à la page du générateur de CV.
+import { API_BASE_URL, showStatusMessage } from './app.js';
 
-import { API_BASE_URL, showStatusMessage, getCvStructuredData, setCvStructuredData } from './app.js';
-
+// --- Déclaration des variables au niveau du module ---
 let cvPromptInput;
 let generateCvBtn;
 let cvFileInput;
 let uploadCvBtn;
-let exportCvBtn; // Le bouton d'exportation
+let exportCvBtn;
 let cvDisplayArea;
 
-/**
- * @function initializeCvUI
- * @description Initialise les éléments DOM et les écouteurs pour la page du générateur de CV.
- */
+// --- Fonctions d'Initialisation ---
 export function initializeCvUI() {
-    console.log('[cv_ui] Initialisation de l\'UI du CV.');
+    console.log('[cv_ui] Initialisation de l\'UI du générateur de CV.');
+    // Assignation des variables aux éléments DOM
     cvPromptInput = document.getElementById('cv-prompt-input');
     generateCvBtn = document.getElementById('generate-cv-btn');
     cvFileInput = document.getElementById('cv-file-input');
     uploadCvBtn = document.getElementById('upload-cv-btn');
-    exportCvBtn = document.getElementById('export-cv-btn'); // Récupération du bouton d'exportation
+    exportCvBtn = document.getElementById('export-cv-btn');
     cvDisplayArea = document.getElementById('cv-display-area');
 
-    if (cvPromptInput && generateCvBtn && cvFileInput && uploadCvBtn && exportCvBtn && cvDisplayArea) {
-        generateCvBtn.removeEventListener('click', generateCv);
-        uploadCvBtn.removeEventListener('click', uploadCv);
-        exportCvBtn.removeEventListener('click', exportCVData); // S'assurer que le bon écouteur est attaché
-        cvFileInput.removeEventListener('change', handleFileInputChange);
+    // Logs pour vérifier si les éléments sont trouvés
+    console.log('[cv_ui] cvPromptInput:', cvPromptInput);
+    console.log('[cv_ui] generateCvBtn:', generateCvBtn);
+    console.log('[cv_ui] cvFileInput:', cvFileInput);
+    console.log('[cv_ui] uploadCvBtn:', uploadCvBtn);
+    console.log('[cv_ui] exportCvBtn:', exportCvBtn);
+    console.log('[cv_ui] cvDisplayArea:', cvDisplayArea);
 
-        generateCvBtn.addEventListener('click', generateCv);
-        uploadCvBtn.addEventListener('click', uploadCv);
-        exportCvBtn.addEventListener('click', exportCVData); // Attacher l'écouteur pour l'exportation
-        cvFileInput.addEventListener('change', handleFileInputChange);
 
-        console.log('[cv_ui] Écouteurs d\'événements du CV ajoutés.');
+    // Attachement des écouteurs d'événements
+    if (generateCvBtn) {
+        generateCvBtn.removeEventListener('click', handleGenerateCv);
+        generateCvBtn.addEventListener('click', handleGenerateCv);
+        console.log('[cv_ui] Écouteur d\'événements du bouton de génération de CV ajouté.');
     } else {
-        console.error('[cv_ui] Un ou plusieurs éléments DOM nécessaires pour le générateur de CV sont manquants. Vérifiez index.html.');
+        console.warn('[cv_ui] Bouton "generate-cv-btn" non trouvé.');
     }
-    renderCv(); // Afficher le CV s'il existe déjà au chargement
+
+    if (uploadCvBtn) {
+        uploadCvBtn.removeEventListener('click', handleUploadCv);
+        uploadCvBtn.addEventListener('click', handleUploadCv);
+        console.log('[cv_ui] Écouteur d\'événements du bouton d\'upload de CV ajouté.');
+    } else {
+        console.warn('[cv_ui] Bouton "upload-cv-btn" non trouvé.');
+    }
+
+    if (exportCvBtn) {
+        exportCvBtn.removeEventListener('click', handleExportCv);
+        exportCvBtn.addEventListener('click', handleExportCv);
+        console.log('[cv_ui] Écouteur d\'événements du bouton d\'export de CV ajouté.');
+        exportCvBtn.disabled = true; // Désactive l'export par défaut s'il n'y a pas de CV
+    } else {
+        console.warn('[cv_ui] Bouton "export-cv-btn" non trouvé.');
+    }
+
+    // L'appel initial à fetchCurrentCv() est désormais géré par app.js dans showSection('cv-generator').
 }
 
-/**
- * @function generateCv
- * @description Envoie une requête au backend pour générer un CV.
- */
-async function generateCv() {
+// --- Fonctions d'API et de Logique ---
+
+export async function fetchCurrentCv() {
+    console.log('[cv_ui] Chargement du CV actuel...');
+    showStatusMessage('Chargement du CV actuel...', 'info');
+    if (cvDisplayArea) cvDisplayArea.innerHTML = '<p>Chargement du CV...</p>';
+    if (exportCvBtn) exportCvBtn.disabled = true;
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/cv`);
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => response.text());
+            throw new Error(`HTTP error! status: ${response.status} - ${JSON.stringify(errorData)}`);
+        }
+        const data = await response.json();
+        console.log('[cv_ui] Données CV reçues:', data);
+
+        if (data.cvData && Object.keys(data.cvData).length > 0) {
+            renderCv(data.cvData); // Affiche le CV si des données sont reçues
+            showStatusMessage('CV chargé avec succès !', 'success');
+            if (exportCvBtn) exportCvBtn.disabled = false;
+        } else {
+            if (cvDisplayArea) cvDisplayArea.innerHTML = '<p>Aucun CV trouvé. Générez-en un nouveau ou uploadez-en un.</p>';
+            showStatusMessage('Aucun CV trouvé sur le serveur.', 'info');
+            if (exportCvBtn) exportCvBtn.disabled = true;
+        }
+    } catch (error) {
+        console.error('[cv_ui] Erreur lors du chargement du CV:', error);
+        if (cvDisplayArea) cvDisplayArea.innerHTML = `<p>Erreur lors du chargement du CV: ${error.message}</p>`;
+        showStatusMessage(`Erreur lors du chargement du CV: ${error.message}`, 'error');
+        if (exportCvBtn) exportCvBtn.disabled = true;
+    }
+}
+
+export async function handleGenerateCv() {
+    console.log('[cv_ui] handleGenerateCv appelé.');
+    if (!cvPromptInput) {
+        console.error('[cv_ui] cvPromptInput est null/undefined. Impossible de générer le CV.');
+        showStatusMessage('Erreur interne: Champ de prompt CV non initialisé.', 'error');
+        return;
+    }
+    
     const prompt = cvPromptInput.value.trim();
     if (!prompt) {
-        showStatusMessage('Veuillez fournir une description pour générer le CV.', 'info');
+        showStatusMessage('Veuillez entrer un prompt pour générer le CV.', 'warning');
         return;
     }
 
     showStatusMessage('Génération du CV en cours...', 'info');
+    if (cvDisplayArea) cvDisplayArea.innerHTML = 'Génération en cours...';
+    if (exportCvBtn) exportCvBtn.disabled = true;
+
     try {
         const response = await fetch(`${API_BASE_URL}/api/cv/generate`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({ prompt })
         });
-
         if (!response.ok) {
             const errorData = await response.json().catch(() => response.text());
-            throw new Error(`HTTP error! status: ${response.status} - ${typeof errorData === 'object' && errorData.message ? errorData.message : errorData}`);
+            throw new Error(`HTTP error! status: ${response.status} - ${JSON.stringify(errorData)}`);
+        }
+        const data = await response.json();
+        console.log('[cv_ui] Réponse de génération de CV reçue:', data);
+
+        if (data.cvData) {
+            renderCv(data.cvData);
+            showStatusMessage('CV généré avec succès !', 'success');
+            if (exportCvBtn) exportCvBtn.disabled = false;
+        } else {
+            if (cvDisplayArea) cvDisplayArea.innerHTML = 'Erreur: Aucune donnée de CV reçue.';
+            showStatusMessage('Erreur: Aucune donnée de CV reçue.', 'error');
         }
 
-        const data = await response.json();
-        console.log('[cv_ui] CV généré:', data);
-        setCvStructuredData(data.cvStructuredData); // Stocke les données structurées du CV
-        renderCv();
-        showStatusMessage('CV généré avec succès !', 'success');
     } catch (error) {
         console.error('[cv_ui] Erreur lors de la génération du CV:', error);
-        showStatusMessage(`Échec de la génération du CV: ${error.message}`, 'error');
+        if (cvDisplayArea) cvDisplayArea.innerHTML = `<p>Erreur: ${error.message}</p>`;
+        showStatusMessage(`Erreur lors de la génération du CV: ${error.message}`, 'error');
     }
 }
 
-/**
- * @function uploadCv
- * @description Gère l'upload d'un fichier CV.
- */
-async function uploadCv() {
-    if (cvFileInput.files.length === 0) {
-        showStatusMessage('Veuillez sélectionner un fichier CV à uploader.', 'info');
+export async function handleUploadCv() {
+    console.log('[cv_ui] handleUploadCv appelé.');
+    if (!cvFileInput) {
+        console.error('[cv_ui] cvFileInput est null/undefined. Impossible d\'uploader le CV.');
+        showStatusMessage('Erreur interne: Champ de fichier CV non initialisé.', 'error');
+        return;
+    }
+
+    if (!cvFileInput.files || cvFileInput.files.length === 0) {
+        showStatusMessage('Veuillez sélectionner un fichier CV à uploader.', 'warning');
         return;
     }
 
@@ -93,102 +157,113 @@ async function uploadCv() {
     formData.append('cvFile', file);
 
     showStatusMessage('Upload du CV en cours...', 'info');
+    if (cvDisplayArea) cvDisplayArea.innerHTML = 'Upload en cours...';
+    if (exportCvBtn) exportCvBtn.disabled = true;
+
+
     try {
         const response = await fetch(`${API_BASE_URL}/api/cv/upload`, {
             method: 'POST',
-            body: formData // Pas de Content-Type ici, le navigateur le gère avec FormData
+            body: formData
         });
 
         if (!response.ok) {
-            const errorData = await response.json().catch(() => response.text());
-            throw new Error(`HTTP error! status: ${response.status} - ${typeof errorData === 'object' && errorData.message ? errorData.message : errorData}`);
+            const errorText = await response.text();
+            throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
         }
 
         const data = await response.json();
-        console.log('[cv_ui] CV uploadé et analysé:', data);
-        setCvStructuredData(data.cvStructuredData); // Stocke les données structurées du CV
-        renderCv();
-        showStatusMessage('CV uploadé et analysé avec succès !', 'success');
+        console.log('[cv_ui] Réponse d\'upload de CV reçue:', data);
+
+        if (data.cvData) {
+            renderCv(data.cvData);
+            showStatusMessage('CV uploadé et chargé avec succès !', 'success');
+            if (exportCvBtn) exportCvBtn.disabled = false;
+        } else {
+            showStatusMessage('Upload réussi mais aucune donnée de CV reçue.', 'warning');
+        }
+
     } catch (error) {
         console.error('[cv_ui] Erreur lors de l\'upload du CV:', error);
-        showStatusMessage(`Échec de l'upload du CV: ${error.message}`, 'error');
+        showStatusMessage(`Erreur lors de l'upload du CV: ${error.message}`, 'error');
+        if (cvDisplayArea) cvDisplayArea.innerHTML = `Erreur lors de l'upload: ${error.message}`;
     }
 }
 
-/**
- * @function handleFileInputChange
- * @description Gère le changement de sélection de fichier et active le bouton d'upload.
- */
-function handleFileInputChange() {
-    if (cvFileInput.files.length > 0) {
-        showStatusMessage(`Fichier sélectionné : ${cvFileInput.files[0].name}`, 'info');
+export function handleExportCv() {
+    console.log('[cv_ui] handleExportCv appelé.');
+    showStatusMessage('Fonction d\'export de CV non implémentée (exporte en JSON simple pour l\'instant).', 'info');
+    
+    if (cvDisplayArea && cvDisplayArea.dataset.currentCvData) {
+        try {
+            const currentCv = JSON.parse(cvDisplayArea.dataset.currentCvData);
+            const blob = new Blob([JSON.stringify(currentCv, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'cv_export.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showStatusMessage('CV exporté en JSON !', 'success');
+        } catch (e) {
+            console.error('Erreur lors de l\'export du CV JSON:', e);
+            showStatusMessage('Erreur lors de l\'export du CV.', 'error');
+        }
     } else {
-        showStatusMessage('Aucun fichier sélectionné.', 'info');
+        showStatusMessage('Aucun CV à exporter.', 'warning');
     }
 }
 
-/**
- * @function renderCv
- * @description Affiche les données du CV dans l'interface utilisateur.
- */
-export function renderCv() {
-    const cvData = getCvStructuredData();
-    if (!cvData) {
-        cvDisplayArea.innerHTML = '<p>Aucun CV à afficher. Générez-en un ou uploadez-en un !</p>';
-        exportCvBtn.disabled = true; // Désactive l'exportation si pas de CV
+// --- Fonctions de Rendu UI ---
+
+function renderCv(cvData) {
+    console.log('[cv_ui] Rendu du CV:', cvData);
+    if (!cvDisplayArea) {
+        console.error('[cv_ui] cvDisplayArea est null/undefined. Impossible de rendre le CV.');
+        return;
+    }
+    cvDisplayArea.innerHTML = ''; // Nettoyer l'affichage précédent
+
+    if (!cvData || Object.keys(cvData).length === 0) {
+        cvDisplayArea.innerHTML = '<p>Aucune donnée de CV à afficher.</p>';
         return;
     }
 
-    let html = '<h3>Votre CV</h3>';
-    html += `<h4>${cvData.name || 'Nom Inconnu'} - ${cvData.title || 'Titre Inconnu'}</h4>`;
-    html += `<p><strong>Contact:</strong> ${cvData.contact || 'N/A'}</p>`;
-    html += `<p><strong>Résumé:</strong> ${cvData.summary || 'N/A'}</p>`;
-
-    if (cvData.experience && cvData.experience.length > 0) {
-        html += '<h4>Expérience Professionnelle</h4><ul>';
-        cvData.experience.forEach(exp => {
-            html += `<li><strong>${exp.title}</strong> chez ${exp.company} (${exp.startDate} - ${exp.endDate || 'Présent'})<br>${exp.description || ''}</li>`;
-        });
-        html += '</ul>';
+    let htmlContent = '<h3>Votre CV</h3><div class="cv-output">';
+    for (const key in cvData) {
+        if (Object.hasOwnProperty.call(cvData, key)) {
+            const value = cvData[key];
+            htmlContent += `<div class="cv-section"><h4>${formatTitle(key)}</h4>`;
+            if (Array.isArray(value)) {
+                value.forEach(item => {
+                    htmlContent += '<div class="cv-item">';
+                    for (const subKey in item) {
+                        htmlContent += `<p><strong>${formatTitle(subKey)}:</strong> ${item[subKey]}</p>`;
+                    }
+                    htmlContent += '</div>';
+                });
+            } else if (typeof value === 'object' && value !== null) {
+                for (const subKey in value) {
+                    htmlContent += `<p><strong>${formatTitle(subKey)}:</strong> ${value[subKey]}</p>`;
+                }
+            } else {
+                htmlContent += `<p>${value}</p>`;
+            }
+            htmlContent += `</div>`;
+        }
     }
+    htmlContent += '</div>'; // Ferme cv-output
+    cvDisplayArea.innerHTML = htmlContent;
 
-    if (cvData.education && cvData.education.length > 0) {
-        html += '<h4>Éducation</h4><ul>';
-        cvData.education.forEach(edu => {
-            html += `<li><strong>${edu.degree}</strong> de ${edu.institution} (${edu.startDate} - ${edu.endDate || 'Présent'})</li>`;
-        });
-        html += '</ul>';
-    }
-
-    if (cvData.skills && cvData.skills.length > 0) {
-        html += '<h4>Compétences</h4><p>';
-        html += cvData.skills.join(', ');
-        html += '</p>';
-    }
-
-    cvDisplayArea.innerHTML = html;
-    exportCvBtn.disabled = false; // Active l'exportation si un CV est affiché
-    showStatusMessage('CV affiché.', 'success');
+    // Stocker les données brutes du CV pour l'export (si c'est du JSON)
+    cvDisplayArea.dataset.currentCvData = JSON.stringify(cvData);
+    if (exportCvBtn) exportCvBtn.disabled = false; // Active le bouton d'export
 }
 
-/**
- * @function exportCVData
- * @description Exporte les données du CV structuré au format JSON.
- * (Fonction à exporter pour être appelée depuis app.js ou directement via un bouton)
- */
-export function exportCVData() { // <-- Ici l'export de la fonction
-    const cvData = getCvStructuredData();
-    if (!cvData) {
-        showStatusMessage('Aucune donnée de CV à exporter.', 'warning');
-        return;
-    }
-
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(cvData, null, 2));
-    const downloadAnchorNode = document.createElement('a');
-    downloadAnchorNode.setAttribute("href", dataStr);
-    downloadAnchorNode.setAttribute("download", "mon_cv.json");
-    document.body.appendChild(downloadAnchorNode);
-    downloadAnchorNode.click();
-    downloadAnchorNode.remove();
-    showStatusMessage('CV exporté en JSON.', 'success');
+// Fonction utilitaire pour formater les titres (ex: 'informationsPersonnelles' -> 'Informations Personnelles')
+function formatTitle(text) {
+    return text.replace(/([A-Z])/g, ' $1') // Ajoute un espace avant les majuscules
+               .replace(/^./, str => str.toUpperCase()); // Met la première lettre en majuscule
 }

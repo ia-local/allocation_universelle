@@ -4,8 +4,8 @@
 const API_BASE_URL = window.location.origin; // Par exemple: http://localhost:3000
 
 // --- Importation des fonctions des autres modules ES ---
-import { showModal } from './modal.js';
-import { setConversations, renderChatConversationList, initPaginationControls, setActiveConversationId } from './pagination.js';
+import { showModal } from './js/modal.js';
+import { setConversations, renderChatConversationList, initPaginationControls, setActiveConversationId } from './js/pagination.js';
 
 
 // --- État de l'application ---

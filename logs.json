@@ -1,0 +1,598 @@
+[
+  {
+    "timestamp": "2025-07-02T11:37:32.497Z",
+    "type": "AI_INTERACTION",
+    "status": "REQUESTED",
+    "userPrompt": "test..."
+  },
+  {
+    "timestamp": "2025-07-02T11:37:32.895Z",
+    "type": "AI_INTERACTION",
+    "status": "SUCCESS",
+    "interactionId": "1ccb21da-a4f8-4725-acb2-3625d044453b",
+    "userPrompt": "test...",
+    "aiResponse": "Bonjour ! Comme assistant IA expert en développement et en conseil technique, je suis prêt à vous aider sur tout sujet relatif à la programmation, à l'architecture logicielle et aux technologies web. ..."
+  },
+  {
+    "timestamp": "2025-07-02T11:38:04.979Z",
+    "type": "AI_INTERACTION",
+    "status": "REQUESTED",
+    "userPrompt": "test..."
+  },
+  {
+    "timestamp": "2025-07-02T11:38:05.329Z",
+    "type": "AI_INTERACTION",
+    "status": "SUCCESS",
+    "interactionId": "f9b1ba60-735d-4cfd-a10d-d1463c8b01f8",
+    "userPrompt": "test...",
+    "aiResponse": "Bonjour ! Je suis ravi de constater que vous avez voulu me tester. Je suis prêt à vous apporter une aide technique exhaustive et précise sur les sujets de programmation, d'architecture logicielle et d..."
+  },
+  {
+    "timestamp": "2025-07-02T11:44:35.352Z",
+    "type": "AI_INTERACTION",
+    "status": "REQUESTED",
+    "userPrompt": "test..."
+  },
+  {
+    "timestamp": "2025-07-02T11:44:35.885Z",
+    "type": "AI_INTERACTION",
+    "status": "SUCCESS",
+    "interactionId": "c84fa66a-cb6a-452f-b997-f09198f3337b",
+    "userPrompt": "test...",
+    "aiResponse": "Bonjour ! Je suis ravi de vous voir ! Je suis un assistant IA expert en développement et en conseil technique, à votre disposition pour vous aider avec vos questions et vos besoins techniques.\n\nSi vou..."
+  },
+  {
+    "timestamp": "2025-07-02T11:44:48.623Z",
+    "type": "CV_GEN_REQUEST",
+    "status": "REQUESTED",
+    "userPrompt": "Bonjour, je m'appelle Michael, j'essaye de générer un CV..."
+  },
+  {
+    "timestamp": "2025-07-02T11:44:49.349Z",
+    "type": "CV_GEN_REQUEST",
+    "status": "REQUESTED",
+    "userPrompt": "Bonjour, je m'appelle Michael, j'essaye de générer un CV..."
+  },
+  {
+    "timestamp": "2025-07-02T11:44:49.701Z",
+    "type": "CV_GEN_SUCCESS",
+    "status": "SUCCESS",
+    "userPrompt": "Bonjour, je m'appelle Michael, j'essaye de générer un CV...",
+    "cvData": {
+      "name": "Michael",
+      "title": "",
+      "contact": "",
+      "summary": "",
+      "experience": [],
+      "education": [],
+      "skills": []
+    }
+  },
+  {
+    "timestamp": "2025-07-02T11:44:49.808Z",
+    "type": "CV_GEN_SUCCESS",
+    "status": "SUCCESS",
+    "userPrompt": "Bonjour, je m'appelle Michael, j'essaye de générer un CV...",
+    "cvData": {
+      "name": "Michael",
+      "title": "Junior Web Developer",
+      "contact": "michael@example.com | 06-12-34-56-78 | https://www.linkedin.com/in/michael/",
+      "summary": "Innovative and detail-oriented junior web developer with a strong passion for creating user-friendly and responsive websites. Proficient in HTML, CSS, and JavaScript, with a solid understanding of web development principles and methodologies.",
+      "experience": [
+        {
+          "title": "Junior Web Developer",
+          "company": "WebDev Agency",
+          "startDate": "2022-06-01",
+          "endDate": "Présent",
+          "description": [
+            "Developed and maintained multiple responsive web applications using HTML, CSS, and JavaScript.",
+            "Collaborated with designers and project managers to ensure timely and effective project delivery.",
+            "Improved website performance and scalability by implementing optimized coding practices and caching mechanisms."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "degree": "Bachelor's Degree in Computer Science",
+          "institution": "University of Technology",
+          "startDate": "2018-09-01",
+          "endDate": "2022-05-31"
+        }
+      ],
+      "skills": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "React",
+        "WordPress"
+      ]
+    }
+  },
+  {
+    "timestamp": "2025-07-02T11:44:49.877Z",
+    "type": "CV_GEN_REQUEST",
+    "status": "REQUESTED",
+    "userPrompt": "Bonjour, je m'appelle Michael, j'essaye de générer un CV..."
+  },
+  {
+    "timestamp": "2025-07-02T11:44:50.214Z",
+    "type": "CV_GEN_SUCCESS",
+    "status": "SUCCESS",
+    "userPrompt": "Bonjour, je m'appelle Michael, j'essaye de générer un CV...",
+    "cvData": {
+      "name": "Michael",
+      "title": "",
+      "contact": "michael@michael.com | 06-12-34-56-78 | https://www.linkedin.com/in/michael/",
+      "summary": "",
+      "experience": [],
+      "education": [],
+      "skills": []
+    }
+  },
+  {
+    "timestamp": "2025-07-02T11:44:52.114Z",
+    "type": "CV_GEN_REQUEST",
+    "status": "REQUESTED",
+    "userPrompt": "Bonjour, je m'appelle Michael, j'essaye de générer un CV..."
+  },
+  {
+    "timestamp": "2025-07-02T11:44:52.469Z",
+    "type": "CV_GEN_SUCCESS",
+    "status": "SUCCESS",
+    "userPrompt": "Bonjour, je m'appelle Michael, j'essaye de générer un CV...",
+    "cvData": {
+      "name": "Michael",
+      "title": "",
+      "contact": "",
+      "summary": "",
+      "experience": [],
+      "education": [],
+      "skills": []
+    }
+  },
+  {
+    "timestamp": "2025-07-02T11:44:54.912Z",
+    "type": "CV_GEN_REQUEST",
+    "status": "REQUESTED",
+    "userPrompt": "Bonjour, je m'appelle Michael, j'essaye de générer un CV..."
+  },
+  {
+    "timestamp": "2025-07-02T11:44:55.232Z",
+    "type": "CV_GEN_SUCCESS",
+    "status": "SUCCESS",
+    "userPrompt": "Bonjour, je m'appelle Michael, j'essaye de générer un CV...",
+    "cvData": {
+      "name": "Michael",
+      "title": "",
+      "contact": "",
+      "summary": "",
+      "experience": [],
+      "education": [],
+      "skills": []
+    }
+  },
+  {
+    "timestamp": "2025-07-02T11:45:06.551Z",
+    "type": "CV_GEN_REQUEST",
+    "status": "REQUESTED",
+    "userPrompt": "Bonjour, je m'appelle Michael, j'essaye de générer un CV j'ai 13 ans d'expérience en programmation..."
+  },
+  {
+    "timestamp": "2025-07-02T11:45:07.055Z",
+    "type": "CV_GEN_SUCCESS",
+    "status": "SUCCESS",
+    "userPrompt": "Bonjour, je m'appelle Michael, j'essaye de générer un CV j'ai 13 ans d'expérience en programmation...",
+    "cvData": {
+      "name": "Michael",
+      "title": "Développeur Senior",
+      "contact": "michael@example.com | 06-12-34-56-78 | https://www.linkedin.com/in/michael",
+      "summary": "Expérimenté dans le domaine de la programmation avec 13 ans d'expérience, je suis passionné par la résolution de problèmes complexes et la création de solutions innovantes.",
+      "experience": [
+        {
+          "title": "Développeur Senior",
+          "company": "entreprise X",
+          "startDate": "2009-09-01",
+          "endDate": "2022-02-28",
+          "description": "Conception et développement de systèmes d'information, gestion de projets et direction d'équipe."
+        }
+      ],
+      "education": [
+        {
+          "degree": "Licence en Informatique",
+          "institution": "Université Y",
+          "startDate": "2005-09-01",
+          "endDate": "2009-06-30"
+        }
+      ],
+      "skills": [
+        "Java",
+        "C#",
+        "Python",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ]
+    }
+  },
+  {
+    "timestamp": "2025-07-02T11:45:07.266Z",
+    "type": "CV_GEN_REQUEST",
+    "status": "REQUESTED",
+    "userPrompt": "Bonjour, je m'appelle Michael, j'essaye de générer un CV j'ai 13 ans d'expérience en programmation..."
+  },
+  {
+    "timestamp": "2025-07-02T11:45:07.874Z",
+    "type": "CV_GEN_SUCCESS",
+    "status": "SUCCESS",
+    "userPrompt": "Bonjour, je m'appelle Michael, j'essaye de générer un CV j'ai 13 ans d'expérience en programmation...",
+    "cvData": {
+      "name": "Michael",
+      "title": "Développeur Senior",
+      "contact": "michael@example.com | 06-12-34-56-78 | https://www.linkedin.com/in/michael/",
+      "summary": "Expérience de 13 ans dans le développement de logiciels, avec une solide compréhension des technologies web et mobile. Expert en architecture logicielle et gestion de projet.",
+      "experience": [
+        {
+          "title": "Développeur Senior",
+          "company": "Company X",
+          "startDate": "2009-09-01",
+          "endDate": "2022-02-28",
+          "description": [
+            "Conception et développement de systèmes d'information pour les entreprises",
+            "Gestion de projet et coordination avec les équipes de développement",
+            "Mise en place de processus de développement agiles et de gestion de version"
+          ]
+        },
+        {
+          "title": "Développeur",
+          "company": "Company Y",
+          "startDate": "2005-06-01",
+          "endDate": "2009-08-31",
+          "description": [
+            "Développement de logiciels pour les plateformes web et mobile",
+            "Collaboration avec les équipes de design et de test pour la mise en production des logiciels",
+            "Mise à jour et maintenance des logiciels existants"
+          ]
+        }
+      ],
+      "education": [
+        {
+          "degree": "Diplôme en Informatique",
+          "institution": "University of XYZ",
+          "startDate": "2000-09-01",
+          "endDate": "2005-06-30"
+        }
+      ],
+      "skills": [
+        "Java",
+        "Python",
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "Agile Development",
+        "Version Control Systems"
+      ]
+    }
+  },
+  {
+    "timestamp": "2025-07-02T11:50:38.837Z",
+    "type": "AI_INTERACTION",
+    "status": "REQUESTED",
+    "userPrompt": "test..."
+  },
+  {
+    "timestamp": "2025-07-02T11:50:39.163Z",
+    "type": "AI_INTERACTION",
+    "status": "SUCCESS",
+    "interactionId": "88d218f0-3dc6-4777-8e91-2747fde64ee6",
+    "userPrompt": "test...",
+    "aiResponse": "Bonjour ! Je suis prêt à vous aider. Quel est le sujet ou la question technique que vous souhaitez discuter ?..."
+  },
+  {
+    "timestamp": "2025-07-02T12:10:14.277Z",
+    "type": "AI_INTERACTION",
+    "status": "REQUESTED",
+    "userPrompt": "test..."
+  },
+  {
+    "timestamp": "2025-07-02T12:10:14.776Z",
+    "type": "AI_INTERACTION",
+    "status": "SUCCESS",
+    "interactionId": "c1abdb4c-1074-41e0-b449-04c73a47bb56",
+    "userPrompt": "test...",
+    "aiResponse": "Bonjour ! Je suis ravi de faire votre connaissance. Je suis un assistant IA expert en développement et en conseil technique. Je suis là pour vous aider avec vos questions et vos besoins en matière de ..."
+  },
+  {
+    "timestamp": "2025-07-02T12:42:24.630Z",
+    "type": "AI_INTERACTION",
+    "status": "REQUESTED",
+    "userPrompt": "tesst..."
+  },
+  {
+    "timestamp": "2025-07-02T12:42:24.915Z",
+    "type": "AI_INTERACTION",
+    "status": "REQUESTED",
+    "userPrompt": "tesst..."
+  },
+  {
+    "timestamp": "2025-07-02T12:42:25.047Z",
+    "type": "AI_INTERACTION",
+    "status": "SUCCESS",
+    "interactionId": "2977c7f3-d3d7-457d-8936-de1e65fe0dfa",
+    "userPrompt": "tesst...",
+    "aiResponse": "Il semblerait que vous ayez envoyé un message vide ou un test. Si vous avez besoin d'aide ou de conseils techniques sur un sujet de programmation, d'architecture logicielle ou de technologies web, n'h..."
+  },
+  {
+    "timestamp": "2025-07-02T12:42:25.344Z",
+    "type": "AI_INTERACTION",
+    "status": "SUCCESS",
+    "interactionId": "f340d1be-01f7-403c-9509-811bfb7466b6",
+    "userPrompt": "tesst...",
+    "aiResponse": "Je suis ravi de vous aider ! Je vois que vous avez envoyé un message \"tesst\", mais je suis à l'écoute pour discuter de votre projet ou de votre problème technique. Pouvez-vous me donner un peu plus d'..."
+  },
+  {
+    "timestamp": "2025-07-02T12:44:51.039Z",
+    "type": "AI_INTERACTION",
+    "status": "REQUESTED",
+    "userPrompt": "test..."
+  },
+  {
+    "timestamp": "2025-07-02T12:44:51.564Z",
+    "type": "AI_INTERACTION",
+    "status": "SUCCESS",
+    "interactionId": "354d0ea7-49f2-4ca6-9971-5c6e4a7b2c26",
+    "userPrompt": "test...",
+    "aiResponse": "Bonjour ! Je suis ravi de vous voir. Pour tester mes compétences, vous pouvez me poser une question technique sur un sujet de programmation, d'architecture logicielle ou de technologies web. Je ferai ..."
+  },
+  {
+    "timestamp": "2025-07-02T12:45:07.565Z",
+    "type": "CHAT_NEW_CONV_REQUEST",
+    "status": "REQUESTED",
+    "initialMessage": "test..."
+  },
+  {
+    "timestamp": "2025-07-02T12:45:07.831Z",
+    "type": "CHAT_NEW_CONV_SUCCESS",
+    "status": "SUCCESS",
+    "conversationId": "conv-3a880720-5e52-4488-83da-b9fcffa9053c",
+    "userPrompt": "test...",
+    "aiResponse": "Bonjour ! Je suis ravi de vous aider. Vous avez envie de faire un test ? Qu'est-ce que vous voulez vérifier ou apprendre ? Je suis là pour vous aider !..."
+  },
+  {
+    "timestamp": "2025-07-02T12:45:12.281Z",
+    "type": "CHAT_MESSAGE_REQUEST",
+    "status": "REQUESTED",
+    "conversationId": "conv-3a880720-5e52-4488-83da-b9fcffa9053c",
+    "userMessage": "test..."
+  },
+  {
+    "timestamp": "2025-07-02T12:45:12.580Z",
+    "type": "CHAT_MESSAGE_SUCCESS",
+    "status": "SUCCESS",
+    "conversationId": "conv-3a880720-5e52-4488-83da-b9fcffa9053c",
+    "userMessage": "test...",
+    "aiResponse": "Il semblerait que vous ayez déjà fait un \"test\" ! Si vous voulez continuer, je suis prêt à discuter avec vous sur quelque chose de spécifique. Qu'est-ce qui vous préoccupe ou que vous voulez savoir ?..."
+  },
+  {
+    "timestamp": "2025-07-02T12:45:32.728Z",
+    "type": "CHAT_MESSAGE_REQUEST",
+    "status": "REQUESTED",
+    "conversationId": "conv-3a880720-5e52-4488-83da-b9fcffa9053c",
+    "userMessage": "test2..."
+  },
+  {
+    "timestamp": "2025-07-02T12:45:33.134Z",
+    "type": "CHAT_MESSAGE_SUCCESS",
+    "status": "SUCCESS",
+    "conversationId": "conv-3a880720-5e52-4488-83da-b9fcffa9053c",
+    "userMessage": "test2...",
+    "aiResponse": "Encore un \"test\" ! Je suis ravi de constater que vous êtes en train d'explorer mes capacités de conversation ! Si vous voulez continuer, nous pouvons jouer à un jeu, discuter de sujets de votre choix ..."
+  },
+  {
+    "timestamp": "2025-07-02T12:48:44.998Z",
+    "type": "CV_GEN_REQUEST",
+    "status": "REQUESTED",
+    "userPrompt": "tz..."
+  },
+  {
+    "timestamp": "2025-07-02T12:48:45.756Z",
+    "type": "CV_GEN_SUCCESS",
+    "status": "SUCCESS",
+    "userPrompt": "tz...",
+    "cvData": {
+      "name": "Théo Zarka",
+      "title": "Junior Développeur Web",
+      "contact": "théo.zarka@gmail.com | 06-12-34-56-78 | https://www.linkedin.com/in/theozarka",
+      "summary": "Développeur web passionné avec une solide formation en programmation et une expérience dans l'élaboration de projets de grande envergure. Je suis à la recherche d'un poste qui m'offre l'opportunité de mettre mes compétences en pratique et de contribuer à des projets innovants.",
+      "experience": [
+        {
+          "title": "Développeur Junior",
+          "company": "Agence Web Évolution",
+          "startDate": "2020-06-01",
+          "endDate": "2022-03-31",
+          "description": "* Étude et mise en œuvre de sites web avec HTML, CSS, JavaScript et frameworks tels que React et Angular. * Gestion de base de données avec MySQL et MongoDB. * Collaboration avec les teams de design et de marketing pour la création de contenu."
+        }
+      ],
+      "education": [
+        {
+          "degree": "Licence en Informatique",
+          "institution": "Université de Lyon",
+          "startDate": "2018-09-01",
+          "endDate": "2022-06-30"
+        }
+      ],
+      "skills": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Angular",
+        "MySQL",
+        "MongoDB"
+      ]
+    }
+  },
+  {
+    "timestamp": "2025-07-02T12:49:02.060Z",
+    "type": "CV_GEN_REQUEST",
+    "status": "REQUESTED",
+    "userPrompt": "Bonjour, je m'appelle Michaël, j'ai 36 ans et plus de 10 ans d'expérience en programmation sommes actuellement en train de faire des bêta test sur la génération d'un CV..."
+  },
+  {
+    "timestamp": "2025-07-02T12:49:02.650Z",
+    "type": "CV_GEN_SUCCESS",
+    "status": "SUCCESS",
+    "userPrompt": "Bonjour, je m'appelle Michaël, j'ai 36 ans et plus de 10 ans d'expérience en programmation sommes actuellement en train de faire des bêta test sur la génération d'un CV...",
+    "cvData": {
+      "name": "Michaël",
+      "title": "Développeur Full Stack",
+      "contact": "michael@example.com | 06-12-34-56-78 | https://www.linkedin.com/in/michaël/",
+      "summary": "Experienced full-stack developer with over 10 years of experience in designing and developing scalable and efficient software solutions. Skilled in a range of programming languages and technologies, with a focus on delivering high-quality results and exceeding client expectations.",
+      "experience": [
+        {
+          "title": "Développeur Full Stack",
+          "company": "Company X",
+          "startDate": "2012-01-01",
+          "endDate": "2022-06-30",
+          "description": [
+            "Designed and developed multiple full-stack applications using Java, Spring, and React",
+            "Collaborated with cross-functional teams to deliver high-quality software solutions",
+            "Implemented automated testing and deployment scripts to improve efficiency and reduce errors"
+          ]
+        }
+      ],
+      "education": [
+        {
+          "degree": "Bachelor's Degree in Computer Science",
+          "institution": "University of XYZ",
+          "startDate": "2005-09-01",
+          "endDate": "2009-06-30"
+        }
+      ],
+      "skills": [
+        "Java",
+        "Spring",
+        "React",
+        "JavaScript",
+        "HTML/CSS",
+        "Agile Development"
+      ]
+    }
+  },
+  {
+    "timestamp": "2025-07-02T12:49:03.728Z",
+    "type": "CV_GEN_REQUEST",
+    "status": "REQUESTED",
+    "userPrompt": "Bonjour, je m'appelle Michaël, j'ai 36 ans et plus de 10 ans d'expérience en programmation sommes actuellement en train de faire des bêta test sur la génération d'un CV..."
+  },
+  {
+    "timestamp": "2025-07-02T12:49:04.390Z",
+    "type": "CV_GEN_SUCCESS",
+    "status": "SUCCESS",
+    "userPrompt": "Bonjour, je m'appelle Michaël, j'ai 36 ans et plus de 10 ans d'expérience en programmation sommes actuellement en train de faire des bêta test sur la génération d'un CV...",
+    "cvData": {
+      "name": "Michaël",
+      "title": "Développeur Senior",
+      "contact": "michael@example.com | 06-25-42-13-14 | https://www.linkedin.com/in/michael/",
+      "summary": "Experienced software developer with over 10 years of experience in designing, developing, and deploying scalable and efficient software solutions. Strong expertise in languages such as Java, Python, and C++. Proven track record of delivering high-quality software products on time and on budget.",
+      "experience": [
+        {
+          "title": "Senior Software Developer",
+          "company": "ABC Corporation",
+          "startDate": "2015-01-01",
+          "endDate": "Present",
+          "description": "Designed and developed several software applications for clients, including a web-based project management tool and a mobile app for tracking inventory. Collaborated with cross-functional teams to ensure timely and efficient delivery of software products."
+        },
+        {
+          "title": "Lead Developer",
+          "company": "Def Corporation",
+          "startDate": "2010-06-01",
+          "endDate": "2015-12-31",
+          "description": "Led a team of developers to design and develop a software solution for a major financial institution. Implemented Agile development methodologies to ensure iterative and incremental delivery of software products."
+        }
+      ],
+      "education": [
+        {
+          "degree": "Bachelor of Science in Computer Science",
+          "institution": "XYZ University",
+          "startDate": "2005-09-01",
+          "endDate": "2009-06-30"
+        }
+      ],
+      "skills": [
+        "Java",
+        "Python",
+        "C++",
+        "Agile Development",
+        "Project Management"
+      ]
+    }
+  },
+  {
+    "timestamp": "2025-07-02T12:49:14.027Z",
+    "type": "AI_INTERACTION",
+    "status": "REQUESTED",
+    "userPrompt": "test..."
+  },
+  {
+    "timestamp": "2025-07-02T12:49:14.526Z",
+    "type": "AI_INTERACTION",
+    "status": "SUCCESS",
+    "interactionId": "7d6ba701-b848-4a8a-b5ae-a35559c9f3a5",
+    "userPrompt": "test...",
+    "aiResponse": "Bonjour ! Je suis votre assistant IA expert en développement et en conseil technique. Je suis là pour vous aider avec vos questions et vos problèmes techniques liés à la programmation, l'architecture ..."
+  },
+  {
+    "id": "1356cc44-6f79-4468-8c1f-3f5bbf8fd181",
+    "timestamp": "2025-07-02T13:12:06.289Z",
+    "type": "chat_interaction",
+    "conversationId": "9846c43a-01a5-45ff-9d04-f3e503413606",
+    "userMessage": "test",
+    "aiResponse": "Un test ! Je suis prêt à vous fournir des réponses précises, concises et utiles sur des sujets de programmation, d'architecture logicielle et de technologies web. Quel est votre sujet ou votre question préférée ?"
+  },
+  {
+    "id": "1278518a-cc45-433e-ad99-3d9b776177af",
+    "timestamp": "2025-07-02T13:12:10.054Z",
+    "type": "home_interaction",
+    "prompt": "test",
+    "response": "Bonjour ! Je suis ravi de constater que vous souhaitez tester mes compétences en développement et en conseil technique. Je suis un assistant IA expert dans ces domaines et je serais ravi de vous aider dans vos projets ou de discuter de vos besoins techniques.\n\nPour commencer, pouvez-vous me donner un peu plus d'informations sur les besoins que vous avez ? Quel est le type de projet que vous souhaitez développer ? Quels sont les langages de programmation ou les technologies que vous utilisez ? Quels sont vos objectifs et vos attentes ?\n\nJe suis à votre disposition pour discuter de vos besoins et vous fournir des conseils techniques et des solutions pour les résoudre."
+  },
+  {
+    "id": "9ae4ffb2-86da-491c-b57f-23a12a205b34",
+    "timestamp": "2025-07-02T13:12:29.733Z",
+    "type": "cv_generation",
+    "prompt": "Bonjour, je m'appelle Michaël ça fait 25 ans d'expérience en programmation ma première,  2004",
+    "cvData": {
+      "informationsPersonnelles": {
+        "nom": "Michaël",
+        "prenom": "Michaël",
+        "age": 57,
+        "adresse": "",
+        "email": "",
+        "telephone": ""
+      },
+      "experienceProfessionnelle": [
+        {
+          "employeur": "Company A",
+          "poste": "Programmer",
+          "dateDebut": "2004-01-01",
+          "dateFin": "2029-12-31",
+          "description": "Programmed various applications using languages such as C++, Java, Python, and JavaScript."
+        }
+      ],
+      "education": [
+        {
+          "école": "University of X",
+          "diplome": "Bachelor's degree in Computer Science",
+          "dateObtention": "2000-01-01",
+          "description": ""
+        }
+      ],
+      "competences": [
+        "Programming languages: C++, Java, Python, JavaScript",
+        "Development frameworks: Spring, Django, React",
+        "Databases: MySQL, MongoDB, PostgreSQL",
+        "Operating Systems: Windows, Linux, macOS"
+      ]
+    }
+  }
+]

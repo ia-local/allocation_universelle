@@ -1,0 +1,20 @@
+{
+  "9846c43a-01a5-45ff-9d04-f3e503413606": {
+    "id": "9846c43a-01a5-45ff-9d04-f3e503413606",
+    "title": "test",
+    "messages": [
+      {
+        "role": "user",
+        "content": "test",
+        "timestamp": "2025-07-02T13:12:05.919Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Un test ! Je suis prêt à vous fournir des réponses précises, concises et utiles sur des sujets de programmation, d'architecture logicielle et de technologies web. Quel est votre sujet ou votre question préférée ?",
+        "timestamp": "2025-07-02T13:12:06.288Z"
+      }
+    ],
+    "createdAt": "2025-07-02T13:12:05.919Z",
+    "updatedAt": "2025-07-02T13:12:06.288Z"
+  }
+}

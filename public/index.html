@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CVNU - Plateforme UTMi</title>
     <link rel="stylesheet" href="css/style.css">
-    </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
 <body>
     <header class="main-header">
         <div class="container">
@@ -39,9 +40,29 @@
 
             <section id="dashboard" class="content-section">
                 <h2>Tableau de Bord</h2>
-                <div id="dashboard-content" class="dashboard-metrics">
-                    <p>Chargement des statistiques du tableau de bord...</p>
+                <div class="dashboard-metrics">
+                    <div class="card">
+                        <h3>Interactions IA</h3>
+                        <p>Total générées: <span id="total-interactions">Chargement...</span></p>
+                    </div>
+                    <div class="card">
+                        <h3>Conversations Actives</h3>
+                        <p>Nombre: <span id="active-conversations">Chargement...</span></p>
+                    </div>
+                    <div class="card">
+                        <h3>CV Générés</h3>
+                        <p>Nombre: <span id="cv-generated-count">Chargement...</span></p>
+                    </div>
+                    <div class="card">
+                        <h3>Taux de Succès AI</h3>
+                        <p><span id="ai-response-success-rate">Chargement...</span></p>
+                    </div>
+                    <div class="card">
+                        <h3>Temps de Réponse Moyen AI</h3>
+                        <p><span id="average-ai-response-time">Chargement...</span></p>
+                    </div>
                 </div>
+                <button id="dashboard-refresh-btn" class="btn btn-secondary mt-3">Rafraîchir les données</button>
             </section>
 
             <section id="chat" class="content-section">
@@ -61,8 +82,8 @@
                             <p>Envoyez un message pour commencer ou sélectionnez une conversation.</p>
                         </div>
                         <div class="chat-input-area">
-                            <textarea id="chat-input" placeholder="Tapez votre message ici..."></textarea>
-                            <button id="send-chat-message-btn" class="btn btn-primary send-message-btn">Envoyer</button>
+                            <textarea id="chat-prompt-input" placeholder="Écrivez votre message ici..."></textarea>
+                             <button id="send-chat-message-btn">Envoyer</button>
                         </div>
                     </div>
                 </div>
@@ -109,15 +130,21 @@
                 </div>
             </section>
 
-            </div>
+        </div>
     </main>
 
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 CVNU - Tous droits réservés.</p>
-        </div>
+         <p>&copy; 2025 CVNU - Tous droits réservés.</p>\n        
+        </div> 
     </footer>
-
     <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/home_ui.js"></script>
+    <script type="module" src="js/dashboard_ui.js"></script>
+    <script type="module" src="js/chat_ui.js"></script>
+    <script type="module" src="js/cv_ui.js"></script>
+    <script type="module" src="js/wallet_ui.js"></script>
+    <script type="module" src="js/logs_ui.js"></script>
+    <script type="module" src="js/config_ui.js"></script>
 </body>
 </html>
