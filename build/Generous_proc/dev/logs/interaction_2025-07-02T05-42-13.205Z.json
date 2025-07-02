@@ -1,0 +1,22 @@
+{
+  "userId": "anonymous",
+  "timestamp": "2025-07-02T05:42:13.205Z",
+  "prompt": "test",
+  "response": "Please provide me with something to test! 😊 \n\nFor example, you could ask me to:\n\n* **Answer a question:** \"What is the capital of France?\"\n* **Generate some text:** \"Write a short story about a robot who learns to feel emotions.\"\n* **Translate something:** \"Translate 'Hello world' into Spanish.\"\n* **Summarize a piece of text:** \"Summarize the plot of the movie 'Inception'.\"\n\nI'm ready for anything! 💪\n",
+  "model": "gemma2-9b-it",
+  "interactionType": "one_time_prompt",
+  "cognitiveAxis": {
+    "logic": 0,
+    "creativity": 0,
+    "analysis": 0,
+    "synthesis": 0
+  },
+  "thematicFocus": {
+    "marketing": 0,
+    "affiliation": 0,
+    "fiscalEconomic": 0,
+    "metierRelated": 0,
+    "codeRelated": 0,
+    "mediaRelated": 0
+  }
+}

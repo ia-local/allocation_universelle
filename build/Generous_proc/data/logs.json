@@ -1,0 +1,172 @@
+[
+  {
+    "id": "559730b7-9e3f-40a4-8b3c-f19320c27c5d",
+    "timestamp": "2025-07-01T10:26:04.004Z",
+    "type": "chat_message",
+    "conversationId": "436ae2bd-461a-4f87-96a2-12c4e00cb307",
+    "prompt": "test",
+    "aiResponse": "En tant qu'assistant IA expert en développement et en économie numérique, je suis à vos côtés pour vous aider à naviguer dans le monde en constante évolution du numérique ! \n\n**Voici quelques exemples de ce que je peux faire pour vous :**\n\n**Développement :**\n\n* **Génération de code:** Je peux générer du code dans plusieurs langages de programmation, comme Python, JavaScript, HTML, CSS et plus encore. \n* **Création d'applis web et mobiles:** Je peux vous aider à concevoir et à développer des applications web et mobiles simples, en fournissant des suggestions de structure, de fonctionnalités et de technologies adaptées à vos besoins.\n* **Automatisation de tâches:**  Je peux automatiser des tâches répétitives pour gagner du temps et améliorer votre productivité.\n\n**Économie numérique:**\n\n* **Analyse de marché:** Je peux analyser les tendances du marché, les concurrents et les opportunités pour votre business dans le secteur numérique. \n* **Stratégie d'affiliation:** Je peux vous aider à développer une stratégie d'affiliation efficace, en vous proposant des programmes pertinents, des outils d'analyse et des conseils pour maximiser vos revenus.\n* **Recherche de données et d'informations:** J'ai accès à une vaste base de données d'informations sur l'économie numérique et peux vous fournir des données et des analyses pertinentes pour votre projet.\n\n**Création de contenu:**\n\n* **Génération de CV:** Je peux vous aider à créer un CV professionnel et captivant qui met en avant vos compétences et vos expériences.\n* **Écriture de textes:** Je peux rédiger différents types de contenus, comme des articles de blog, des descriptions de produits, des posts sur les réseaux sociaux, etc.\n* **Création de médias:** Je peux générer des images, des vidéos et d'autres types de médias pour vos projets numériques.\n\n**N'hésitez pas à me poser des questions spécifiques sur votre projet. Plus vous me donnez de détails, plus je peux vous fournir des réponses pertinentes et utiles. **\n\nJ'ai hâte de collaborer avec vous et d'aider votre projet à réussir dans le monde numérique !\n",
+    "model": "gemma2-9b-it",
+    "processingTimeMs": 1156.983417,
+    "utmiResult": {
+      "utmi": 71.12,
+      "estimatedCostUSD": 0.000058,
+      "estimatedCostEUR": 0.000054
+    }
+  },
+  {
+    "id": "404e466f-e71c-4c54-a414-c774f9d47942",
+    "timestamp": "2025-07-01T10:26:10.657Z",
+    "type": "one_time_interaction",
+    "prompt": "test",
+    "aiResponse": "Je suis ravi de vous rencontrer ! En tant qu'assistant IA spécialisé en développement et en économie numérique, je suis prêt à mettre mes compétences à votre service. \n\n**Voici ce que je peux faire pour vous :**\n\n**Développement :**\n\n* **Génération de code:** Je peux générer du code dans différents langages de programmation (Python, JavaScript, HTML, CSS, etc.) pour vous aider à développer des sites web, des applications mobiles, des scripts et plus encore.\n* **Analyse de code:** Je peux analyser votre code existant pour identifier les erreurs, les inefficacités et les suggestions d'amélioration.\n\n**Économie numérique:**\n\n* **Analyse de marché:** Je peux analyser les tendances du marché, la concurrence et les opportunités pour votre entreprise dans le domaine numérique.\n* **Stratégies d'affiliation:** Je peux vous aider à élaborer des stratégies d'affiliation efficaces en identifiant les bons partenaires, en optimisant vos campagnes et en analysant les performances.\n* **Recherche de mots-clés:** Je peux trouver les mots-clés pertinents pour votre entreprise afin d'optimiser votre visibilité en ligne.\n\n**Génération de contenu :**\n\n* **CV:** Je peux générer des CV professionnels et personnalisés adaptés à votre profil et aux exigences du marché du travail.\n* **Texte:** Je peux écrire des articles de blog, des contenus web, des descriptions de produits, des emails marketing et autres types de textes.\n* **Médias:** Je peux créer des images et des vidéos basées sur vos descriptions textuelles.\n\n**Pour obtenir les meilleurs résultats, veuillez me fournir des informations précises et détaillées sur vos besoins.** \n\nN'hésitez pas à me poser des questions et à explorer mes capacités !\n\n**Exemple :**\n\n**Vous :** \"Je veux lancer une boutique en ligne de vêtements éco-responsables et j'ai besoin d'aide pour effectuer une analyse de marché.\"\n\n**Moi :** \"Avec plaisir ! Pour vous fournir une analyse pertinente, j'aurais besoin de savoir :\n\n* **Votre cible :** À qui vous adressez-vous ?\n* **Vos produits :** Quels types de vêtements éco-responsables proposez-vous ?\n* **Votre zone géographique :** Où souhaitez-vous vendre vos produits ?\n* **Vos concurrents :** Y a-t-il déjà des boutiques en ligne de vêtements éco-responsables dans votre zone ?\n\nUne fois que j'aurai ces informations, je pourrai analyser les tendances, la concurrence et les opportunités pour votre entreprise.\"\n\n\n",
+    "model": "gemma2-9b-it",
+    "processingTimeMs": 1438.389125,
+    "utmiResult": {
+      "utmi": 79.68,
+      "estimatedCostUSD": 0.000066,
+      "estimatedCostEUR": 0.000061
+    }
+  },
+  {
+    "id": "aa0087e3-b826-478f-8fc6-401af3199338",
+    "timestamp": "2025-07-01T10:26:45.268Z",
+    "type": "one_time_interaction",
+    "prompt": "test",
+    "aiResponse": "C'est une description enthousiasmante ! Je peux certainement vous aider dans ces domaines. \n\n**Voici quelques exemples de ce que je peux faire :**\n\n* **CV :** Je peux générer un CV professionnel et personnalisé en fonction de vos compétences, expériences et objectifs de carrière. \n* **Analyses de marché :**  Donnez-moi les détails d'un produit ou d'un service, et je peux analyser son marché potentiel, identifier les tendances, les concurrents et les opportunités.\n* **Stratégies d'affiliation :**  Je peux vous aider à élaborer une stratégie d'affiliation efficace en identifiant les programmes pertinents pour votre audience et en suggérant des tactiques pour promouvoir les produits.\n* **Génération de code :** Je peux générer du code dans plusieurs langages de programmation (Python, JavaScript, HTML, CSS, etc.) en fonction de vos instructions.\n* **Génération de texte :** Je peux écrire divers types de contenus, tels que des articles de blog, des descriptions de produits, des emails marketing, des scripts, etc.\n* **Génération de médias :** Je peux vous aider à générer des idées pour des contenus visuels, des légendes pour les réseaux sociaux, et même vous suggérer des outils pour créer des images et des vidéos.\n\n**Pour me permettre de vous aider au mieux, veuillez me fournir des informations précises sur vos besoins.** \n\nPar exemple, pour un CV, dites-moi votre expérience professionnelle, vos compétences et le type de poste que vous recherchez. Pour une analyse de marché, précisez le produit ou service que vous souhaitez analyser. \n\nJe suis impatient de collaborer avec vous !\n",
+    "model": "gemma2-9b-it",
+    "processingTimeMs": 927.84575,
+    "utmiResult": {
+      "utmi": 53.33,
+      "estimatedCostUSD": 0.000045,
+      "estimatedCostEUR": 0.000042
+    }
+  },
+  {
+    "id": "f8fd4dd6-ba37-40d3-acdb-1d3b6ab66725",
+    "timestamp": "2025-07-01T10:27:49.377Z",
+    "type": "one_time_interaction",
+    "prompt": "test",
+    "aiResponse": "Je suis ravi de vous rencontrer ! \n\nEn tant qu'assistant IA spécialisé en développement et en économie numérique, je suis à votre disposition pour vous aider dans vos projets. Voici quelques exemples de ce que je peux faire pour vous :\n\n**Développement et économie numérique:**\n\n* **Générer des CV personnalisés** en fonction de votre expérience et de vos compétences, optimisés pour les moteurs de recherche d'emploi.\n* **Analyser des marchés** en identifiant les tendances, les opportunités et les menaces. Je peux également vous aider à comprendre votre public cible et ses besoins.\n* **Développer des stratégies d'affiliation** efficaces en vous aidant à trouver les bons partenaires, à créer des campagnes de marketing performantes et à suivre vos résultats.\n\n**Génération de contenu:**\n\n* **Générer du code** dans différents langages de programmation, comme Python, JavaScript, C++ et HTML.\n* **Rédiger du texte** de haute qualité sur une variété de sujets, des articles de blog aux descriptions de produits en passant par les réseaux sociaux.\n* **Créer des médias** tels que des images, des vidéos et des graphiques, en utilisant des modèles pré-existants ou en générant du contenu original.\n\n**Pour tirer le meilleur parti de moi, veuillez me fournir des informations claires et précises sur vos besoins.** \n\nPar exemple, si vous souhaitez que je génère un CV, veuillez me donner vos informations personnelles, votre historique professionnel et vos compétences. Si vous souhaitez une analyse de marché, précisez le secteur d'activité et le marché cible. \n\nN'hésitez pas à me poser des questions et à me donner des instructions détaillées. Je suis là pour vous aider à réussir !\n\n**Prêt pour votre première demande ?**\n",
+    "model": "gemma2-9b-it",
+    "processingTimeMs": 942.947375,
+    "utmiResult": {
+      "utmi": 60.11,
+      "estimatedCostUSD": 0.000049,
+      "estimatedCostEUR": 0.000045
+    }
+  },
+  {
+    "id": "73fbbb3b-1877-47d7-a291-12fc6294c92c",
+    "timestamp": "2025-07-01T10:29:30.061Z",
+    "type": "one_time_interaction",
+    "prompt": "test",
+    "aiResponse": "C'est un excellent concept ! \n\nJe peux vous aider à concevoir un assistant IA tel que vous le décrivez. \n\n**Voici comment nous pourrions le structurer :**\n\n**1. Bases :**\n\n* **Modèle linguistique puissant:**  Je peux utiliser des modèles de langage comme GPT-3 ou des variantes plus spécialisées pour la génération de texte, de code et de contenu créatif.\n* **Base de données riche:**  L'assistant aurait besoin d'une base de données exhaustive sur les métiers, les compétences, les tendances du marché, les stratégies d'affiliation, etc.\n* **Algorithmes d'apprentissage automatique:** Pour analyser les données du marché, identifier les tendances et proposer des stratégies personnalisées.\n\n**2. Compétences clés :**\n\n* **Génération de CV:**\n\n    * Analyse des compétences et expériences de l'utilisateur.\n    * Création de CV optimisés pour les moteurs de recherche et les ATS (Applicant Tracking Systems).\n    * Adaptation du format et du contenu en fonction du type d'emploi et de l'industrie.\n* **Analyses de marché :**\n    * Collecte et analyse de données sur les tendances du marché, la concurrence et les segments clients.\n    * Identification des opportunités et des menaces pour les entreprises.\n    * Visualisation des données sous forme de rapports et de graphiques.\n* **Stratégies d'affiliation :**\n    * Identification des programmes d'affiliation pertinents pour un produit ou service.\n    * Proposition de stratégies de marketing d'affiliation personnalisées.\n    * Suivi des performances et optimisation des campagnes.\n* **Génération de code:**\n    * Support de plusieurs langages de programmation.\n    * Assistance à la rédaction de code, à la débogage et à la documentation.\n* **Génération de texte et de médias:**\n    * Rédaction d'articles de blog, de descriptions de produits, de contenu social, etc.\n    * Création de visuels simples (infographies, bannières) à partir de descriptions textuelles.\n\n**3. Intégration et interaction :**\n\n* **Interface utilisateur conviviale:**  Un chatbot, une application web ou une API pour permettre aux utilisateurs d'interagir avec l'assistant.\n* **Intégration avec d'autres outils:**  Connectivité avec des plateformes de CV, des logiciels de gestion de projet, des outils de marketing d'affiliation, etc.\n\n**Défis et considérations :**\n\n* **Qualité des données:** La précision des analyses et des recommandations dépendra de la qualité des données utilisées.\n* **Biais algorithmiques:** Il est important de s'assurer que l'assistant ne reproduit pas les biais présents dans les données d'entraînement.\n* **Confidentialité et sécurité des données:**  Protection des informations sensibles des utilisateurs.\n* **Responsabilité éthique:** Définir les limites de l'assistance et éviter les utilisations malveillantes.\n\n\nJe peux vous accompagner dans le développement de cet assistant IA en vous aidant à:\n\n* **Définir les fonctionnalités et les spécifications techniques.**\n* **Trouver des ressources et des outils appropriés.**\n* **Écrire du code et concevoir l'interface utilisateur.**\n* **Tester et améliorer les performances de l'assistant.**\n\n\n\nN'hésitez pas à me poser des questions plus spécifiques sur ce projet.\n",
+    "model": "gemma2-9b-it",
+    "processingTimeMs": 1605.948417,
+    "utmiResult": {
+      "utmi": 96.52,
+      "estimatedCostUSD": 0.000082,
+      "estimatedCostEUR": 0.000076
+    }
+  },
+  {
+    "id": "baf4e15d-7748-4fa3-8b07-68c7c812c7d4",
+    "timestamp": "2025-07-01T10:31:47.525Z",
+    "type": "chat_message",
+    "conversationId": "70a49108-4467-4713-ba8f-7d8d428853b7",
+    "prompt": "test",
+    "aiResponse": "Bonjour ! \n\nJe suis ravi de vous rencontrer. En tant qu'assistant IA spécialisé en développement et en économie numérique, je suis conçu pour vous aider dans diverses tâches, notamment :\n\n**Développement:**\n\n* **Génération de code:** Je peux générer du code dans plusieurs langages de programmation populaires (Python, JavaScript, HTML, CSS, etc.) en fonction de vos instructions.\n* **Développement web:** Je peux vous aider à structurer votre site web, à générer du contenu HTML et CSS, et à intégrer des fonctionnalités basiques.\n* **Automatisation:** Je peux automatiser des tâches répétitives, libérant ainsi votre temps pour les tâches plus créatives.\n\n**Économie numérique:**\n\n* **Analyses de marché:** Je peux analyser des données de marché pour identifier des tendances, des opportunités et des menaces.\n* **Stratégies d'affiliation:** Je peux vous aider à développer des stratégies d'affiliation efficaces, en identifiant les produits et les plateformes les plus pertinents pour votre audience.\n* **Recherche de mots-clés:** Je peux trouver des mots-clés pertinents pour votre site web ou votre campagne marketing.\n\n**Création de contenu:**\n\n* **Génération de texte:** Je peux générer du texte créatif et informatif sur une variété de sujets.\n* **Rédaction de CV:** Je peux vous aider à rédiger un CV professionnel et percutant.\n* **Génération de médias:** Je peux vous aider à créer des images, des vidéos et des autres médias en utilisant des modèles et en fonction de vos instructions.\n\n**Limitations:**\n\nIl est important de noter que je suis encore en développement et que mes capacités sont limitées. Je ne peux pas remplacer un expert humain dans les domaines du développement, de l'économie numérique ou des médias. \n\n**Comment me faire confiance ?**\n\nJe suis entraîné sur un vaste ensemble de données textuelles et de code, ce qui me permet de fournir des réponses informatives et créatives. Cependant, il est important de toujours vérifier les informations que je fournis et de les utiliser de manière responsable.\n\n**Comment me tester ?**\n\nN'hésitez pas à me poser des questions, à me donner des instructions spécifiques et à me tester sur différentes tâches. Je suis impatient de voir ce que nous pouvons accomplir ensemble ! \n\n\n\n",
+    "model": "gemma2-9b-it",
+    "processingTimeMs": 1153.484958,
+    "utmiResult": {
+      "utmi": 77.81,
+      "estimatedCostUSD": 0.000063,
+      "estimatedCostEUR": 0.000058
+    }
+  },
+  {
+    "id": "8837c3ab-49ad-4421-9d58-819eb71a6bb6",
+    "timestamp": "2025-07-01T10:54:06.687Z",
+    "type": "one_time_interaction",
+    "prompt": "test",
+    "aiResponse": "En tant qu'assistant IA spécialisé en développement et en économie numérique, je suis à votre disposition pour vous aider dans vos projets !  \n\n**Voici quelques exemples de ce que je peux faire pour vous :**\n\n**Développement:**\n\n* **Génération de code:** Je peux générer du code dans plusieurs langages de programmation (Python, JavaScript, HTML, CSS, etc.) en fonction de vos instructions.\n* **Débogage et optimisation de code:** Je peux analyser votre code et vous aider à identifier et corriger les erreurs, ainsi qu'à l'optimiser pour une meilleure performance.\n* **Documentation de code:** Je peux générer des commentaires et des descriptions pour votre code, facilitant sa compréhension et sa maintenance.\n\n**Économie numérique:**\n\n* **Analyse de marché:** Je peux analyser les tendances du marché, les données concurrentielles et les opportunités de développement pour votre activité numérique.\n* **Stratégie d'affiliation:** Je peux vous aider à élaborer une stratégie d'affiliation performante, en identifiant les bons partenaires, en créant des offres attractives et en optimisant vos campagnes.\n* **Étude de faisabilité:** Je peux vous aider à évaluer la viabilité de votre projet numérique en analysant les risques et les opportunités.\n\n**Création de contenu:**\n\n* **Génération de CV:** Je peux générer des CV professionnels et personnalisés en fonction de votre expérience et de vos compétences.\n* **Rédaction d'articles et de contenus web:** Je peux rédiger des articles informatifs, des descriptions de produits et autres contenus web pertinents pour votre audience.\n* **Création de médias:** Je peux générer des images, des vidéos et d'autres médias numériques en fonction de vos besoins.\n\n**Pour utiliser mes services de manière optimale, veuillez fournir des instructions claires et précises.** Plus vous me donnez d'informations, plus je serai en mesure de vous fournir des résultats pertinents et de haute qualité.\n\nN'hésitez pas à me poser des questions et à explorer mes capacités ! \n\n\n",
+    "model": "gemma2-9b-it",
+    "processingTimeMs": 1078.087958,
+    "utmiResult": {
+      "utmi": 66.23,
+      "estimatedCostUSD": 0.000054,
+      "estimatedCostEUR": 0.00005
+    }
+  },
+  {
+    "id": "4cb2942a-bc6a-4040-b524-a4f1eb7b5160",
+    "timestamp": "2025-07-01T10:56:00.008Z",
+    "type": "one_time_interaction",
+    "prompt": "test",
+    "aiResponse": "Salut ! \n\nJ'ai bien compris votre demande. En tant qu'assistant IA spécialisé en développement et en économie numérique, je peux vous aider avec :\n\n* **Génération de CV:**  Je peux créer des CV personnalisés et adaptés à différents types d'emplois en fonction de vos expériences et compétences. \n* **Analyses de marché:**  Je peux analyser les tendances du marché, les concurrents et les opportunités pour un produit ou un service spécifique.\n* **Stratégies d'affiliation:**  Je peux vous aider à développer une stratégie d'affiliation efficace en identifiant les bons partenaires, en créant du contenu attractif et en optimisant vos campagnes.\n* **Génération de code:**  Je suis capable de générer du code dans plusieurs langages de programmation, comme Python, JavaScript et HTML.\n* **Génération de texte:**  Je peux rédiger des articles de blog, des descriptions de produits, des scénarios, des emails et bien plus encore.\n* **Génération de médias:**  Bien que je ne puisse pas créer des images ou des vidéos directement, je peux vous aider à générer des descriptions, des idées de concepts ou même du texte à ajouter à vos médias.\n\nN'hésitez pas à me donner plus de détails sur votre besoin spécifique. Plus vous me donnez d'informations, plus je peux vous fournir une réponse précise et utile. \n\nPar exemple, si vous voulez que je vous aide à créer un CV, dites-moi :\n\n* Quel type d'emploi recherchez-vous ?\n* Quelles sont vos compétences et expériences les plus pertinentes ?\n* Y a-t-il des mots-clés spécifiques que vous voulez inclure ?\n\nJe suis prêt à vous aider à atteindre vos objectifs ! 😊\n",
+    "model": "gemma2-9b-it",
+    "processingTimeMs": 998.991834,
+    "utmiResult": {
+      "utmi": 58.48,
+      "estimatedCostUSD": 0.000047,
+      "estimatedCostEUR": 0.000044
+    }
+  },
+  {
+    "id": "9f066166-5fce-4f7b-bf19-5d9562327450",
+    "timestamp": "2025-07-01T11:00:21.756Z",
+    "type": "one_time_interaction",
+    "prompt": "test",
+    "aiResponse": "Salut !  \n\nJe suis ravi de rencontrer quelqu'un intéressé par l'IA.  Je suis effectivement un assistant IA spécialisé dans le développement et l'économie numérique. \n\nJe peux vous aider avec :\n\n* **Génération de CV:**\n\nDonnez-moi vos informations et vos expériences, et je peux les transformer en un CV professionnel et accrocheur.\n* **Analyses de marché:**\n\nIndiquez-moi le secteur ou le produit que vous souhaitez analyser, et je peux vous fournir des informations sur la taille du marché, les tendances, la concurrence et les opportunités.\n* **Stratégies d'affiliation:**\n\nExpliquez-moi vos objectifs et votre public cible, et je peux vous aider à élaborer une stratégie d'affiliation efficace pour promouvoir vos produits ou services.\n* **Génération de code:**\n\nJe peux générer du code dans plusieurs langages de programmation, selon vos besoins.\n* **Génération de texte:**\n\nJ'excelle dans la rédaction de différents types de textes, comme des articles, des blog posts, des descriptions de produits et du contenu marketing.\n* **Génération de médias:**\n\nJe peux vous aider à créer des images, des vidéos et des autres supports visuels en utilisant des modèles et des outils d'IA.\n\nN'hésitez pas à me poser des questions plus spécifiques sur ce que vous cherchez à accomplir. Plus vous me donnerez de détails, plus je pourrai vous fournir des résultats pertinents et utiles.\n\nSoyez précis dans vos demandes et je ferai de mon mieux pour vous aider !\n",
+    "model": "gemma2-9b-it",
+    "processingTimeMs": 938.003959,
+    "utmiResult": {
+      "utmi": 51.75,
+      "estimatedCostUSD": 0.000041,
+      "estimatedCostEUR": 0.000039
+    }
+  },
+  {
+    "id": "40300f96-bf2c-4b46-a628-32deaf75a276",
+    "timestamp": "2025-07-01T11:01:29.910Z",
+    "type": "one_time_interaction",
+    "prompt": "test",
+    "aiResponse": "Je suis prêt à relever le défi ! En tant qu'assistant IA expert en développement et en économie numérique, je peux vous aider dans plusieurs domaines : \n\n**Développement:**\n\n* **Génération de code:** Je peux générer du code dans différents langages de programmation (Python, JavaScript, HTML, CSS, etc.) en fonction de vos spécifications.\n* **Analyses de code:** Je peux analyser votre code pour identifier les erreurs, les points faibles et les suggestions d'amélioration.\n* **Documentation de code:** Je peux générer des commentaires et des descriptions claires et concises pour votre code.\n\n**Économie numérique:**\n\n* **Analyses de marché:** Je peux analyser les tendances du marché, les données des clients et la concurrence pour vous aider à comprendre votre environnement et à identifier les opportunités.\n* **Stratégies d'affiliation:** Je peux vous aider à élaborer des stratégies d'affiliation efficaces en analysant les programmes d'affiliation pertinents, en identifiant les audiences cibles et en vous proposant des contenus attractifs.\n* **Optimisation SEO:** Je peux vous fournir des recommandations pour améliorer le référencement de votre site web et augmenter votre visibilité en ligne.\n\n**Génération de contenu:**\n\n* **CV:** Je peux vous aider à créer un CV professionnel et attractif en mettant en évidence vos compétences et vos expériences.\n* **Texte:** Je peux générer différents types de textes, tels que des articles de blog, des descriptions de produits, des e-mails marketing, etc.\n* **Médias:** Je peux vous aider à créer des visuels attrayants pour vos contenus, tels que des images, des infographies et des vidéos.\n\n**Pour mieux vous aider, veuillez me fournir des informations spécifiques sur votre besoin.** \n\nPar exemple, si vous souhaitez que je vous aide à générer un CV, dites-moi votre expérience professionnelle, vos compétences et les postes pour lesquels vous postulez. \n\nJe suis impatient de travailler avec vous !\n",
+    "model": "gemma2-9b-it",
+    "processingTimeMs": 1060.841625,
+    "utmiResult": {
+      "utmi": 65,
+      "estimatedCostUSD": 0.000053,
+      "estimatedCostEUR": 0.000049
+    }
+  },
+  {
+    "id": "480303d0-5f4b-4f90-8e89-8e51ae970aae",
+    "timestamp": "2025-07-01T11:01:40.461Z",
+    "type": "one_time_interaction",
+    "prompt": "tesrt",
+    "aiResponse": "## Bonjour ! \n\nJe suis ravi de vous rencontrer. \n\nEn tant qu'assistant IA spécialisé en développement et économie numérique, je suis à votre disposition pour vous aider dans plusieurs domaines :\n\n**Développement:**\n\n* **Génération de code :** Je peux générer du code dans différents langages de programmation (Python, JavaScript, Java, etc.) en fonction de vos instructions. N'hésitez pas à me donner des détails précis sur la fonction que vous souhaitez que le code réalise.\n* **Assistance au développement:** Je peux vous aider à déboguer votre code, à comprendre des concepts difficiles et à trouver des solutions à des problèmes spécifiques.\n\n**Economie numérique:**\n\n* **Analyses de marché :** Je peux analyser les tendances du marché numérique, identifier les opportunités et les menaces, et vous fournir des informations précieuses pour prendre des décisions stratégiques.\n* **Stratégies d'affiliation :** \n\nJe peux vous aider à développer des stratégies d'affiliation efficaces, en vous proposant des plateformes d'affiliation pertinentes, des techniques de marketing d'affiliation performantes et en analysant les performances de vos campagnes.\n\n**Création de contenu:**\n\n* **Génération de CV :** Je peux vous aider à créer un CV professionnel et attrayant en fonction de votre expérience et de vos compétences. N'oubliez pas de me fournir des informations détaillées sur votre parcours professionnel.\n* **Génération de texte :** Je peux rédiger des articles de blog, des descriptions de produits, des emails marketing, etc. \n\n* **Génération de médias :**  Bien que je ne puisse pas créer de médias visuels directement, je peux vous fournir des descriptions et des idées pour des images, des vidéos et autres contenus multimédias.\n\n\nN'hésitez pas à me poser des questions et à me donner des instructions précises. Je suis là pour vous aider à réussir dans le monde numérique ! \n\n**Exemple d'utilisation :**\n\n\"Peux-tu me générer un code Python pour calculer la moyenne d'une liste de nombres ?\"\n\nJ'attends avec impatience votre demande !\n",
+    "model": "gemma2-9b-it",
+    "processingTimeMs": 1071.82025,
+    "utmiResult": {
+      "utmi": 68.67,
+      "estimatedCostUSD": 0.000056,
+      "estimatedCostEUR": 0.000052
+    }
+  },
+  {
+    "id": "611e14f5-b4f5-4a24-a7f3-8526d1bdbfa0",
+    "timestamp": "2025-07-01T11:01:42.225Z",
+    "type": "one_time_interaction",
+    "prompt": "tesrt",
+    "aiResponse": "En tant qu'assistant IA expert en développement et en économie numérique, je suis prêt à vous aider avec vos besoins. \n\n**Voici quelques exemples de ce que je peux faire:**\n\n* **CV:** \n    * Analyser vos compétences et expériences pour créer un CV personnalisé et accrocheur.\n    * Adapter votre CV au format et aux exigences spécifiques d'un poste ou d'une entreprise.\n    * Suggérer des mots-clés pertinents pour optimiser votre CV pour les recruteurs et les systèmes de suivi.\n\n* **Analyses de marché:**\n    * Identifier les tendances du marché et les opportunités dans un secteur spécifique.\n    * Analyser la concurrence et les forces et faiblesses des principaux acteurs.\n    * Estimer la demande potentielle d'un produit ou service.\n\n* **Stratégies d'affiliation:**\n    * Identifier les programmes d'affiliation pertinents pour votre audience et votre niche.\n    * Développer des stratégies pour promouvoir les produits et services affiliés de manière efficace.\n    * Analyser les performances de vos campagnes d'affiliation et optimiser les résultats.\n\n* **Génération de contenu:**\n    * Générer du code dans différents langages de programmation (Python, JavaScript, HTML, etc.).\n    * Rédiger des articles, des blog posts, des descriptions de produits et d'autres types de contenu textuel.\n    * Créer des idées et des concepts pour des contenus visuels (images, vidéos, infographies).\n\n**Pour me permettre de vous aider au mieux, veuillez me fournir des informations précises sur vos besoins.**\n\nPar exemple :\n\n* Pour un CV, veuillez me donner vos informations personnelles, vos expériences professionnelles, vos compétences et vos aspirations.\n* Pour une analyse de marché, veuillez préciser le secteur d'activité, les produits ou services concernés et vos objectifs.\n* Pour une stratégie d'affiliation, veuillez décrire votre audience, votre niche et vos produits ou services affiliés.\n\n\nN'hésitez pas à me poser des questions et à me donner plus de détails sur votre projet. Je suis là pour vous accompagner et vous aider à réussir !\n",
+    "model": "gemma2-9b-it",
+    "processingTimeMs": 1025.99625,
+    "utmiResult": {
+      "utmi": 67.45,
+      "estimatedCostUSD": 0.000055,
+      "estimatedCostEUR": 0.000051
+    }
+  }
+]

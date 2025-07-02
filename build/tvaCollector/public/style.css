@@ -1,0 +1,222 @@
+/* Styles généraux */
+/* Styles pour la nouvelle section CVNU & Taxe IA */
+#cvnu-taxe-ia { /* Modifié l'ID ici */
+    background-color: #f0f8ff; /* Bleu très clair pour la section crypto */
+    border-left: 5px solid #007bff;
+    padding: 25px;
+    margin-bottom: 40px;
+}
+
+#cvnu-taxe-ia h2 { /* Modifié l'ID ici */
+    color: #007bff; /* Bleu plus vif */
+    border-bottom-color: #007bff;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #0056b3; /* Bleu DGFiP ou similaire */
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #003d80;
+    border-radius: 4px;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+h2 {
+    color: #0056b3;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-top: 0;
+    font-size: 1.8rem;
+}
+
+h3 {
+    color: #004080;
+    font-size: 1.4rem;
+}
+
+button {
+    background-color: #28a745; /* Vert pour l'action principale */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.mission-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+}
+
+.mission-card h4 {
+    color: #0056b3;
+    margin-top: 0;
+}
+
+.mission-card ul {
+    list-style: disc;
+    margin-left: 20px;
+    padding: 0;
+}
+
+/* Styles pour le tableau de bord TVA (exemple) */
+#tva-dashboard {
+    background-color: #e6f7ff; /* Bleu très clair */
+    border: 1px solid #b3e0ff;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#tva-dashboard ul {
+    list-style: none;
+    padding: 0;
+}
+
+#tva-dashboard ul li {
+    margin-bottom: 8px;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    background-color: #0056b3;
+    color: white;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+}
+/* Styles pour la section Intégration Utilisateur IA */
+#ia-integration { /* Remplacé #pi-integration par #ia-integration */
+    background-color: #e0ffe0; /* Garde la couleur verte claire, ou changez pour une couleur IA */
+    border-left: 5px solid #28a745; /* Garde la bordure verte vif */
+    padding: 25px;
+    margin-bottom: 40px;
+}
+
+#ia-integration h2 { /* Remplacé #pi-integration h2 par #ia-integration h2 */
+    color: #28a745;
+    border-bottom-color: #28a745;
+}
+
+.ia-action-card { /* Remplacé .pi-action-card par .ia-action-card */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.ia-action-card h3 { /* Remplacé .pi-action-card h3 par .ia-action-card h3 */
+    color: #218838;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.ia-action-card input[type="text"], /* Remplacé .pi-action-card par .ia-action-card */
+.ia-action-card input[type="number"] { /* Remplacé .pi-action-card par .ia-action-card */
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.ia-action-card button { /* Remplacé .pi-action-card button par .ia-action-card button */
+    background-color: #28a745; /* Vert primaire */
+    margin-top: 10px;
+    padding: 12px 25px;
+}
+
+.ia-action-card button:hover { /* Remplacé .pi-action-card button:hover par .ia-action-card button:hover */
+    background-color: #218838;
+}
+
+/* Responsive design de base */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+    nav ul li {
+        margin: 5px 0;
+    }
+    main {
+        margin: 10px;
+        padding: 10px;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+}
