@@ -3,7 +3,7 @@ const swaggerConfig = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'API CVNU & Écosystème Monétisation',
+        title: 'API UTMi (Universal Talent Monetization Index)', // <-- Change ceci
             version: '1.0.0',
             description: 'Documentation de l\'API pour l\'application CV Numérique Universel et la monétisation des compétences via les UTMi, le RUM et la Trésorerie.',
         },
