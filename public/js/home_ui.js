@@ -1,5 +1,5 @@
 // public/js/home_ui.js
-import { API_BASE_URL, showStatusMessage } from './app.js'; // Assurez-vous que showStatusMessage est exporté de app.js
+import { API_BASE_URL, showStatusMessage } from './app.js';
 
 let homePromptInput;
 let sendHomePromptBtn;
@@ -7,14 +7,11 @@ let homeAiResponseDisplay;
 
 export function initializeHomeUI() {
     console.log('[home_ui] Initialisation de l\'UI de la page d\'accueil.');
-    // Récupération des éléments DOM
     homePromptInput = document.getElementById('home-prompt-input');
     sendHomePromptBtn = document.getElementById('send-home-prompt-btn');
     homeAiResponseDisplay = document.getElementById('home-ai-response-display');
 
-    // Assurez-vous que les éléments existent avant d'attacher les écouteurs
     if (sendHomePromptBtn) {
-        // Supprime l'écouteur précédent pour éviter les doublons si initializeHomeUI est appelée plusieurs fois
         sendHomePromptBtn.removeEventListener('click', handleSendHomePrompt);
         sendHomePromptBtn.addEventListener('click', handleSendHomePrompt);
         console.log('[home_ui] Écouteur d\'événements du bouton d\'envoi du prompt ajouté.');
@@ -23,7 +20,6 @@ export function initializeHomeUI() {
     }
 
     if (homePromptInput) {
-        // Ajoute un écouteur pour la touche "Entrée"
         homePromptInput.removeEventListener('keypress', handlePromptKeyPress);
         homePromptInput.addEventListener('keypress', handlePromptKeyPress);
         console.log('[home_ui] Écouteur d\'événements de touche pour le prompt ajouté.');
@@ -31,24 +27,21 @@ export function initializeHomeUI() {
         console.warn('[home_ui] Champ "home-prompt-input" non trouvé.');
     }
 
-    // Initialise l'affichage de la réponse
     if (homeAiResponseDisplay) {
         homeAiResponseDisplay.innerHTML = '<p>Votre réponse de l\'IA apparaîtra ici.</p>';
     }
 }
 
-// Gère l'envoi du prompt avec la touche "Entrée"
 function handlePromptKeyPress(event) {
-    // Vérifie si la touche pressée est "Entrée" (code 13) et que la touche Shift n'est PAS enfoncée
     if (event.key === 'Enter' && !event.shiftKey) {
-        event.preventDefault(); // Empêche le saut de ligne par défaut dans le textarea
-        handleSendHomePrompt(); // Appelle la fonction d'envoi
+        event.preventDefault();
+        handleSendHomePrompt();
     }
 }
 
 export async function handleSendHomePrompt() {
-    console.log('[DEBUG] Le bouton a été cliqué ! Ou Entrée a été pressée !'); // <--- AJOUTEZ CETTE LIGNE
-    showStatusMessage('Test de clic : Bouton réagit !', 'info'); // <--- AJOUTEZ CETTE LIGNE
+    console.log('[DEBUG] Le bouton a été cliqué ! Ou Entrée a été pressée !');
+    showStatusMessage('Test de clic : Bouton réagit !', 'info');
     if (!homePromptInput) {
         showStatusMessage('Erreur: Le champ de prompt n\'est pas initialisé.', 'error');
         console.error('[home_ui] homePromptInput est null.');
@@ -67,7 +60,8 @@ export async function handleSendHomePrompt() {
     }
 
     try {
-        const response = await fetch(`${API_BASE_URL}/generate`, {
+        // --- CORRECTION ICI : L'URL de l'API a été changée pour correspondre à srv.js ---
+        const response = await fetch(`${API_BASE_URL}/api/home/prompt`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -77,8 +71,17 @@ export async function handleSendHomePrompt() {
         });
 
         if (!response.ok) {
+            // Tente de lire l'erreur en JSON, sinon en texte brut
             const errorData = await response.json().catch(() => response.text());
-            throw new Error(`HTTP error! status: ${response.status} - ${JSON.stringify(errorData)}`);
+            let errorMessage = `HTTP error! status: ${response.status}`;
+            if (typeof errorData === 'object' && errorData.error) {
+                errorMessage += ` - ${errorData.error}`;
+            } else if (typeof errorData === 'string') {
+                errorMessage += ` - ${errorData}`;
+            } else {
+                errorMessage += ` - Erreur inconnue`;
+            }
+            throw new Error(errorMessage);
         }
 
         const data = await response.json();
@@ -86,7 +89,7 @@ export async function handleSendHomePrompt() {
             homeAiResponseDisplay.textContent = data.response;
         }
         showStatusMessage('Réponse IA reçue avec succès !', 'success');
-        homePromptInput.value = ''; // Efface le champ après l'envoi
+        homePromptInput.value = '';
 
     } catch (error) {
         console.error('[home_ui] Erreur lors de la génération IA:', error);

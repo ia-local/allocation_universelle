@@ -594,5 +594,165 @@
         "Operating Systems: Windows, Linux, macOS"
       ]
     }
+  },
+  {
+    "id": "81c071ae-3c24-46a1-930b-d02c4133352d",
+    "timestamp": "2025-07-02T13:20:38.739Z",
+    "type": "chat_new_conversation",
+    "conversationId": "5d69748a-6cbc-4c73-a31e-d4f7719d61c3"
+  },
+  {
+    "id": "60509a77-fff8-46de-8d0b-23bbe87fd810",
+    "timestamp": "2025-07-02T13:20:38.740Z",
+    "type": "chat_message_sent",
+    "conversationId": "5d69748a-6cbc-4c73-a31e-d4f7719d61c3",
+    "userMessage": "test"
+  },
+  {
+    "id": "c529a8db-7f66-400c-9b5b-e26c70164da8",
+    "timestamp": "2025-07-02T13:20:39.574Z",
+    "type": "chat_message_received",
+    "conversationId": "5d69748a-6cbc-4c73-a31e-d4f7719d61c3",
+    "aiResponse": "Bonjour !\n\nJe suis ravi de vous aider ! Je suis un assistant IA expert en développement et en conseil technique. Je suis là pour fournir des réponses précises, concises et utiles sur des sujets de programmation, d'architecture logicielle et de technologies web.\n\nQu'est-ce que vous souhaitez savoir ou discuter aujourd'hui ? Un problème spécifique que vous rencontrez dans votre projet ? Une technologie que vous souhaitez apprendre ? Ou simplement des conseils généraux sur le développement logiciel ?"
+  },
+  {
+    "id": "eb89929c-62b8-448f-b5fa-e6dfe6aa9d67",
+    "timestamp": "2025-07-02T13:20:42.944Z",
+    "type": "cv_generated",
+    "prompt": "test"
+  },
+  {
+    "id": "c4311370-8a53-419b-83fc-f4b214383390",
+    "timestamp": "2025-07-02T13:20:43.685Z",
+    "type": "cv_generation_result",
+    "prompt": "test",
+    "generatedTextPreview": "Voici un exemple de CV basé sur le prompt \"test\":\n\n**Nom:** John Doe\n**Prénom:** Pierre\n**Adresse:**"
+  },
+  {
+    "id": "551d2f6a-9688-4fa1-a9c8-338e0e5c1a1c",
+    "timestamp": "2025-07-02T13:20:44.835Z",
+    "type": "wallet_balance_fetched",
+    "balance": 1234.56
+  },
+  {
+    "id": "1e02f7c7-b99c-45d9-8af6-e8678bae7c7e",
+    "timestamp": "2025-07-02T13:26:29.550Z",
+    "type": "home_interaction",
+    "prompt": "test",
+    "response": "Bonjour ! Je suis ravi de vous rencontrer. Je suis un assistant IA expert en développement et en conseil technique. Je suis là pour vous aider avec vos questions et vos besoins liés au développement et au conseil technique. Qu'est-ce que vous pouvez me demander ?"
+  },
+  {
+    "id": "96e2d90a-46c2-4e14-9289-e80d089e72ad",
+    "timestamp": "2025-07-02T13:27:32.434Z",
+    "type": "chat_interaction",
+    "conversationId": "9846c43a-01a5-45ff-9d04-f3e503413606",
+    "userMessage": "test",
+    "aiResponse": "Je sens que c'est un test en répétition !\n\nJe suis prêt à répondre à votre question ou à discuter de votre sujet de programmation, d'architecture logicielle ou de technologies web. Si vous n'avez pas encore de sujet en particulier, je peux vous proposer quelques options :\n\n* Je peux vous fournir des conseils sur une technologie spécifique (par exemple, React, Node.js, Docker, etc.)\n* Je peux vous aider à résoudre un problème de programmation que vous rencontrez\n* Je peux vous proposer des idées pour améliorer l'architecture logicielle d'un projet\n* Je peux vous discuter des dernières tendances et des meilleures pratiques dans le domaine du développement logiciel\n\nQu'est-ce que vous préférez ?"
+  },
+  {
+    "id": "aa536ba8-0aed-4f0e-9d08-7bb21ef14323",
+    "timestamp": "2025-07-02T13:27:47.895Z",
+    "type": "cv_generation",
+    "prompt": "Bonjour, je m'appelle Michael 25 ans, trois ans d'expérience en tant que développeur chez Google, on fait des tests sur la génération de CV",
+    "cvData": {
+      "informationsPersonnelles": {
+        "nom": "Michael",
+        "prenom": "Michael",
+        "age": 25,
+        "adresse": "Paris, France",
+        "telephone": "+33 6 12 34 56",
+        "email": "michael@gmail.com",
+        "profilLinkedIn": "https://www.linkedin.com/in/michael/"
+      },
+      "experienceProfessionnelle": [
+        {
+          "période": "2020-2023",
+          "entreprise": "Google",
+          "fonction": "Développeur",
+          "description": "Développement de prototypes de logiciels et de systèmes d'information pour des clients internationaux."
+        }
+      ],
+      "education": [
+        {
+          "période": "2015-2019",
+          "établissement": "École d'ingénieurs de Paris",
+          "diplôme": "Diplôme d'ingénieur en informatique"
+        }
+      ],
+      "compétences": {
+        "langages": [
+          "Java",
+          "Python",
+          "C++"
+        ],
+        "outils": [
+          "Git",
+          "Jira",
+          "TestNg"
+        ],
+        "technologies": [
+          "Android",
+          "iOS",
+          "ReactNative"
+        ]
+      }
+    }
+  },
+  {
+    "id": "680bf9cb-37a2-45f5-865c-d88b5ba7ae25",
+    "timestamp": "2025-07-02T13:27:56.951Z",
+    "type": "chat_interaction",
+    "conversationId": "f2ae5884-79c0-41e9-867b-684bd50a02ba",
+    "userMessage": "test",
+    "aiResponse": "Bonjour ! Je suis prêt à vous aider avec vos questions sur la programmation, l'architecture logicielle et les technologies web. Quel est votre sujet de préoccupation actuel ?"
+  },
+  {
+    "id": "e3281dc6-7fa4-45ca-9090-46d1dbbe7528",
+    "timestamp": "2025-07-02T13:28:00.720Z",
+    "type": "wallet_balance_fetch",
+    "balance": 1000
+  },
+  {
+    "id": "d5ce669d-45ab-4bdb-ab1d-b93e77c1f8ae",
+    "timestamp": "2025-07-02T13:31:59.859Z",
+    "type": "home_interaction",
+    "prompt": "test",
+    "response": "Bonjour ! Je suis un assistant IA expert en développement et en conseil technique. Je suis là pour vous aider avec vos besoins en matière de développement logiciel, de conseil technique ou de résolution de problèmes.\n\nSi vous avez un projet ou un problème spécifique que vous souhaitez discuter, n'hésitez pas à me le décrire. Je ferai de mon mieux pour vous fournir des conseils et des solutions éclairés.\n\nSinon, je peux vous proposer quelques sujets de conversation pour commencer :\n\n* Développement d'applications web ou mobile\n* Intégration de services et d'API\n* Sécurité et sécurité de l'information\n* Analytique et traitement des données\n* Optimisation de performances et de scalabilité\n* Gestion de projet et de équipe\n\nQu'est-ce que vous aimeriez discuter ?"
+  },
+  {
+    "id": "b4a85da5-0b82-4218-89f0-1c6a3e32af36",
+    "timestamp": "2025-07-02T13:32:05.876Z",
+    "type": "chat_interaction",
+    "conversationId": "f2ae5884-79c0-41e9-867b-684bd50a02ba",
+    "userMessage": "test",
+    "aiResponse": "C'est juste un test, c'est ok ! Je suis prêt à vous aider avec vos questions sur la programmation, l'architecture logicielle et les technologies web. Qu'est-ce que vous souhaitez discuter ou résoudre ?"
+  },
+  {
+    "id": "dbaaf9c5-a89b-4c85-8df3-89a4f43823cb",
+    "timestamp": "2025-07-02T13:32:10.196Z",
+    "type": "chat_interaction",
+    "conversationId": "6d98b6e1-973a-4c22-9016-8b723d3fe4f5",
+    "userMessage": "test",
+    "aiResponse": "Je suis prêt à vous aider avec vos questions sur les sujets de programmation, d'architecture logicielle et de technologies web. Quel est votre sujet de préoccupation ou votre question spécifique ? Je vais faire de mon mieux pour vous fournir des réponses précises, concises et utiles."
+  },
+  {
+    "id": "f0c7ef62-2c84-4632-9ef0-54390bf6bb41",
+    "timestamp": "2025-07-02T13:32:13.619Z",
+    "type": "chat_interaction",
+    "conversationId": "6d98b6e1-973a-4c22-9016-8b723d3fe4f5",
+    "userMessage": "tryés bien",
+    "aiResponse": "Il semblerait que vous ayez un problème ou une question en tête, mais qui ne soit pas encore formulé. Pas de problème ! Prenez votre temps, et lorsque vous êtes prêt, posez votre question ou partagez votre problème, je serai ravi de vous aider."
+  },
+  {
+    "id": "85f1c1f7-2694-46ce-95c9-ef436c80ed24",
+    "timestamp": "2025-07-02T13:32:16.951Z",
+    "type": "wallet_balance_fetch",
+    "balance": 1000
+  },
+  {
+    "id": "2ef0298b-a3b6-40bb-bbf1-e34289dd3f1b",
+    "timestamp": "2025-07-02T13:33:01.871Z",
+    "type": "wallet_balance_fetch",
+    "balance": 1000
   }
 ]

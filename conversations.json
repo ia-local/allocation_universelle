@@ -12,9 +12,75 @@
         "role": "assistant",
         "content": "Un test ! Je suis prêt à vous fournir des réponses précises, concises et utiles sur des sujets de programmation, d'architecture logicielle et de technologies web. Quel est votre sujet ou votre question préférée ?",
         "timestamp": "2025-07-02T13:12:06.288Z"
+      },
+      {
+        "role": "user",
+        "content": "test",
+        "timestamp": "2025-07-02T13:27:31.871Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Je sens que c'est un test en répétition !\n\nJe suis prêt à répondre à votre question ou à discuter de votre sujet de programmation, d'architecture logicielle ou de technologies web. Si vous n'avez pas encore de sujet en particulier, je peux vous proposer quelques options :\n\n* Je peux vous fournir des conseils sur une technologie spécifique (par exemple, React, Node.js, Docker, etc.)\n* Je peux vous aider à résoudre un problème de programmation que vous rencontrez\n* Je peux vous proposer des idées pour améliorer l'architecture logicielle d'un projet\n* Je peux vous discuter des dernières tendances et des meilleures pratiques dans le domaine du développement logiciel\n\nQu'est-ce que vous préférez ?",
+        "timestamp": "2025-07-02T13:27:32.433Z"
       }
     ],
     "createdAt": "2025-07-02T13:12:05.919Z",
-    "updatedAt": "2025-07-02T13:12:06.288Z"
+    "updatedAt": "2025-07-02T13:27:32.433Z"
+  },
+  "f2ae5884-79c0-41e9-867b-684bd50a02ba": {
+    "id": "f2ae5884-79c0-41e9-867b-684bd50a02ba",
+    "title": "test",
+    "messages": [
+      {
+        "role": "user",
+        "content": "test",
+        "timestamp": "2025-07-02T13:27:56.684Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Bonjour ! Je suis prêt à vous aider avec vos questions sur la programmation, l'architecture logicielle et les technologies web. Quel est votre sujet de préoccupation actuel ?",
+        "timestamp": "2025-07-02T13:27:56.951Z"
+      },
+      {
+        "role": "user",
+        "content": "test",
+        "timestamp": "2025-07-02T13:32:05.626Z"
+      },
+      {
+        "role": "assistant",
+        "content": "C'est juste un test, c'est ok ! Je suis prêt à vous aider avec vos questions sur la programmation, l'architecture logicielle et les technologies web. Qu'est-ce que vous souhaitez discuter ou résoudre ?",
+        "timestamp": "2025-07-02T13:32:05.876Z"
+      }
+    ],
+    "createdAt": "2025-07-02T13:27:56.684Z",
+    "updatedAt": "2025-07-02T13:32:05.876Z"
+  },
+  "6d98b6e1-973a-4c22-9016-8b723d3fe4f5": {
+    "id": "6d98b6e1-973a-4c22-9016-8b723d3fe4f5",
+    "title": "test",
+    "messages": [
+      {
+        "role": "user",
+        "content": "test",
+        "timestamp": "2025-07-02T13:32:09.794Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Je suis prêt à vous aider avec vos questions sur les sujets de programmation, d'architecture logicielle et de technologies web. Quel est votre sujet de préoccupation ou votre question spécifique ? Je vais faire de mon mieux pour vous fournir des réponses précises, concises et utiles.",
+        "timestamp": "2025-07-02T13:32:10.196Z"
+      },
+      {
+        "role": "user",
+        "content": "tryés bien",
+        "timestamp": "2025-07-02T13:32:12.798Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Il semblerait que vous ayez un problème ou une question en tête, mais qui ne soit pas encore formulé. Pas de problème ! Prenez votre temps, et lorsque vous êtes prêt, posez votre question ou partagez votre problème, je serai ravi de vous aider.",
+        "timestamp": "2025-07-02T13:32:13.619Z"
+      }
+    ],
+    "createdAt": "2025-07-02T13:32:09.793Z",
+    "updatedAt": "2025-07-02T13:32:13.619Z"
   }
 }
