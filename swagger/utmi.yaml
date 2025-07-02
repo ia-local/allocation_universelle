@@ -1,0 +1,113 @@
+# swagger/utmi.yaml
+paths:
+  /api/utmi/issue:
+    post:
+      summary: Émet de nouveaux UTMi
+      tags: [UTMI]
+      description: Permet d'émettre (créer) de nouveaux UTMi et de les attribuer à un utilisateur ou un compte spécifié.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - userId
+                - amount
+                - reason
+              properties:
+                userId:
+                  type: string
+                  description: L'identifiant de l'utilisateur ou du compte à créditer.
+                  example: "user_abc123"
+                amount:
+                  type: number
+                  format: float
+                  description: Le montant d'UTMi à émettre.
+                  example: 100.50
+                reason:
+                  type: string
+                  description: La raison de l'émission ( "récompense pour contribution", "versement mensuel").
+                  example: "récompense pour contribution"
+      responses:
+        201:
+          description: UTMi émis avec succès.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "UTMi issued successfully"
+                  transactionId:
+                    type: string
+                    example: "txn_issue_001"
+        400:
+          description: Requête invalide ( montant manquant ou invalide, raison manquante).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Invalid issue data"
+        500:
+          description: Erreur interne du serveur.
+
+  /api/utmi/redeem:
+    post:
+      summary: Récupère des UTMi (burn/destruction)
+      tags: [UTMI]
+      description: Permet de récupérer (retirer de la circulation) des UTMi d'un utilisateur ou d'un compte.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - userId
+                - amount
+                - reason
+              properties:
+                userId:
+                  type: string
+                  description: L'identifiant de l'utilisateur ou du compte dont les UTMi sont retirés.
+                  example: "user_abc123"
+                amount:
+                  type: number
+                  format: float
+                  description: Le montant d'UTMi à récupérer.
+                  example: 50.00
+                reason:
+                  type: string
+                  description: La raison du retrait (ex "remboursement", "pénalité", "annulation de service").
+                  example: "remboursement"
+      responses:
+        200:
+          description: UTMi récupérés avec succès.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "UTMi redeemed successfully"
+                  transactionId:
+                    type: string
+                    example: "txn_redeem_001"
+        400:
+          description: Requête invalide ( solde insuffisant, montant manquant ou invalide, raison manquante).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Invalid redeem data"
+        500:
+          description: Erreur interne du serveur.

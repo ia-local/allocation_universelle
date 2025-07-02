@@ -1,0 +1,108 @@
+# swagger/webhooks.yaml
+paths:
+  /api/webhooks/github:
+    post:
+      summary: Point de terminaison pour les webhooks GitHub
+      tags: [Webhooks]
+      description: Reçoit et traite les événements de webhook envoyés par GitHub (push, pull_request).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Le payload complet de l'événement GitHub.
+              example:
+                zen: "A programmer is a device for converting coffee into code."
+                hook_id: 12345
+                hook:
+                  type: "Repository"
+                  id: 67890
+                  name: "web"
+                  active: true
+                  events: ["push", "pull_request"]
+                repository:
+                  id: 98765
+                  name: "my-repo"
+                  full_name: "username/my-repo"
+                sender:
+                  login: "github-user"
+                  id: 112233
+                  type: "User"
+      responses:
+        200:
+          description: Webhook GitHub reçu et traité.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "GitHub webhook received"
+                  eventType:
+                    type: string
+                    example: "push"
+        400:
+          description: Requête invalide (payload manquant ou mal formé).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Empty or invalid GitHub webhook payload"
+        500:
+          description: Erreur interne du serveur.
+
+  /api/webhooks/stripe:
+    post:
+      summary: Point de terminaison pour les webhooks Stripe
+      tags: [Webhooks]
+      description: Reçoit et traite les événements de webhook envoyés par Stripe (charge.succeeded, customer.subscription.created).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: L'objet événement complet de Stripe.
+              example:
+                id: "evt_123abc"
+                object: "event"
+                api_version: "2020-08-27"
+                created: 1678886400
+                type: "charge.succeeded"
+                data:
+                  object:
+                    id: "ch_xyz123"
+                    amount: 1000
+                    currency: "usd"
+                    status: "succeeded"
+      responses:
+        200:
+          description: Webhook Stripe reçu et traité.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Stripe webhook received"
+                  eventType:
+                    type: string
+                    example: "charge.succeeded"
+        400:
+          description: Requête invalide (signature de webhook manquante, payload mal formé).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Empty or invalid Stripe webhook event"
+        500:
+          description: Erreur interne du serveur.

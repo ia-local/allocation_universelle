@@ -1,0 +1,24 @@
+# swagger/main.yaml
+openapi: 3.0.0
+info:
+  title: API UTMi (Universal Timestamp Monetization Index)
+  version: 1.0.0
+  description: Documentation de l'API pour la gestion des UTMi, portefeuilles et webhooks.
+servers:
+  - url: http://localhost:3000
+    description: Serveur de développement local
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerAuth: []
+tags:
+  - name: UTMI
+    description: Opérations liées aux UTMi (Universal Timestamp Monetization Index)
+  - name: Wallet
+    description: Opérations de gestion du portefeuille UTMi
+  - name: Webhooks
+    description: Gestion des webhooks entrants (GitHub, Stripe, etc.)

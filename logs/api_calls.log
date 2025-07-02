@@ -332,3 +332,9 @@
 {"timestamp":"2025-07-02T08:44:31.235Z","endpoint":"conversation_routes.js","method":"GET /api/conversations","status":"success","data":"\"Conversations retrieved successfully.\""}
 {"timestamp":"2025-07-02T08:44:31.994Z","endpoint":"serveur.js","method":"GET /api/dashboard-insights","status":"info","data":"\"Requête reçue.\""}
 {"timestamp":"2025-07-02T08:44:31.995Z","endpoint":"serveur.js","method":"GET *","status":"info","data":"\"Servir index.html pour une route non-API.\""}
+{"timestamp":"2025-07-02T09:35:41.601Z","endpoint":"wallet_routes.js","method":"GET /balance","status":"info","data":"{}"}
+{"timestamp":"2025-07-02T09:35:41.605Z","endpoint":"wallet_routes.js","method":"GET /balance","status":"warn","data":"{\"message\":\"Missing userId parameter\"}"}
+{"timestamp":"2025-07-02T09:35:45.200Z","endpoint":"wallet_routes.js","method":"GET /balance","status":"info","data":"{}"}
+{"timestamp":"2025-07-02T09:35:45.200Z","endpoint":"wallet_routes.js","method":"GET /balance","status":"warn","data":"{\"message\":\"Missing userId parameter\"}"}
+{"timestamp":"2025-07-02T09:39:09.689Z","endpoint":"wallet_routes.js","method":"GET /balance","status":"info","data":"{}"}
+{"timestamp":"2025-07-02T09:39:09.690Z","endpoint":"wallet_routes.js","method":"GET /balance","status":"warn","data":"{\"message\":\"Missing userId parameter\"}"}

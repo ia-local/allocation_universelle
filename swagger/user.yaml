@@ -1,0 +1,111 @@
+# swagger/user.yaml
+paths:
+  /api/users/register:
+    post:
+      summary: Enregistre un nouvel utilisateur
+      tags: [Users]
+      description: Crée un nouveau compte utilisateur avec un nom d'utilisateur et un mot de passe.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+                - email
+              properties:
+                username:
+                  type: string
+                  description: Nom d'utilisateur unique.
+                  example: "john_doe"
+                password:
+                  type: string
+                  description: Mot de passe de l'utilisateur.
+                  example: "MySecurePassword123"
+                email:
+                  type: string
+                  format: email
+                  description: Adresse e-mail de l'utilisateur.
+                  example: "john.doe@example.com"
+      responses:
+        201:
+          description: Utilisateur enregistré avec succès.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User registered successfully"
+                  userId:
+                    type: string
+                    example: "new_user_id_xyz"
+        400:
+          description: Requête invalide (nom d'utilisateur déjà pris, mot de passe faible).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Username already exists"
+        500:
+          description: Erreur interne du serveur.
+
+  /api/users/login:
+    post:
+      summary: Connecte un utilisateur
+      tags: [Users]
+      description: Authentifie un utilisateur avec son nom d'utilisateur et son mot de passe et retourne un jeton d'authentification.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username:
+                  type: string
+                  description: Nom d'utilisateur de l'utilisateur.
+                  example: "john_doe"
+                password:
+                  type: string
+                  description: Mot de passe de l'utilisateur.
+                  example: "MySecurePassword123"
+      responses:
+        200:
+          description: Connexion réussie.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Login successful"
+                  token:
+                    type: string
+                    description: Jeton d'authentification JWT.
+                    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                  userId:
+                    type: string
+                    example: "existing_user_id_abc"
+        401:
+          description: Authentification échouée (informations d'identification invalides).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Invalid credentials"
+        500:
+          description: Erreur interne du serveur.

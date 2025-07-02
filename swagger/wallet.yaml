@@ -1,0 +1,235 @@
+# swagger/wallet.yaml
+paths:
+  /api/wallet/balance:
+    get:
+      summary: Récupère le solde du portefeuille d'un utilisateur
+      tags: [Wallet]
+      description: Retourne le solde total, disponible et en attente pour un utilisateur donné.
+      parameters:
+        - in: query
+          name: userId
+          schema:
+            type: string
+          required: true
+          description: L'identifiant unique de l'utilisateur.
+          example: "user_12345"
+      responses:
+        200:
+          description: Solde du portefeuille récupéré avec succès.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: string
+                    example: "user_12345"
+                  totalBalance:
+                    type: number
+                    format: float
+                    example: 1250.75
+                  availableBalance:
+                    type: number
+                    format: float
+                    example: 1000.00
+                  pendingBalance:
+                    type: number
+                    format: float
+                    example: 250.75
+        400:
+          description: Requête invalide (paramètre userId manquant).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Missing userId parameter"
+        500:
+          description: Erreur interne du serveur.
+
+  /api/wallet/claim-utmi:
+    post:
+      summary: Réclame des UTMi en attente
+      tags: [Wallet]
+      description: Permet à un utilisateur de réclamer des UTMi qui sont en statut "en attente" pour les rendre disponibles.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - userId
+                - amount
+              properties:
+                userId:
+                  type: string
+                  description: L'identifiant unique de l'utilisateur.
+                  example: "user_12345"
+                amount:
+                  type: number
+                  format: float
+                  description: Le montant d'UTMi à réclamer.
+                  example: 100.50
+      responses:
+        200:
+          description: UTMi réclamés avec succès.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "UTMi claimed successfully"
+                  newAvailableBalance:
+                    type: number
+                    format: float
+                    example: 1100.50
+                  newPendingBalance:
+                    type: number
+                    format: float
+                    example: 150.25
+        400:
+          description: Requête invalide (montant manquant ou invalide, solde insuffisant).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Invalid claim data"
+        500:
+          description: Erreur interne du serveur.
+
+  /api/wallet/transfer:
+    post:
+      summary: Effectue un transfert d'UTMi entre utilisateurs
+      tags: [Wallet]
+      description: Permet de transférer un montant spécifié d'UTMi d'un expéditeur à un destinataire.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - senderId
+                - receiverId
+                - amount
+              properties:
+                senderId:
+                  type: string
+                  description: L'identifiant de l'utilisateur expéditeur.
+                  example: "user_12345"
+                receiverId:
+                  type: string
+                  description: L'identifiant de l'utilisateur destinataire.
+                  example: "user_67890"
+                amount:
+                  type: number
+                  format: float
+                  description: Le montant d'UTMi à transférer.
+                  example: 50.00
+                description:
+                  type: string
+                  description: Une brève description du transfert.
+                  example: "Paiement pour service"
+      responses:
+        200:
+          description: Transfert UTMi effectué avec succès.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "UTMi transferred successfully"
+                  senderNewBalance:
+                    type: number
+                    format: float
+                    example: 950.00
+                  receiverNewBalance:
+                    type: number
+                    format: float
+                    example: 1550.00
+        400:
+          description: Requête invalide ( solde insuffisant, destinataire invalide, montant négatif).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Invalid transfer data"
+        500:
+          description: Erreur interne du serveur.
+
+  /api/wallet/convert:
+    post:
+      summary: Convertit des UTMi en une autre monnaie ou jeton
+      tags: [Wallet]
+      description: Permet à un utilisateur de convertir une partie de son solde UTMi en une autre devise ou un autre type de jeton.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - userId
+                - amount
+                - targetCurrency
+              properties:
+                userId:
+                  type: string
+                  description: L'identifiant unique de l'utilisateur.
+                  example: "user_12345"
+                amount:
+                  type: number
+                  format: float
+                  description: Le montant d'UTMi à convertir.
+                  example: 200.00
+                targetCurrency:
+                  type: string
+                  description: La monnaie ou le jeton cible ('points_fidelite', 'token_x').
+                  example: "points_fidelite"
+      responses:
+        200:
+          description: UTMi convertis avec succès.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "UTMi converted successfully"
+                  utmiNewBalance:
+                    type: number
+                    format: float
+                    example: 800.00
+                  convertedAmount:
+                    type: number
+                    format: float
+                    example: 1000.00
+                  targetCurrency:
+                    type: string
+                    example: "points_fidelite"
+        400:
+          description: Requête invalide (montant insuffisant, type de conversion non supporté).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Invalid conversion data"
+        500:
+          description: Erreur interne du serveur.
