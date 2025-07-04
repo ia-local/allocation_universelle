@@ -38,28 +38,32 @@
                 </div>
             </section>
 
-<section id="dashboard" class="content-section">
-    <h2>Tableau de Bord des Activités</h2>
-    <div class="dashboard-grid">
-        <div class="dashboard-card">
-            <h3>Interactions Totales</h3>
-            <p id="total-interactions">Chargement...</p>
-        </div>
-        <div class="dashboard-card">
-            <h3>Interactions Chat</h3>
-            <p id="chat-interactions">Chargement...</p>
-        </div>
-        <div class="dashboard-card">
-            <h3>CV Générés</h3>
-            <p id="cv-generated-count">Chargement...</p>
-        </div>
-        <div class="dashboard-card full-width">
-            <h3>Résumé IA et Insights</h3>
-            <div id="ai-summary-content">Chargement du résumé...</div>
-        </div>
-        </div>
-    <button id="dashboard-refresh-btn" class="btn btn-primary mt-4">Rafraîchir les Données</button>
-</section>
+            <section id="dashboard" class="content-section">
+                <h2>Tableau de Bord</h2>
+                <div class="dashboard-metrics">
+                    <div class="card">
+                        <h3>Interactions IA</h3>
+                        <p>Total générées: <span id="total-interactions">Chargement...</span></p>
+                    </div>
+                    <div class="card">
+                        <h3>Conversations Actives</h3>
+                        <p>Nombre: <span id="active-conversations">Chargement...</span></p>
+                    </div>
+                    <div class="card">
+                        <h3>CV Générés</h3>
+                        <p>Nombre: <span id="cv-generated-count">Chargement...</span></p>
+                    </div>
+                    <div class="card">
+                        <h3>Taux de Succès AI</h3>
+                        <p><span id="ai-response-success-rate">Chargement...</span></p>
+                    </div>
+                    <div class="card">
+                        <h3>Temps de Réponse Moyen AI</h3>
+                        <p><span id="average-ai-response-time">Chargement...</span></p>
+                    </div>
+                </div>
+                <button id="dashboard-refresh-btn" class="btn btn-secondary mt-3">Rafraîchir les données</button>
+            </section>
 
             <section id="chat" class="content-section">
                 <h2>Chat avec l'IA</h2>

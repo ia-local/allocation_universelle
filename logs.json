@@ -874,5 +874,84 @@
     "type": "home_interaction",
     "prompt": "test",
     "response": "Bonjour ! Je suis un assistant IA expert en développement et en conseil technique. Je suis là pour vous aider avec vos questions et vos problèmes techniques. Qu'est-ce que vous voulez discuter ou résoudre aujourd'hui ?"
+  },
+  {
+    "id": "17e86db1-677c-4a4f-9066-fd1ab32058b1",
+    "timestamp": "2025-07-02T14:42:55.443Z",
+    "type": "wallet_balance_fetch",
+    "balance": 1000
+  },
+  {
+    "id": "3fd45a5a-b0c9-4630-a26b-be01f9803c56",
+    "timestamp": "2025-07-02T16:38:14.550Z",
+    "type": "home_interaction",
+    "prompt": "Rédige-moi un texte de 4000 mots sur l'économie circulaire",
+    "response": "L'économie circulaire, également connue sous le nom d'économie de la réduction des déchets, est un modèle économique qui vise à réduire les quantités de matières premières extraites de la nature et à réduire les déchets en recyclant et en réutilisant les ressources existantes. Cette approche éco-gestionnelle vise à créer une économie plus durable, plus efficace et plus résiliente en minimisant les impacts environnementaux et sociaux liés à la production et au consommation.\n\nL'économie circulaire repose sur les principes suivants :\n\n1. La réduction : réduire les quantités de matières premières extraites de la nature et les quantités de déchets produits.\n2. La réutilisation : réutiliser les matières premières et les biens existants au lieu de les jeter.\n3. Le recyclage : transformer les déchets en nouveaux biens de qualité pour réduire les quantités de matières premières nécessaires.\n4. L'éco-conception : concevoir les produits et les services pour qu'ils soient faciles à réparer, à réutiliser et à recyclé.\n\nLes avantages de l'économie circulaire sont multiples :\n\n1. Réduction des coûts : la réduction des déchets et la réutilisation des matières premières réduisent les coûts de production et d'entretien.\n2. Sauvegarde des ressources naturelles : l'économie circulaire réduit la pression sur les ressources naturelles et protège la biodiversité.\n3. Réduction des émissions de CO2 : l'économie circulaire réduit les émissions de gaz à effet de serre liées à la production et à la distribution des biens.\n4. Création d'emplois : l'économie circulaire crée de nouveaux emplois dans les secteurs de la réparation, du recyclage et de la transformation des déchets.\n5. Amélioration de la qualité de vie : l'économie circulaire améliore la qualité de vie en réduisant les déchets et en protégeant l'environnement.\n\nLes entreprises qui adoptent l'économie circulaire peuvent bénéficier de plusieurs avantages compétitifs :\n\n1. Réduction des coûts de production : la réduction des déchets et la réutilisation des matières premières réduisent les coûts de production.\n2. Amélioration de la réputation : les entreprises qui adoptent l'économie circulaire améliorent leur réputation et leur image de marque.\n3. Accès à de nouveaux marchés : les entreprises qui adoptent l'économie circulaire peuvent accéder à de nouveaux marchés et à de nouveaux clients.\n4. Innovation : l'économie circulaire encourage l'innovation et la créativité en encourageant les entreprises à trouver de nouvelles solutions pour réduire les déchets et recycler les ressources.\n\nLes défis à relever pour adopter l'économie circulaire sont :\n\n1. Changement de mentalité : il est nécessaire de changer de mentalité et de considérer les déchets comme des ressources plutôt que comme des coûts.\n2. Investissement dans les infrastructures : il est nécessaire d'investir dans les infrastructures de recyclage et de traitement des déchets.\n3. Formation des travailleurs : il est nécessaire de former les travailleurs pour lesquels les compétences liées au recyclage et à la réparation des biens sont nouvelles.\n4. Coordonner les acteurs : il est nécessaire de coordonner les acteurs économiques, les institutions et les gouvernements pour mettre en place un système économique circulaire.\n\nLes exemples d'entreprise qui ont adopté l'économie circulaire sont nombreux :\n\n1. H&M qui a créé un système de récupération des vêtements pour les recycler et les réutiliser.\n2. IKEA qui a mis en place un système de récupération des déchets pour les recyclés et les réutiliser.\n3. L'entreprise de recyclage des déchets de papier, carton et verre allemande, Papier Union.\n4. L'entreprise française de recyclage des déchets de plastique, Plastic Omnium.\n\nLes gouvernements peuvent également jouer un rôle important dans l'adoption de l'économie circulaire en :\n\n1. Établissant des politiques et des législations pour encourager l'économie circulaire.\n2. Investissant dans les infrastructures de recyclage et de traitement des déchets.\n3. Formant les travailleurs et les entrepreneurs pour lesquels les compétences liées au recyclage et à la réparation des biens sont nouvelles.\n4. Encourager les entreprises à adopter l'économie circulaire en leur offrant des incitatifs financiers et des avantages compétitifs.\n\nEn résumé, l'économie circulaire est un modèle économique qui vise à réduire les quantités de matières premières extraites de la nature et les quantités de déchets produits. Cette approche éco-gestionnelle vise à créer une économie plus durable, plus efficace et plus résiliente en minimisant les impacts environnementaux et sociaux liés à la production et au consommation. Les entreprises et les gouvernements peuvent jouer un rôle important dans l'adoption de l'économie circulaire en adoptant des politiques et des pratiques éco-gestionnelles."
+  },
+  {
+    "id": "ccc11637-018d-4f79-ba27-89a02fe89ac9",
+    "timestamp": "2025-07-03T09:53:33.679Z",
+    "type": "cv_generation",
+    "prompt": "Je m'appelle Michael, j'ai 35 ans, huit ans d'expérience en tant que développeur chez Google",
+    "cvData": {
+      "informationsPersonnelles": {
+        "nom": "Michael",
+        "age": 35,
+        "adresse": "123 Main St, Anytown, USA",
+        "numéroDeTéléphone": "+1 (555) 555-5555",
+        "adresseCourriel": "michael@gmail.com"
+      },
+      "experienceProfessionnelle": [
+        {
+          "titre": "Développeur",
+          "entreprise": "Google",
+          "dates": {
+            "startDate": "2014-01-01",
+            "endDate": "2022-12-31"
+          },
+          "descriptions": [
+            "Développé des applications web et mobile pour les principaux clients de Google.",
+            "Collaboré avec les équipes de design et de marketing pour concevoir et lancer des produits innovants."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "niveau": "Bachelor",
+          "domaine": "Informatique",
+          "école": "University of Anytown",
+          "dates": {
+            "startDate": "2006-09-01",
+            "endDate": "2010-05-31"
+          }
+        }
+      ],
+      "competences": [
+        "Développement web et mobile",
+        "JavaScript",
+        "HTML/CSS",
+        "React",
+        "Angular",
+        "Vue.js",
+        "Java",
+        "Python",
+        "Agile",
+        "Scrum"
+      ]
+    }
+  },
+  {
+    "id": "766aeec2-8b64-4512-b94f-febe403d262f",
+    "timestamp": "2025-07-03T09:53:59.484Z",
+    "type": "chat_interaction",
+    "conversationId": "4889b1f1-9dbf-45b1-93af-5b515983eafb",
+    "userMessage": "tesy",
+    "aiResponse": "Il semblerait que vous ayez oublié votre message. Si vous voulez demander quelque chose ou discuter d'un sujet en particulier, je suis là pour vous aider."
+  },
+  {
+    "id": "89309e2e-e7dc-4bc3-8d23-e89dfdf2cd30",
+    "timestamp": "2025-07-04T19:28:43.886Z",
+    "type": "wallet_balance_fetch",
+    "balance": 1000
   }
 ]
